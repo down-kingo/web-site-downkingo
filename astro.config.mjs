@@ -14,6 +14,11 @@ import compress from "@playform/compress";
 export default defineConfig({
   site: "https://downkingo.com",
   prefetch: true,
+  build: {
+    // Inline all stylesheets to eliminate render-blocking CSS requests
+    // This dramatically improves LCP on mobile devices
+    inlineStylesheets: "always",
+  },
   i18n: {
     defaultLocale: "en",
     locales: ["en", "pt"],
