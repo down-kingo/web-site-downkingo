@@ -1,3 +1,11 @@
+/* Fonts - Self-hosted via @fontsource */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/900.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
 /* Starlight + Tailwind v4 Cascade Layers */
 @layer base, starlight, theme, components, utilities;
 
@@ -122,22 +130,16 @@
   /* Grid Patterns */
   .bg-grid-pattern {
     background-size: 40px 40px;
-    background-image: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
 
   .bg-grid-premium {
     background-size: 60px 60px;
-    background-image: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.02) 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     mask-image: radial-gradient(
       ellipse 80% 80% at 50% 0%,
@@ -228,7 +230,8 @@
 .reveal-wrapper {
   opacity: 0;
   transform: translateY(20px) scale(0.98);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .reveal-wrapper.visible {

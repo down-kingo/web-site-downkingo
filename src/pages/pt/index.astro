@@ -3,10 +3,10 @@ import '../../styles/global.css';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
+import Navigation from '../../components/Navigation.astro';
 import temaClaro from '../../assets/tema-claro-com-sidebar.avif';
 import buildInPublic from '../../assets/build-in-public-kingo.avif';
 import issues from '../../assets/issues.avif';
-import kingoIcon from '../../assets/kingo.ico';
 import wailsIcon from '../../assets/wails-icon.ico';
 ---
 
@@ -120,9 +120,6 @@ import wailsIcon from '../../assets/wails-icon.ico';
     </script>
     
     <!-- Preload Critical Assets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/partytown" defer data-domain="downkingo.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
@@ -131,73 +128,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
     <div class="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full max-w-sm md:max-w-2xl px-4" x-data="{ open: false }">
-        <div class="glass rounded-full px-6 py-3 flex items-center justify-between border border-white/5 bg-[#050505]/90 backdrop-blur-xl">
-            <a href="/pt/" class="font-black text-lg tracking-tighter uppercase flex items-center gap-2 group">
-                <Image src={kingoIcon} alt="DownKingo Logo" width={20} height={20} class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                <span class="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#F24E1E] group-hover:via-[#FFC700] group-hover:to-[#1ABCFE] transition-all duration-300">DownKingo</span>
-            </a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 font-mono text-xs font-medium text-white/70">
-                <a href="/pt/" class="hover:text-white transition-colors">INÍCIO</a>
-                <a href="/pt/download" class="hover:text-white transition-colors">BAIXAR</a>
-                <a href="/pt/#build-in-public" class="hover:text-white transition-colors">ROADMAP</a>
-                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="flex items-center gap-1 hover:text-white transition-colors">
-                    GITHUB <Icon name="lucide:external-link" width={12} />
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white p-1 hover:bg-white/10 rounded-full transition-colors" aria-label="Menu">
-                <Icon name="lucide:menu" width={20} />
-            </button>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="absolute top-[120%] left-4 right-4 bg-black/90 glass border border-white/10 rounded-2xl p-6 flex-col gap-4 hidden origin-top scale-95 opacity-0 transition-all duration-300">
-             <a href="/pt/" class="text-sm font-bold text-white py-2 border-b border-white/5 hover:text-primary transition-colors">INÍCIO</a>
-             <a href="/pt/download" class="text-sm font-bold text-white py-2 border-b border-white/5 hover:text-primary transition-colors">BAIXAR</a>
-             <a href="/pt/#build-in-public" class="text-sm font-bold text-white py-2 border-b border-white/5 hover:text-primary transition-colors">ROADMAP</a>
-             <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-sm font-bold text-white py-2 flex items-center justify-between hover:text-primary transition-colors">
-                GITHUB <Icon name="lucide:external-link" width={14} />
-             </a>
-        </div>
-    </nav>
-
-    <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-             const btn = document.getElementById('mobile-menu-btn');
-             const menu = document.getElementById('mobile-menu');
-             let isOpen = false;
-
-             const iconMenu = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
-             const iconX = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>`;
-
-             btn.addEventListener('click', () => {
-                 isOpen = !isOpen;
-                 if (isOpen) {
-                     menu.classList.remove('hidden', 'scale-95', 'opacity-0');
-                     menu.classList.add('flex', 'scale-100', 'opacity-100');
-                     btn.innerHTML = iconX;
-                 } else {
-                     menu.classList.add('hidden', 'scale-95', 'opacity-0');
-                     menu.classList.remove('flex', 'scale-100', 'opacity-100');
-                     btn.innerHTML = iconMenu;
-                 }
-             });
-
-             // Close on link click
-             menu.querySelectorAll('a').forEach(link => {
-                 link.addEventListener('click', () => {
-                     isOpen = false;
-                     menu.classList.add('hidden', 'scale-95', 'opacity-0');
-                     menu.classList.remove('flex', 'scale-100', 'opacity-100');
-                     btn.innerHTML = iconMenu;
-                 });
-             });
-        });
-    </script>
+    <Navigation lang="pt" currentPage="home" />
 
     <!-- Main Content -->
     <main class="relative z-10 w-full overflow-hidden">
@@ -505,7 +436,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         Desenvolvimento ao Vivo
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight text-white leading-[0.9]">
+                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight text-white leading-[1.1]">
                         Construído em <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Público.</span>
                     </h2>

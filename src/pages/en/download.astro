@@ -3,7 +3,7 @@ import '../../styles/global.css';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
-import wailsIcon from '../../assets/wails-icon.ico';
+import Navigation from '../../components/Navigation.astro';
 
 // Metadata for SEO
 const title = "Download DownKingo - Universal Media Toolbox";
@@ -44,9 +44,6 @@ const description = "Download DownKingo for Windows, macOS, and Linux. The priva
       }}
     />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/partytown" defer data-domain="downkingo.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative min-h-screen flex flex-col">
@@ -55,23 +52,7 @@ const description = "Download DownKingo for Windows, macOS, and Linux. The priva
     <div class="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full max-w-sm md:max-w-2xl px-4">
-        <div class="glass rounded-full px-6 py-3 flex items-center justify-between border border-white/5 bg-black/50 backdrop-blur-xl">
-            <a href="/en/" class="font-black text-lg tracking-tighter uppercase flex items-center gap-2 group">
-                 <Image src={wailsIcon} alt="DownKingo Logo" width={20} height={20} class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                DownKingo
-            </a>
-            
-            <div class="hidden md:flex gap-8 font-mono text-xs font-medium text-muted">
-                <a href="/en/" class="hover:text-white transition-colors">HOME</a>
-                <a href="/en/download" class="text-white">DOWNLOAD</a>
-                <a href="/en/#build-in-public" class="hover:text-white transition-colors">ROADMAP</a>
-                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="flex items-center gap-1 hover:text-white transition-colors">
-                    GITHUB <Icon name="lucide:external-link" width={12} />
-                </a>
-            </div>
-        </div>
-    </nav>
+    <Navigation lang="en" currentPage="download" />
 
     <!-- Main Content -->
     <main class="flex-grow relative z-10 w-full pt-32 pb-20 px-6">

@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import kingoIcon from '../assets/kingo.ico';
+
+interface Props {
+    lang?: 'pt' | 'en';
+    currentPage?: 'home' | 'download' | 'roadmap' | 'docs';
+}
+
+const { lang = 'pt', currentPage = 'home' } = Astro.props;
+
+const basePath = lang === 'pt' ? '/pt' : '/en';
+
+const translations = {
+    pt: {
+        home: 'INÍCIO',
+        download: 'BAIXAR',
+        roadmap: 'ROADMAP',
+        github: 'GITHUB',
+    },
+    en: {
+        home: 'HOME',
+        download: 'DOWNLOAD',
+        roadmap: 'ROADMAP',
+        github: 'GITHUB',
+    }
+};
+
+const t = translations[lang];
+
+const navLinks = [
+    { key: 'home', href: `${basePath}/`, label: t.home },
+    { key: 'download', href: `${basePath}/download`, label: t.download },
+    { key: 'roadmap', href: `${basePath}/#build-in-public`, label: t.roadmap },
+];
+---
+
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full max-w-sm md:max-w-2xl px-4">
+    <div class="glass rounded-full px-6 py-3 flex items-center justify-between border border-white/5 bg-[#050505]/90 backdrop-blur-xl">
+        <a href={`${basePath}/`} class="font-black text-lg tracking-tighter uppercase flex items-center gap-2 group">
+            <Image src={kingoIcon} alt="DownKingo Logo" width={40} height={40} format="webp" class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+            <span class="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#F24E1E] group-hover:via-[#FFC700] group-hover:to-[#1ABCFE] transition-all duration-300">DownKingo</span>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 font-mono text-xs font-medium text-white/70">
+            {navLinks.map(link => (
+                <a 
+                    href={link.href} 
+                    class:list={[
+                        "transition-colors",
+                        currentPage === link.key ? "text-white" : "hover:text-white"
+                    ]}
+                >
+                    {link.label}
+                </a>
+            ))}
+            <a href="https://github.com/down-kingo/downkingo" target="_blank" class="flex items-center gap-1 hover:text-white transition-colors">
+                {t.github} <Icon name="lucide:external-link" width={12} />
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white p-1 hover:bg-white/10 rounded-full transition-colors" aria-label="Menu">
+            <Icon name="lucide:menu" width={20} />
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="absolute top-[120%] left-4 right-4 bg-black/90 glass border border-white/10 rounded-2xl p-6 flex-col gap-4 hidden origin-top scale-95 opacity-0 transition-all duration-300">
+        {navLinks.map(link => (
+            <a 
+                href={link.href} 
+                class:list={[
+                    "text-sm font-bold py-2 border-b border-white/5 transition-colors",
+                    currentPage === link.key ? "text-primary" : "text-white hover:text-primary"
+                ]}
+            >
+                {link.label}
+            </a>
+        ))}
+        <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-sm font-bold text-white py-2 flex items-center justify-between hover:text-primary transition-colors">
+            {t.github} <Icon name="lucide:external-link" width={14} />
+        </a>
+    </div>
+</nav>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        let isOpen = false;
+
+        const iconMenu = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+        const iconX = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>`;
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    menu.classList.remove('hidden', 'scale-95', 'opacity-0');
+                    menu.classList.add('flex', 'scale-100', 'opacity-100');
+                    btn.innerHTML = iconX;
+                } else {
+                    menu.classList.add('hidden', 'scale-95', 'opacity-0');
+                    menu.classList.remove('flex', 'scale-100', 'opacity-100');
+                    btn.innerHTML = iconMenu;
+                }
+            });
+
+            // Close on link click
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    isOpen = false;
+                    menu.classList.add('hidden', 'scale-95', 'opacity-0');
+                    menu.classList.remove('flex', 'scale-100', 'opacity-100');
+                    btn.innerHTML = iconMenu;
+                });
+            });
+        }
+    });
+</script>
