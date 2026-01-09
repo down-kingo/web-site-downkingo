@@ -28,5 +28,8 @@
     "@iconify-json/lucide": "^1.2.82",
     "@iconify-json/simple-icons": "^1.2.65",
     "wrangler": "^4.58.0"
+  },
+  "resolutions": {
+    "esbuild": "0.27.0"
   }
 }
