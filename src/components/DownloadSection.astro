@@ -416,43 +416,54 @@ const t = translations[lang];
 
   // Action
   submitBtn.addEventListener('click', async () => {
-    // Determine context (mobile vs desktop) to adjust scroll offset if needed
-    // But simple validation is key first
-
+    // 1. Initial Validation
     if (!turnstileToken) {
-        // UX: Visual feedback that captcha is required
         const tContainer = document.getElementById('turnstile-container');
         if(tContainer) {
             tContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            tContainer.classList.add('scale-105', 'brightness-150');
-            setTimeout(() => tContainer.classList.remove('scale-105', 'brightness-150'), 400);
-            
-            // Optional: You could show a small toast/tooltip here "Please verify you are human"
-            // For now, the visual focus on the captcha is good.
+            tContainer.classList.add('scale-105', 'drop-shadow-[0_0_15px_rgba(255,50,50,0.5)]');
+            setTimeout(() => tContainer.classList.remove('scale-105', 'drop-shadow-[0_0_15px_rgba(255,50,50,0.5)]'), 400);
         }
+        // Show immediate error toast or feedback
+        errorMessage.classList.remove('hidden');
+        errorText.textContent = "Por favor, complete a verificação de segurança (Captcha) abaixo.";
         return;
     }
     
     const url = urlInput.value.trim();
     if (!url) {
         urlInput.focus();
-        urlInput.parentElement.classList.add('ring-2', 'ring-red-500/50');
-        setTimeout(() => urlInput.parentElement.classList.remove('ring-2', 'ring-red-500/50'), 500);
+        urlInput.parentElement.classList.add('ring-2', 'ring-red-500/50', 'bg-red-500/10');
+        setTimeout(() => urlInput.parentElement.classList.remove('ring-2', 'ring-red-500/50', 'bg-red-500/10'), 500);
         return;
     }
 
-    // Reset UI
+    // 2. Prepare UI for Loading
     if (pollTimer) clearInterval(pollTimer);
     downloadLink.classList.add('hidden');
     errorMessage.classList.add('hidden');
     progressContainer.classList.remove('hidden');
+    
+    // Reset Progress Visuals to "Starting" state
     progressFill.style.width = '0%';
+    progressFill.classList.add('animate-pulse'); // Pulse to show activity
+    progressStatusText.textContent = t.starting;
+    progressPercent.textContent = "0%";
+    
     videoTitle.textContent = t.searching;
+    videoMeta.innerHTML = `<span class="w-4 h-4 rounded-full bg-white/10 animate-pulse mr-2"></span> ${t.waiting_metadata}`;
+    
+    // Show the status card immediately so user sees "something is happening"
     statusCard.classList.remove('hidden'); 
     
+    // Scroll to status card on mobile
+    if(window.innerWidth < 768) {
+        statusCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     setLoading(true);
 
-    // Call API
+    // 3. API Call
     try {
       const res = await fetch(`${apiUrl}/download`, {
         method: 'POST',
@@ -467,13 +478,24 @@ const t = translations[lang];
       
       if (!res.ok) throw new Error(data.error || t.error_failed_start);
       
+      // Request started successfully
+      progressFill.style.width = '10%'; // Jump to 10% to show connection made
+      progressPercent.textContent = "10%";
+      progressStatusText.textContent = t.waiting; // "Aguardando fila..."
+
       // Start Polling
       pollStatus(data.job_id); // Initial check
       pollTimer = setInterval(() => pollStatus(data.job_id), POLL_INTERVAL);
 
     } catch (e) {
+      console.error("Download Error:", e);
       errorMessage.classList.remove('hidden');
-      errorText.textContent = e.message;
+      errorMessage.classList.add('animate-shake'); // Add shake animation
+      errorText.textContent = e.message || t.error_occurred;
+      
+      // Hide progress bar on error since it failed
+      progressContainer.classList.add('hidden');
+      
       setLoading(false);
       resetTurnstile();
     }
