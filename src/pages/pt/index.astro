@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
 import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
 import temaClaro from '../../assets/tema-claro-com-sidebar.avif';
 import buildInPublic from '../../assets/build-in-public-kingo.avif';
 import issues from '../../assets/issues.avif';
@@ -130,8 +131,8 @@ import wailsIcon from '../../assets/wails-icon.ico';
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
 
-    <!-- Noise Texture -->
-    <div class="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+    <!-- Noise Texture Removed for Performance -->
+    <!-- <div class="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] mix-blend-overlay" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div> -->
 
     <!-- Navigation -->
     <Navigation lang="pt" currentPage="home" />
@@ -147,7 +148,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
             
             <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
                 <!-- Status Badge -->
-                <div class="inline-flex items-center gap-3 border border-white/5 rounded-full pl-2 pr-4 py-1 bg-black/40 backdrop-blur-md hover:border-white/10 transition-colors">
+                <div class="inline-flex items-center gap-3 border border-white/5 rounded-full pl-2 pr-4 py-1 bg-black/40 backdrop-blur-md hover:border-white/10 transition-colors mx-auto">
                     <span class="flex h-2 w-2 relative">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -156,7 +157,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                 </div>
 
                 <!-- Main Title -->
-                <h1 class="font-black text-6xl md:text-9xl tracking-tight uppercase leading-[0.85] select-none text-white drop-shadow-2xl">
+                <h1 class="font-black text-[13vw] sm:text-7xl md:text-9xl tracking-tighter uppercase leading-[0.85] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
                     Baixar. <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">Converter.</span>
                 </h1>
                 
@@ -180,51 +181,51 @@ import wailsIcon from '../../assets/wails-icon.ico';
         <section class="py-10 border-y border-white/5 bg-black/50 overflow-hidden">
              <div class="relative w-full overflow-hidden text-center">
                  <p class="text-[10px] font-mono uppercase tracking-widest text-muted mb-6">Plataformas Suportadas</p>
-                 <div class="flex whitespace-nowrap animate-marquee opacity-60 hover:opacity-100 transition-opacity">
+                 <div class="flex whitespace-nowrap animate-marquee-mobile md:animate-marquee will-change-transform hover:pause">
                      <!-- Set 1 -->
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:youtube" /> YouTube</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:tiktok" /> TikTok</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:instagram" /> Instagram</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:x" /> Twitter / X</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:soundcloud" /> Soundcloud</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:twitch" /> Twitch</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:youtube" /> YouTube</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:tiktok" /> TikTok</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:instagram" /> Instagram</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:x" /> Twitter / X</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:soundcloud" /> Soundcloud</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:twitch" /> Twitch</span>
                      
                      <!-- GLOBO -->
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2">
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6-3c0 2.37-1.4 4.42-3.46 5.28-.5.21-1.03.38-1.57.49l-.02.01c-.13.03-.27.05-.41.07l-.1.01c-.14.02-.29.04-.44.04-.15 0-.29-.02-.44-.04l-.1-.01c-.14-.02-.28-.04-.41-.07l-.02-.01c-.54-.11-1.07-.28-1.57-.49C7.4 16.42 6 14.37 6 12s1.4-4.42 3.46-5.28c.5-.21 1.03-.38 1.57-.49l.02-.01c.14-.03.28-.05.41-.07l.1-.01c.15-.02.29-.04.44-.04.15 0 .29.02.44.04l.1.01c.14.02.28.04.41.07l.02.01c.54.11 1.07.28 1.57.49C16.6 7.58 18 9.63 18 12z" clip-rule="evenodd"/></svg>
                         Globo
                      </span>
 
                      <!-- ESPN (Font Simulation: Impact Italic) -->
-                     <span class="mx-12 text-lg text-white cursor-default flex items-center gap-2" style="font-family: Impact, sans-serif; font-style: italic; letter-spacing: 1px;">
+                     <span class="mx-6 md:mx-12 text-lg text-white cursor-default flex items-center gap-2" style="font-family: Impact, sans-serif; font-style: italic; letter-spacing: 1px;">
                         ESPN
                      </span>
                      
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:pinterest" /> Pinterest</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:reddit" /> Reddit</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:facebook" /> Facebook</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:pinterest" /> Pinterest</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:reddit" /> Reddit</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:facebook" /> Facebook</span>
 
                      <!-- Set 2 (Duplicate for Loop) -->
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:youtube" /> YouTube</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:tiktok" /> TikTok</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:instagram" /> Instagram</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:x" /> Twitter / X</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:soundcloud" /> Soundcloud</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:twitch" /> Twitch</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:youtube" /> YouTube</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:tiktok" /> TikTok</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:instagram" /> Instagram</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:x" /> Twitter / X</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:soundcloud" /> Soundcloud</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:twitch" /> Twitch</span>
                      
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2">
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6-3c0 2.37-1.4 4.42-3.46 5.28-.5.21-1.03.38-1.57.49l-.02.01c-.13.03-.27.05-.41.07l-.1.01c-.14.02-.29.04-.44.04-.15 0-.29-.02-.44-.04l-.1-.01c-.14-.02-.28-.04-.41-.07l-.02-.01c-.54-.11-1.07-.28-1.57-.49C7.4 16.42 6 14.37 6 12s1.4-4.42 3.46-5.28c.5-.21 1.03-.38 1.57-.49l.02-.01c.14-.03.28-.05.41-.07l.1-.01c.15-.02.29-.04.44-.04.15 0 .29.02.44.04l.1.01c.14.02.28.04.41.07l.02.01c.54.11 1.07.28 1.57.49C16.6 7.58 18 9.63 18 12z" clip-rule="evenodd"/></svg>
                         Globo
                      </span>
 
                      <!-- ESPN (Font Simulation: Impact Italic) -->
-                     <span class="mx-12 text-lg text-white cursor-default flex items-center gap-2" style="font-family: Impact, sans-serif; font-style: italic; letter-spacing: 1px;">
+                     <span class="mx-6 md:mx-12 text-lg text-white cursor-default flex items-center gap-2" style="font-family: Impact, sans-serif; font-style: italic; letter-spacing: 1px;">
                         ESPN
                      </span>
                      
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><span class="iconify" data-icon="simple-icons:pinterest"></span> Pinterest</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><span class="iconify" data-icon="simple-icons:reddit"></span> Reddit</span>
-                     <span class="mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><span class="iconify" data-icon="simple-icons:facebook"></span> Facebook</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:pinterest" /> Pinterest</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:reddit" /> Reddit</span>
+                     <span class="mx-6 md:mx-12 text-sm font-bold uppercase text-white cursor-default flex items-center gap-2"><Icon name="simple-icons:facebook" /> Facebook</span>
                  </div>
              </div>
         </section>
@@ -648,58 +649,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
         </section>
 
         <!-- Footer -->
-        <footer class="relative py-12 px-6 border-t border-white/5 bg-black overflow-hidden">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12 relative z-10">
-                
-                <!-- Brand & Socials (Left) -->
-                <div class="space-y-6 md:max-w-xs">
-                    <div>
-                        <a href="/pt/" class="group inline-flex items-center gap-2">
-                            <span class="font-black text-2xl tracking-tighter uppercase text-gradient-kingo">DownKingo<span class="text-white">.</span></span>
-                        </a>
-                        <p class="mt-2 text-xs text-muted font-mono leading-relaxed">
-                            O kit de ferramentas de mídia open source definitivo.<br>
-                            Desenvolvido com Wails v2 + React.
-                        </p>
-                    </div>
-                    
-                    <!-- Socials (Left Aligned) -->
-                    <div class="flex gap-4">
-                        <a href="https://github.com/down-kingo/downkingo" target="_blank" class="p-2 -ml-2 rounded-lg hover:bg-white/5 text-muted hover:text-white transition-colors" aria-label="GitHub">
-                            <Icon name="simple-icons:github" width={20} />
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Navigation Grid (Right - Compact 2 cols) -->
-                <div class="grid grid-cols-2 gap-x-12 gap-y-4 text-sm">
-                    <div class="flex flex-col gap-3">
-                        <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">Produto</span>
-                        <a href="/pt/download" class="text-muted hover:text-primary transition-colors">Baixar</a>
-                        <a href="#features" class="text-muted hover:text-primary transition-colors">Funcionalidades</a>
-                        <a href="#build-in-public" class="text-muted hover:text-primary transition-colors">Roadmap</a>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">Recursos</span>
-                        <a href="/intro" class="text-muted hover:text-primary transition-colors">Docs</a>
-                        <a href="#faq" class="text-muted hover:text-primary transition-colors">Q&A</a>
-                        <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-muted hover:text-primary transition-colors">GitHub</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Simple Copyright -->
-            <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                <p class="font-mono text-[10px] text-muted uppercase tracking-widest">© 2026 DownKingo. MIT License.</p>
-                <div class="flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></span>
-                    <p class="font-mono text-[10px] text-muted uppercase tracking-widest">
-                        Design por <a href="https://links.epixel.com.br" target="_blank" class="text-white hover:text-primary hover:underline underline-offset-4 transition-all">Emanuel Nunes</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
+        <Footer lang="pt" />
 
     </main>
 

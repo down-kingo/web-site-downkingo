@@ -81,7 +81,8 @@
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-blob: blob 7s infinite;
   --animate-curtain-up: curtainUp 1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-mobile: marquee 15s linear infinite;
 
   /* Keyframes */
   @keyframes blob {
@@ -112,10 +113,10 @@
 
   @keyframes marquee {
     from {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
 

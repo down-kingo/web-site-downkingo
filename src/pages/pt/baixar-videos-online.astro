@@ -3,6 +3,7 @@ import '../../styles/global.css';
 import { SEO } from 'astro-seo';
 import Navigation from '../../components/Navigation.astro';
 import DownloadSection from '../../components/DownloadSection.astro';
+import Footer from '../../components/Footer.astro';
 
 // Metadata for SEO - Optimized for competitive keywords
 const title = "Baixar Vídeo do YouTube, Instagram e TikTok Grátis | DownKingo";
@@ -10,7 +11,7 @@ const description = "Baixar vídeo do YouTube online grátis em MP4 e MP3. Baixe
 const keywords = "baixar video youtube, baixar video instagram, baixar video tiktok, download youtube mp3, download video facebook, baixar reels instagram, converter youtube mp3, baixar video twitter, salvar video online, downloader de video gratis";
 
 // Environment variables (with fallbacks)
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAACA_XXXXXXXXXXXX'; 
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'; // Cloudflare Test Key allowed for localhost
 const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:8080/api';
 ---
 
@@ -71,38 +72,38 @@ const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:8080/api';
     <Navigation lang="pt" currentPage="online" />
 
     <!-- Main Content -->
-    <main class="flex-grow relative z-10 w-full pt-32 pb-20 px-6 flex flex-col items-center">
+    <main class="flex-grow relative z-10 w-full pt-28 md:pt-36 pb-20 px-4 md:px-6 flex flex-col items-center overflow-x-hidden">
         
         <!-- Header -->
         <!-- Header with Enhanced Hero -->
-        <div class="max-w-[1200px] mx-auto text-center space-y-10 mb-20 relative pt-10">
+        <div class="max-w-[1200px] mx-auto text-center space-y-6 md:space-y-10 mb-12 md:mb-20 relative pt-6 md:pt-10">
             
             <!-- Dynamic Background Glow -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-primary/10 via-purple-500/10 to-blue-500/10 rounded-full blur-[120px] -z-10 pointer-events-none opacity-60 mix-blend-screen animate-pulse-slow"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[500px] bg-gradient-to-tr from-primary/20 via-purple-500/10 to-blue-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none opacity-60 mix-blend-screen animate-pulse-slow"></div>
 
             <!-- Modern Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_0_20px_-10px_rgba(255,255,255,0.2)] hover:border-white/20 transition-colors cursor-default">
-               <span class="flex h-2 w-2 relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_0_20px_-10px_rgba(255,255,255,0.2)] hover:border-white/20 transition-colors cursor-default mx-auto">
+               <span class="flex h-1.5 w-1.5 md:h-2 md:w-2 relative">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
                 </span>
-               <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/90">Ferramenta Online v2.0</span>
+               <span class="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white/90">Ferramenta Online v2.0</span>
             </div>
 
             <!-- Main Title -->
-            <div class="space-y-2">
-                <h1 class="font-black text-6xl md:text-8xl tracking-tighter uppercase text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] leading-[0.85]">
+            <div class="space-y-0 md:space-y-2 flex flex-col items-center w-full max-w-full px-2">
+                <h1 class="font-black text-[10vw] sm:text-6xl md:text-8xl tracking-tighter uppercase text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] text-center w-full leading-none">
                     Baixar Vídeos
                 </h1>
-                <h1 class="font-black text-6xl md:text-8xl tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#FF3366] via-[#FFC700] to-[#00E5FF] animate-gradient-x drop-shadow-[0_0_30px_rgba(242,78,30,0.3)] leading-[0.95] pb-2">
+                <h1 class="font-black text-[12vw] sm:text-6xl md:text-8xl tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#FF3366] via-[#FFC700] to-[#00E5FF] animate-gradient-x drop-shadow-[0_0_30px_rgba(242,78,30,0.3)] pb-2 max-w-full text-center w-full leading-none">
                     Online
                 </h1>
             </div>
             
             <!-- Description -->
-            <p class="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+            <p class="text-white/60 text-base md:text-xl max-w-md md:max-w-2xl mx-auto leading-relaxed font-medium px-2">
                 Cole links do <span class="text-white font-bold decoration-primary/50 underline decoration-2 underline-offset-4 decoration-skip-ink">YouTube, Instagram & TikTok</span>.
-                <br>Baixe em 4K, MP3 ou MP4 direto do navegador.
+                <br class="hidden md:block">Baixe em 4K, MP3 ou MP4 direto do navegador.
             </p>
         </div>
 
@@ -367,18 +368,7 @@ const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:8080/api';
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/5 bg-black mt-auto">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-end justify-between gap-6">
-                <div>
-                <span class="font-black text-2xl text-white tracking-tighter uppercase block">DownKingo<span class="text-primary">.</span></span>
-                <span class="font-mono text-[10px] text-muted uppercase mt-2 block">Online Tools</span>
-                </div>
-                
-                <div class="flex flex-col md:items-end gap-2">
-                    <p class="font-mono text-[10px] text-muted uppercase">© 2026 - MIT Open Source License</p>
-                </div>
-            </div>
-    </footer>
+    <Footer lang="pt" />
 
 </body>
 </html>

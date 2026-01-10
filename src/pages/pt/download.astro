@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
 import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
 
 // Metadata for SEO
 const title = "Baixar DownKingo - A Toolbox de Mídia Universal";
@@ -138,22 +139,7 @@ const description = "Baixe o DownKingo para Windows, macOS e Linux. O baixador d
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/5 bg-black mt-auto">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-end justify-between gap-6">
-                <div>
-                <span class="font-black text-2xl text-white tracking-tighter uppercase block">DownKingo<span class="text-primary">.</span></span>
-                <span class="font-mono text-[10px] text-muted uppercase mt-2 block">Feat. Wails v2 + React</span>
-                </div>
-                
-                <div class="flex flex-col md:items-end gap-2">
-                    <p class="font-mono text-[10px] text-muted uppercase">© 2026 - MIT Open Source License</p>
-                    <div class="flex gap-4 mt-2">
-                    <a href="https://github.com/down-kingo/downkingo" target="_blank" aria-label="GitHub" class="text-muted hover:text-white transition-colors"><Icon name="simple-icons:github" /></a>
-                    <a href="https://twitter.com/downkingo" target="_blank" aria-label="Twitter" class="text-muted hover:text-white transition-colors"><Icon name="simple-icons:x" /></a>
-                    </div>
-                </div>
-            </div>
-    </footer>
+    <Footer lang="pt" />
 
     <!-- OS Detection Script -->
     <script is:inline>

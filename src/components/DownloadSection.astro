@@ -70,35 +70,35 @@ const t = translations[lang];
 <section class="w-full max-w-[1200px] mx-auto p-4" data-i18n={JSON.stringify(t)}>
   
   <!-- Search/Input Area -->
-  <div class="bg-[#18181b] border border-white/10 rounded-2xl p-2 md:p-3 flex flex-col md:flex-row items-center gap-2 shadow-2xl relative z-20">
+  <!-- Search/Input Area -->
+  <div class="bg-[#18181b] border border-white/10 rounded-3xl p-2 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-2xl relative z-20 transition-all hover:border-white/20">
     <div class="flex-grow w-full relative group">
-      <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-        <Icon name="lucide:link" class="text-white/30 group-focus-within:text-primary transition-colors" width={20} />
+      <div class="absolute inset-y-0 left-4 md:left-5 flex items-center pointer-events-none z-10">
+        <Icon name="lucide:link" class="text-white/40 group-focus-within:text-primary transition-colors" width={20} />
       </div>
       <input 
         type="url" 
         id="videoUrl" 
-        class="w-full bg-[#27272a] border border-transparent focus:border-primary/50 text-white placeholder:text-white/30 rounded-xl py-4 pl-12 pr-14 outline-none transition-all font-medium text-sm md:text-base"
+        class="w-full bg-[#0a0a0a] md:bg-[#27272a] border border-white/5 md:border-transparent focus:border-primary/50 text-white placeholder:text-white/30 rounded-2xl md:rounded-xl py-3.5 md:py-4 pl-12 pr-12 md:pr-14 outline-none transition-all font-medium text-sm md:text-base [appearance:none] [-webkit-appearance:none]"
         placeholder={t.placeholder}
         autocomplete="off"
       >
       <!-- Social Icon Preview -->
-      <div id="socialIconPreview" class="absolute inset-y-0 right-4 flex items-center gap-2 pointer-events-none transition-all duration-300 opacity-0 translate-x-2">
+      <div id="socialIconPreview" class="absolute inset-y-0 right-3 md:right-4 flex items-center gap-2 pointer-events-none transition-all duration-300 opacity-0 translate-x-2">
          <!-- Icon injected via JS -->
       </div>
     </div>
 
     <button 
       id="submitBtn"
-      class="w-full md:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:shadow-[0_0_30px_rgba(249,115,22,0.4)]"
-      disabled
+      class="w-full md:w-auto px-6 md:px-8 py-3.5 md:py-4 bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#c2410c] text-white font-bold rounded-2xl md:rounded-xl flex items-center justify-center gap-2 transition-all active:scale-[0.98] disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(249,115,22,0.25)] hover:shadow-[0_8px_30px_rgba(249,115,22,0.4)]"
     >
       <span class="btn-text flex items-center gap-2">
-        <Icon name="lucide:search" width={20} />
-        {t.search}
+        <Icon name="lucide:search" width={20} stroke-width={2.5} />
+        <span class="uppercase tracking-wide text-sm md:text-base">{t.search}</span>
       </span>
       <span class="btn-loading hidden">
-        <Icon name="lucide:loader-2" class="animate-spin" width={20} />
+        <Icon name="lucide:loader-2" class="animate-spin" width={22} />
       </span>
     </button>
   </div>
@@ -303,7 +303,6 @@ const t = translations[lang];
   // Global callback
   window.onTurnstileSuccess = (token) => {
     turnstileToken = token;
-    submitBtn.disabled = false;
   };
 
   function resetTurnstile() {
@@ -311,7 +310,6 @@ const t = translations[lang];
       window.turnstile.reset();
     }
     turnstileToken = null;
-    submitBtn.disabled = true;
   }
 
   function setLoading(loading) {
@@ -322,7 +320,7 @@ const t = translations[lang];
     } else {
       btnText.classList.remove('hidden');
       btnLoading.classList.add('hidden');
-      // Button stays disabled until new turnstile token
+      submitBtn.disabled = false;
     }
   }
 
@@ -418,10 +416,30 @@ const t = translations[lang];
 
   // Action
   submitBtn.addEventListener('click', async () => {
-    if (!turnstileToken) return;
+    // Determine context (mobile vs desktop) to adjust scroll offset if needed
+    // But simple validation is key first
+
+    if (!turnstileToken) {
+        // UX: Visual feedback that captcha is required
+        const tContainer = document.getElementById('turnstile-container');
+        if(tContainer) {
+            tContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            tContainer.classList.add('scale-105', 'brightness-150');
+            setTimeout(() => tContainer.classList.remove('scale-105', 'brightness-150'), 400);
+            
+            // Optional: You could show a small toast/tooltip here "Please verify you are human"
+            // For now, the visual focus on the captcha is good.
+        }
+        return;
+    }
     
     const url = urlInput.value.trim();
-    if (!url) return;
+    if (!url) {
+        urlInput.focus();
+        urlInput.parentElement.classList.add('ring-2', 'ring-red-500/50');
+        setTimeout(() => urlInput.parentElement.classList.remove('ring-2', 'ring-red-500/50'), 500);
+        return;
+    }
 
     // Reset UI
     if (pollTimer) clearInterval(pollTimer);

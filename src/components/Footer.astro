@@ -1,0 +1,92 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: 'pt' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  pt: {
+    homeLink: '/pt/',
+    tagline: 'O kit de ferramentas de mídia open source definitivo.<br />Desenvolvido com Wails v2 + React.',
+    product: 'Produto',
+    download: 'Baixar',
+    downloadLink: '/pt/download',
+    features: 'Funcionalidades',
+    roadmap: 'Roadmap',
+    resources: 'Recursos',
+    docs: 'Docs',
+    qa: 'Q&A',
+    copyright: '© 2026 DownKingo. MIT License.',
+    designBy: 'Design por '
+  },
+  en: {
+    homeLink: '/en/',
+    tagline: 'The ultimate open source media toolkit.<br />Built with Wails v2 + React.',
+    product: 'Product',
+    download: 'Download',
+    downloadLink: '/en/download',
+    features: 'Features',
+    roadmap: 'Roadmap',
+    resources: 'Resources',
+    docs: 'Docs',
+    qa: 'Q&A',
+    copyright: '© 2026 DownKingo. MIT License.',
+    designBy: 'Designed by '
+  }
+};
+
+const t = content[lang];
+---
+
+<footer class="relative py-12 px-6 border-t border-white/5 bg-black overflow-hidden print:hidden">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12 relative z-10">
+        
+        <!-- Brand & Socials (Left) -->
+        <div class="space-y-6 md:max-w-xs">
+            <div>
+                <a href={t.homeLink} class="group inline-flex items-center gap-2">
+                    <span class="font-black text-2xl tracking-tighter uppercase text-gradient-kingo">DownKingo<span class="text-white">.</span></span>
+                </a>
+                <p class="mt-2 text-xs text-muted font-mono leading-relaxed" set:html={t.tagline}></p>
+            </div>
+            
+            <!-- Socials (Left Aligned) -->
+            <div class="flex gap-4">
+                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="p-2 -ml-2 rounded-lg hover:bg-white/5 text-muted hover:text-white transition-colors" aria-label="GitHub">
+                    <Icon name="simple-icons:github" width={20} />
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Grid (Right - Compact 2 cols) -->
+        <div class="grid grid-cols-2 gap-x-12 gap-y-4 text-sm">
+            <div class="flex flex-col gap-3">
+                <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.product}</span>
+                <a href={t.downloadLink} class="text-muted hover:text-primary transition-colors">{t.download}</a>
+                <a href="#features" class="text-muted hover:text-primary transition-colors">{t.features}</a>
+                <a href="#build-in-public" class="text-muted hover:text-primary transition-colors">{t.roadmap}</a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.resources}</span>
+                <a href="/intro" class="text-muted hover:text-primary transition-colors">{t.docs}</a>
+                <a href="#faq" class="text-muted hover:text-primary transition-colors">{t.qa}</a>
+                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-muted hover:text-primary transition-colors">GitHub</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Simple Copyright -->
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <p class="font-mono text-[10px] text-muted uppercase tracking-widest">{t.copyright}</p>
+        <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></span>
+            <p class="font-mono text-[10px] text-muted uppercase tracking-widest">
+                {t.designBy} <a href="https://links.epixel.com.br" target="_blank" class="text-white hover:text-primary hover:underline underline-offset-4 transition-all">Emanuel Nunes</a>
+            </p>
+        </div>
+    </div>
+</footer>
