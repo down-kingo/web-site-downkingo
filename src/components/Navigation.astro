@@ -5,7 +5,7 @@ import kingoIcon from '../assets/kingo.ico';
 
 interface Props {
     lang?: 'pt' | 'en';
-    currentPage?: 'home' | 'download' | 'roadmap' | 'docs';
+    currentPage?: 'home' | 'download' | 'roadmap' | 'docs' | 'online';
 }
 
 const { lang = 'pt', currentPage = 'home' } = Astro.props;
@@ -15,13 +15,15 @@ const basePath = lang === 'pt' ? '/pt' : '/en';
 const translations = {
     pt: {
         home: 'INÍCIO',
-        download: 'BAIXAR',
+        download: 'BAIXAR APP',
+        online: 'ONLINE',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
     },
     en: {
         home: 'HOME',
-        download: 'DOWNLOAD',
+        download: 'DOWNLOAD APP',
+        online: 'ONLINE',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
     }
@@ -32,6 +34,7 @@ const t = translations[lang];
 const navLinks = [
     { key: 'home', href: `${basePath}/`, label: t.home },
     { key: 'download', href: `${basePath}/download`, label: t.download },
+    { key: 'online', href: lang === 'pt' ? `${basePath}/baixar-videos-online` : `${basePath}/online-video-downloader`, label: t.online },
     { key: 'roadmap', href: `${basePath}/#build-in-public`, label: t.roadmap },
 ];
 ---
