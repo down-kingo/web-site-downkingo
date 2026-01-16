@@ -36,7 +36,8 @@ const translations = {
     status_error: "Erro",
     detected: "Detectado",
     error_unknown: "Erro desconhecido",
-    error_failed_start: "Falha ao iniciar"
+    error_failed_start: "Falha ao iniciar",
+    captcha_required: "Por favor, complete a verificação de segurança acima."
   },
   en: {
     placeholder: "Paste video URL (YouTube, TikTok, Instagram...)",
@@ -60,7 +61,8 @@ const translations = {
     status_error: "Error",
     detected: "Detected",
     error_unknown: "Unknown error",
-    error_failed_start: "Failed to start"
+    error_failed_start: "Failed to start",
+    captcha_required: "Please complete the security check above."
   }
 };
 
@@ -105,14 +107,16 @@ const t = translations[lang];
 
   <form data-api-url={apiUrl} class="hidden"></form>
 
-  <!-- Turnstile Container (Hidden visually but functional) -->
-  <div class="mt-4 flex justify-center opacity-80 scale-90" id="turnstile-container">
+  <!-- Turnstile Container -->
+  <div class="mt-4 flex justify-center" id="turnstile-container">
     <div 
       class="cf-turnstile" 
       data-sitekey={turnstileSiteKey}
       data-callback="onTurnstileSuccess"
       data-theme="dark"
-      data-appearance="interaction-only" 
+      data-appearance="always"
+      data-retry="auto"
+      data-retry-interval="3000"
     ></div>
   </div>
 
@@ -629,11 +633,24 @@ const t = translations[lang];
       
       // Validation: Turnstile token
       if (!state.turnstileToken) {
+        // Try to re-render Turnstile if it's not visible
+        if (window.turnstile && els.turnstileContainer) {
+          var turnstileWidget = els.turnstileContainer.querySelector('.cf-turnstile');
+          // Check if widget is empty (not rendered)
+          if (turnstileWidget && turnstileWidget.children.length === 0) {
+            window.turnstile.render(turnstileWidget);
+          }
+        }
+        
+        // Scroll to and highlight the Turnstile container
         if (els.turnstileContainer) {
           els.turnstileContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          flashClasses(els.turnstileContainer, ['scale-105', 'drop-shadow-[0_0_15px_rgba(255,50,50,0.5)]']);
+          flashClasses(els.turnstileContainer, ['scale-105', 'ring-2', 'ring-red-500/50', 'rounded-lg', 'p-2'], 2000);
         }
-        showError('Por favor, complete a verificação de segurança (Captcha) abaixo.');
+        
+        // Show error message (not inside statusCard, use a toast/inline message)
+        var errorMsg = els.translations.captcha_required || 'Por favor, complete a verificação de segurança acima.';
+        showError(errorMsg);
         return;
       }
       
