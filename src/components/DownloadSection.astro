@@ -233,11 +233,11 @@ const t = translations[lang];
 
 <script>
   // Configuration
-  const POLL_INTERVAL = 1500;
+  const POLL_INTERVAL = 3000;
   
   // State
   let turnstileToken = null;
-  let pollTimer = null;
+  let pollTimeout = null;
 
   // DOM Elements
   const section = document.querySelector('section[data-i18n]');
@@ -403,14 +403,36 @@ const t = translations[lang];
   async function pollStatus(jobId) {
     try {
        const res = await fetch(`${apiUrl}/status/${jobId}`);
+       
+       // Handle Rate Limiting (429) gracefully
+       if (res.status === 429) {
+           console.warn("Rate limited, backing off...");
+           pollTimeout = setTimeout(() => pollStatus(jobId), 5000);
+           return;
+       }
+
+       if (!res.ok) {
+           // If job not found yet or other non-fatal error, retry slowly
+           if (res.status === 404) {
+               pollTimeout = setTimeout(() => pollStatus(jobId), 3000);
+               return;
+           }
+           throw new Error(`HTTP Error ${res.status}`);
+       }
+
        const data = await res.json(); 
        updateUI(data);
 
        if (data.status === 'done' || data.status === 'error') {
-         if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+         pollTimeout = null;
+       } else {
+         // Recursive poll
+         pollTimeout = setTimeout(() => pollStatus(jobId), POLL_INTERVAL);
        }
     } catch (e) {
       console.error(e);
+      // Retry on network error with backoff
+      pollTimeout = setTimeout(() => pollStatus(jobId), 5000);
     }
   }
 
@@ -439,7 +461,7 @@ const t = translations[lang];
     }
 
     // 2. Prepare UI for Loading
-    if (pollTimer) clearInterval(pollTimer);
+    if (pollTimeout) clearTimeout(pollTimeout);
     downloadLink.classList.add('hidden');
     errorMessage.classList.add('hidden');
     progressContainer.classList.remove('hidden');
@@ -484,8 +506,7 @@ const t = translations[lang];
       progressStatusText.textContent = t.waiting; // "Aguardando fila..."
 
       // Start Polling
-      pollStatus(data.job_id); // Initial check
-      pollTimer = setInterval(() => pollStatus(data.job_id), POLL_INTERVAL);
+      pollStatus(data.job_id);
 
     } catch (e) {
       console.error("Download Error:", e);
