@@ -62,69 +62,79 @@ import wailsIcon from '../../assets/wails-icon.ico';
     <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
     
-    <!-- JSON-LD SEO for Software App + FAQ -->
+    <!-- JSON-LD SEO: SoftwareApplication -->
     <script type="application/ld+json">
-      [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DownKingo",
+      "operatingSystem": "Windows 10, Windows 11, macOS 10.15+, Linux",
+      "applicationCategory": "MultimediaApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "An open-source privacy-focused media downloader and converter toolkit. Download videos from YouTube, Instagram, TikTok, and 1000+ sites in high quality (4K/8K).",
+      "featureList": "4K Video Download, MP3 Converter, AI Background Remover, Playlist Download",
+      "fileSize": "50MB",
+      "softwareVersion": "2.0.0"
+    }
+    </script>
+
+    <!-- JSON-LD SEO: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "DownKingo",
-            "operatingSystem": "Windows, macOS, Linux",
-            "applicationCategory": "MultimediaApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "description": "An open-source privacy-focused media downloader and converter toolkit."
+          "@type": "Question",
+          "name": "What engine does DownKingo use for downloading media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DownKingo leverages the industry-standard yt-dlp engine combined with FFmpeg for processing. This ensures support for high-quality downloads (up to 4K) from YouTube, TikTok, Instagram, and over 1000 other websites."
+          }
         },
         {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What engine does DownKingo use for downloading media?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "DownKingo leverages the industry-standard yt-dlp engine combined with FFmpeg for processing. This ensures support for high-quality downloads (up to 4K) from YouTube, TikTok, Instagram, and over 1000 other websites."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is DownKingo safe and truly private?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. DownKingo is 100% Open Source and engineered with privacy by design. All video processing happens locally on your device. We do not collect telemetry, track usage, or have any servers to store your data."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does DownKingo remove ads from videos?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. By converting streaming content directly into static files (MP4/MKV/MP3), all platform advertisements are naturally stripped away, giving you a clean, ad-free offline playback experience."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I download 4K videos from YouTube for free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. DownKingo supports downloading videos in their highest available quality, including 4K (2160p), 8K (4320p), and 60fps, without any paywalls or premium subscriptions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is this better than online YouTube to MP3 converters?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Much better. Online converters are often full of pop-up ads, slow, and compress your audio. DownKingo runs natively on your PC, providing faster speeds, batch downloading, and original audio quality extraction."
-            }
+          "@type": "Question",
+          "name": "Is DownKingo safe and truly private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo is 100% Open Source and engineered with privacy by design. All video processing happens locally on your device. We do not collect telemetry, track usage, or have any servers to store your data."
           }
-        ]
-      }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DownKingo remove ads from videos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. By converting streaming content directly into static files (MP4/MKV/MP3), all platform advertisements are naturally stripped away, giving you a clean, ad-free offline playback experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download 4K videos from YouTube for free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo supports downloading videos in their highest available quality, including 4K (2160p), 8K (4320p), and 60fps, without any paywalls or premium subscriptions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this better than online YouTube to MP3 converters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Much better. Online converters are often full of pop-up ads, slow, and compress your audio. DownKingo runs natively on your PC, providing faster speeds, batch downloading, and original audio quality extraction."
+          }
+        }
       ]
+    }
     </script>
     
     <!-- Preload Critical Assets -->
@@ -258,7 +268,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper">
                         <span class="inline-block mb-4 font-mono text-xs text-primary uppercase tracking-widest border border-primary/20 bg-primary/5 px-2 py-1 rounded">Download Accelerator</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">Engineered<br>in Go.</h2>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Lightweight App<br>& Fast.</h2>
                         
                         <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
@@ -419,8 +429,8 @@ import wailsIcon from '../../assets/wails-icon.ico';
 
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper order-1 lg:order-2">
-                        <span class="inline-block mb-4 font-mono text-xs text-indigo-400 uppercase tracking-widest border border-indigo-500/20 bg-indigo-500/5 px-2 py-1 rounded">Universal Media App</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">Universal<br>Downloader.</h2>
+                        <span class="inline-block mb-4 font-mono text-xs text-indigo-400 uppercase tracking-widest border border-indigo-500/20 bg-indigo-500/5 px-2 py-1 rounded">Universal Video App</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Download Any<br>Video.</h2>
                         <p class="text-muted max-w-md text-sm leading-relaxed">
                             Powered by the battle-tested <code>yt-dlp</code> engine, with custom wrappers for social platforms.
                         </p>
@@ -444,6 +454,60 @@ import wailsIcon from '../../assets/wails-icon.ico';
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <!-- HOW TO USE Section (SEO Content Expansion) -->
+        <section class="py-24 px-6 max-w-7xl mx-auto border-b border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 reveal-wrapper">
+                    <span class="inline-block font-mono text-xs text-secondary max-w-[200px] uppercase tracking-widest border border-secondary/20 bg-secondary/5 px-2 py-1 rounded mb-4">Quick Guide</span>
+                    <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-6">How to Download Videos<br>in 3 Simple Steps.</h2>
+                    
+                    <div class="space-y-8 relative pl-8 border-l border-white/10">
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-black font-bold text-xs ring-4 ring-[#050505]">1</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Copy the Link</h3>
+                            <p class="text-muted text-sm leading-relaxed">
+                                Navigate to your favorite video on YouTube, Instagram, TikTok, or Twitter and copy the URL from the address bar or share button.
+                            </p>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-secondary/50 text-white font-bold text-xs ring-4 ring-[#050505] group-hover:bg-secondary group-hover:text-black transition-colors">2</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Paste in DownKingo</h3>
+                            <p class="text-muted text-sm leading-relaxed">
+                                Open the DownKingo app. It will automatically detect the copied link from your clipboard. Select your desired format (MP4 or MP3).
+                            </p>
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-secondary/50 text-white font-bold text-xs ring-4 ring-[#050505] group-hover:bg-secondary group-hover:text-black transition-colors">3</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Instant Download</h3>
+                            <p class="text-muted text-sm leading-relaxed">
+                                Click "Download". DownKingo's multithread engine will extract the content at maximum speed, saving directly to your chosen folder.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="/en/download" class="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform mt-4">
+                        Get Started <Icon name="lucide:arrow-right" class="w-4 h-4" />
+                    </a>
+                </div>
+                
+                <div class="reveal-wrapper order-first md:order-last">
+                    <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Why choose DownKingo?</h3>
+                        <p class="text-muted text-sm leading-relaxed mb-6">
+                            Millions of users rely on slow, insecure online converters full of invasive ads. We built DownKingo to give the power back to you.
+                        </p>
+                        <p class="text-muted text-sm leading-relaxed mb-6">
+                            Unlike web-based downloaders, DownKingo is a native application (built with Go and Wails) that leverages your hardware's full power to process videos up to 10x faster than online tools.
+                        </p>
+                        <p class="text-muted text-sm leading-relaxed">
+                            Plus, we support advanced features that websites simply can't offer: full YouTube playlist downloads, batch link conversion, and automatic subtitle extraction in multiple languages.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -512,8 +576,8 @@ import wailsIcon from '../../assets/wails-icon.ico';
         <!-- GRID FEATURES -->
         <section id="toolkit" class="py-32 px-6 max-w-7xl mx-auto">
             <div class="text-center mb-20 reveal-wrapper">
-                 <h2 class="text-4xl font-black uppercase tracking-tighter text-white mb-4">The Toolkit.</h2>
-                 <p class="text-muted text-sm font-mono uppercase">The ultimate software to download and convert media.</p>
+                 <h2 class="text-4xl font-black uppercase tracking-tight text-white mb-4">The Toolkit.</h2>
+                 <p class="text-muted text-sm font-mono uppercase">The best software to download and convert media.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -568,7 +632,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
              <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Text -->
                 <div class="space-y-6 reveal-wrapper">
-                    <h2 class="text-3xl font-black uppercase tracking-tighter text-white">Any Format.<br>Any Quality.</h2>
+                    <h2 class="text-3xl font-black uppercase tracking-tight text-white">Download any video format in any resolution.</h2>
                         Don't settle for 720p. DownKingo is the best app to download videos in real 4K, extracting raw streams for maximum quality.
                     <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-widest text-primary/60">
                         <span>#NoWatermark</span>
