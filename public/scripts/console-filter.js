@@ -71,6 +71,12 @@
     warn: console.warn.bind(console),
     error: console.error.bind(console),
     debug: console.debug.bind(console),
+    group: console.group
+      ? console.group.bind(console)
+      : console.log.bind(console),
+    groupEnd: console.groupEnd
+      ? console.groupEnd.bind(console)
+      : function () {},
   };
 
   /**
@@ -170,8 +176,90 @@
     if (isDev) {
       originalConsole.info(
         APP_PREFIX,
-        "Console filter active. Third-party logs suppressed."
+        "Console filter active. Third-party logs suppressed.",
       );
     }
   }
+
+  // ===========================================
+  // DEVELOPER RECRUITMENT
+  // ===========================================
+  setTimeout(function () {
+    // Professional Font Stack
+    var titleStyle = [
+      "font-size: 60px",
+      "font-weight: 900",
+      'font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
+      "color: #fff", // Fallback
+      "background: -webkit-linear-gradient(right, #0ea5e9, #6366f1)", // Cyan to Indigo
+      "-webkit-background-clip: text",
+      "-webkit-text-fill-color: transparent",
+      "text-transform: uppercase",
+      "letter-spacing: -2px",
+      "line-height: 1",
+    ].join(";");
+
+    var subtitleStyle = [
+      "font-size: 14px",
+      "color: #94a3b8", // Slate-400
+      "font-family: Menlo, CONSOLAS, monospace",
+      "text-transform: uppercase",
+      "letter-spacing: 2px",
+      "margin-top: 10px",
+      "margin-bottom: 20px",
+      "display: block",
+    ].join(";");
+
+    var stackStyle = [
+      "font-size: 12px",
+      "background: #1e293b", // Slate-800
+      "color: #e2e8f0", // Slate-200
+      "padding: 4px 8px",
+      "border-radius: 4px",
+      "font-family: monospace",
+      "margin-right: 5px",
+    ].join(";");
+
+    var linkStyle = [
+      "font-size: 14px",
+      "color: #38bdf8", // Sky-400
+      "text-decoration: none",
+      "font-family: monospace",
+      "border-bottom: 1px solid #38bdf8",
+      "padding-bottom: 2px",
+      "cursor: pointer",
+    ].join(";");
+
+    // Start Group
+    originalConsole.group(
+      "%c     Build the Future.     ",
+      "background: #0f172a; color: #fff; padding: 4px 10px; border-radius: 4px;",
+    );
+
+    // Title & Subtitle
+    originalConsole.log("%cDOWNKINGO", titleStyle);
+    originalConsole.log(
+      "%cThe Open Source Media Toolbox for Developers.",
+      subtitleStyle,
+    );
+
+    // Tech Stack Badge Row
+    originalConsole.log(
+      "%cWails%cGo%cTypeScript%cReact",
+      stackStyle,
+      stackStyle,
+      stackStyle,
+      stackStyle,
+    );
+
+    // GitHub Link
+    originalConsole.log(
+      "\n%c→ https://github.com/down-kingo/downkingo",
+      linkStyle,
+    );
+    originalConsole.log("\n");
+
+    // End Group
+    originalConsole.groupEnd();
+  }, 1000);
 })();
