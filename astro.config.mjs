@@ -74,7 +74,9 @@ export default defineConfig({
       },
     }),
     robotsTxt(),
-    compress(),
+    compress({
+      exclude: ["**/*.xml"],
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

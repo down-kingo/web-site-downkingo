@@ -20,7 +20,11 @@ const content = {
     docs: 'Docs',
     qa: 'Q&A',
     copyright: '© 2026 DownKingo. MIT License.',
-    designBy: 'Design por '
+    designBy: 'Design por ',
+    tools: 'Ferramentas',
+    ytDownloader: 'YouTube Downloader',
+    igDownloader: 'Instagram Downloader',
+    ttDownloader: 'TikTok Downloader'
   },
   en: {
     homeLink: '/en/',
@@ -34,7 +38,11 @@ const content = {
     docs: 'Docs',
     qa: 'Q&A',
     copyright: '© 2026 DownKingo. MIT License.',
-    designBy: 'Designed by '
+    designBy: 'Designed by ',
+    tools: 'Tools',
+    ytDownloader: 'YouTube Downloader',
+    igDownloader: 'Instagram Downloader',
+    ttDownloader: 'TikTok Downloader'
   }
 };
 
@@ -61,18 +69,26 @@ const t = content[lang];
             </div>
         </div>
 
-        <!-- Navigation Grid (Right - Compact 2 cols) -->
-        <div class="grid grid-cols-2 gap-x-12 gap-y-4 text-sm">
+        <!-- Navigation Grid (Right - Compact 3 cols) -->
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4 text-sm">
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.product}</span>
                 <a href={t.downloadLink} class="text-muted hover:text-primary transition-colors">{t.download}</a>
-                <a href="#features" class="text-muted hover:text-primary transition-colors">{t.features}</a>
-                <a href="#build-in-public" class="text-muted hover:text-primary transition-colors">{t.roadmap}</a>
+                <a href={`${t.homeLink}#features`} class="text-muted hover:text-primary transition-colors">{t.features}</a>
+                <a href={`${t.homeLink}#build-in-public`} class="text-muted hover:text-primary transition-colors">{t.roadmap}</a>
             </div>
+            
+            <div class="flex flex-col gap-3">
+                <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.tools}</span>
+                <a href={lang === 'pt' ? "/pt/youtube-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.ytDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/instagram-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.igDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/tiktok-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.ttDownloader}</a>
+            </div>
+
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.resources}</span>
                 <a href="/docs" class="text-muted hover:text-primary transition-colors">{t.docs}</a>
-                <a href="#faq" class="text-muted hover:text-primary transition-colors">{t.qa}</a>
+                <a href={`${t.homeLink}#faq`} class="text-muted hover:text-primary transition-colors">{t.qa}</a>
                 <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-muted hover:text-primary transition-colors">GitHub</a>
             </div>
         </div>

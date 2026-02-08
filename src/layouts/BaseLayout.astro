@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import { SEO } from 'astro-seo';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+	description: string;
+	lang?: string;
+	canonical?: string;
+	opengraph?: any;
+    twitter?: any;
+    keywords?: string;
+}
+
+const { title, description, lang = "pt-BR", canonical, opengraph, twitter, keywords } = Astro.props;
+
+const language = lang === "pt-BR" || lang === "pt" ? "pt" : "en";
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth selection:bg-primary/30 selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Console Filter -->
+    <script is:inline src="/scripts/console-filter.js"></script>
+    
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={opengraph}
+      twitter={twitter}
+      extend={{
+        meta: [
+          { name: "keywords", content: keywords },
+          { name: "theme-color", content: "#050505" },
+        ],
+        link: [
+          { rel: "icon", type: "image/x-icon", href: "/icon.ico?v=2" }
+        ]
+      }}
+    />
+
+    <!-- Fonts -->
+    <link rel="preload" href="/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+
+    <ViewTransitions />
+    <slot name="head" />
+
+    <script type="text/partytown" defer data-domain="downkingo.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
+    <Navigation lang={language} currentPage="home" />
+
+    <main class="relative z-10 w-full overflow-hidden">
+        <slot />
+    </main>
+
+    <Footer lang={language} />
+
+    <slot name="scripts" />
+
+    <script is:inline>
+        // Smooth Mouse Follower Global
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            const spotlight = document.getElementById('spotlight');
+            if(spotlight) {
+                spotlight.style.setProperty('--x', `${x}px`);
+                spotlight.style.setProperty('--y', `${y}px`);
+            }
+        });
+
+        // Intersection Observer for Reveal Global
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-wrapper').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
