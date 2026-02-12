@@ -16,12 +16,14 @@ const translations = {
     pt: {
         home: 'INÍCIO',
         download: 'BAIXAR APP',
+        tools: 'FERRAMENTAS',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
     },
     en: {
         home: 'HOME',
         download: 'DOWNLOAD APP',
+        tools: 'TOOLS',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
     }
@@ -32,6 +34,7 @@ const t = translations[lang];
 const navLinks = [
     { key: 'home', href: `${basePath}/`, label: t.home },
     { key: 'download', href: `${basePath}/download`, label: t.download },
+    { key: 'tools', href: lang === 'pt' ? '/pt/ferramentas' : '/tools', label: t.tools },
     { key: 'roadmap', href: `${basePath}/#build-in-public`, label: t.roadmap },
 ];
 ---
@@ -56,7 +59,7 @@ const navLinks = [
                     {link.label}
                 </a>
             ))}
-            <a href="https://github.com/down-kingo/downkingo" target="_blank" class="flex items-center gap-1 hover:text-white transition-colors">
+            <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-white transition-colors">
                 {t.github} <Icon name="lucide:external-link" width={12} />
             </a>
         </div>
@@ -82,7 +85,7 @@ const navLinks = [
             </a>
         ))}
         <div class="h-px bg-white/10 my-1"></div>
-        <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-xs font-mono font-medium text-white/50 py-3 px-4 flex items-center justify-between hover:text-white transition-colors">
+        <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-medium text-white/50 py-3 px-4 flex items-center justify-between hover:text-white transition-colors">
             {t.github} <Icon name="lucide:external-link" width={14} />
         </a>
     </div>

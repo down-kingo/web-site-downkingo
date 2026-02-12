@@ -55,6 +55,14 @@ try {
           url: "https://downkingo.com/pt/download"
         }
       }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@downkingo",
+        creator: "@downkingo",
+        title: title,
+        description: description,
+        image: "https://downkingo.com/og-image.png"
+      }}
       charset="UTF-8"
       extend={{
         meta: [
@@ -72,6 +80,11 @@ try {
       }}
     />
     
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://downkingo.com/en/download" />
+    <link rel="alternate" hreflang="pt-BR" href="https://downkingo.com/pt/download" />
+    <link rel="alternate" hreflang="x-default" href="https://downkingo.com/en/download" />
+
     <script type="text/partytown" defer data-domain="downkingo.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative min-h-screen flex flex-col">

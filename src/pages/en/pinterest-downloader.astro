@@ -3,17 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import temaClaro from '../../assets/tema-claro-com-sidebar.avif';
-import wailsIcon from '../../assets/wails-icon.ico';
 
 // SEO Configuration
-const title = "Baixar Vídeo do YouTube em MP4 e MP3 (4K/8K) - DownKingo";
-const description = "O melhor downloader de YouTube para PC. Baixe vídeos em 4K, playlists completas e converta para MP3. Grátis, Open Source e sem anúncios.";
-const keywords = "baixar video youtube, youtube mp4, youtube mp3, baixar playlist youtube, baixar canal youtube, 4k downloader, youtube 8k, sem marca d'agua";
+const title = "Download Pinterest Images & Videos (HD) - DownKingo";
+const description = "Download Pinterest pins, images and videos in high resolution. Save entire boards and individual pins without watermark. Free and fast.";
+const keywords = "download pinterest image, download pinterest hd, save pinterest pin, pinterest video download, download pinterest board";
 
-const canonical = "https://downkingo.com/pt/youtube-downloader";
+const canonical = "https://downkingo.com/en/pinterest-downloader";
 const og = {
     basic: {
-        title: "Baixar Vídeo do YouTube em 4K - DownKingo",
+        title: "Download Pinterest Images & Videos (HD) - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -21,73 +20,73 @@ const og = {
 };
 ---
 
-<BaseLayout title={title} description={description} lang="pt-BR" canonical={canonical} opengraph={og} keywords={keywords}>
-    
+<BaseLayout title={title} description={description} lang="en" canonical={canonical} opengraph={og} keywords={keywords}>
+
     <!-- Hero Section -->
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
-        
+
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-red-500/20 rounded-full pl-2 pr-4 py-1 bg-red-500/5 backdrop-blur-md hover:border-red-500/40 transition-colors mx-auto">
-                <Icon name="simple-icons:youtube" class="text-red-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">YouTube Downloader Oficial v2.0</span>
+             <div class="inline-flex items-center gap-3 border border-red-600/20 rounded-full pl-2 pr-4 py-1 bg-red-600/5 backdrop-blur-md hover:border-red-600/40 transition-colors mx-auto">
+                <Icon name="simple-icons:pinterest" class="text-red-600" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">Pinterest HD Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Baixar Vídeo <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-900">do YouTube.</span>
+                Download Pins<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-900">from Pinterest.</span>
             </h1>
-            
+
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Baixe playlists completas, vídeos em 4K/8K, Shorts e converta para MP3/M4A com um clique. A ferramenta definitiva para salvar vídeos do YouTube no PC.
+                Download pins, images and videos from Pinterest in high resolution. Save entire boards and individual pins without watermark with one click.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/pt/download" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                         <span id="hero-download-text">Baixar Grátis</span>
+                 <a id="hero-download-btn" href="/en/download" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                         <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO YOUTUBE -->
+    <!-- Features Section SPECIFIC TO PINTEREST -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:monitor-play" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:image" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Suporte a 4K e 8K</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">High Resolution Images</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Não se limite a 1080p. O DownKingo baixa vídeos do YouTube na qualidade original, suportando 4K (2160p) a 60fps e até 8K HDR.
+                    Download pins at their original resolution without compression. Get images at maximum quality, perfect for inspiration and design reference.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:list-video" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:video" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Playlists e Canais</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Videos & Idea Pins</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Cole o link de uma playlist ou canal inteiro e baixe centenas de vídeos de uma só vez. Perfeito para cursos e séries.
+                    Save videos and Idea Pins in MP4 at maximum quality. Download video content from Pinterest to watch offline anytime you want.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:music" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:folder-open" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">YouTube para MP3</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Complete Boards</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Extraia apenas o áudio de clipes musicais e podcasts. Conversão automática para MP3, M4A ou FLAC com metadados e capa do álbum.
+                    Download all pins from a board at once. Save entire Pinterest collections on your device without downloading one by one.
                 </p>
             </div>
         </div>
@@ -97,30 +96,30 @@ const og = {
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-red-500 uppercase tracking-widest border border-red-500/20 bg-red-500/5 px-2 py-1 rounded">Tecnologia yt-dlp</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Mais Rápido que<br>Qualquer Site.</h2>
+                <span class="inline-block mb-4 font-mono text-xs text-red-600 uppercase tracking-widest border border-red-600/20 bg-red-600/5 px-2 py-1 rounded">yt-dlp Technology</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Faster Than<br>Any Website.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Sites de download online são lentos, cheios de pop-ups e limitam a velocidade. 
-                    O DownKingo roda nativamente no seu Windows, Mac ou Linux, usando toda a sua banda para baixar vídeos do YouTube instantaneamente.
+                    Online download sites are slow, full of pop-ups and throttle your speed.
+                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download Pinterest images and videos instantly.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem limite de velocidade
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No speed limits
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem anúncios ou pop-ups
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No ads or pop-ups
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem compressão de áudio
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No quality compression
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-orange-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={temaClaro} alt="Baixar Vídeo YouTube Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={temaClaro} alt="Download Pinterest Images Interface DownKingo" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -128,35 +127,35 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Dúvidas sobre o YouTube Downloader</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Pinterest Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Como baixar vídeos do YouTube em 4K?
+                    How to download Pinterest images in HD?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Basta copiar o link do vídeo, colar no DownKingo e selecionar a qualidade máxima disponível. Se o vídeo original foi enviado em 4K ou 8K, o DownKingo baixará essa versão exata sem perda de qualidade.
+                    Copy the pin link you want to download, paste it into DownKingo and click download. The app will automatically detect the image at its original resolution, without the compression applied by Pinterest in the browser.
                 </div>
             </details>
-            
+
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Posso baixar uma lista de reprodução inteira?
+                    Can I download an entire board?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Sim! Copie o link da Playlist ou do Canal do YouTube. O DownKingo detectará todos os vídeos e permitirá que você baixe todos de uma vez ou selecione apenas os que deseja.
+                    Yes! Paste the board link into DownKingo and the app will list all available pins. You can download the complete board or select only the pins you want to save on your device.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    É seguro usar este downloader?
+                    Does it work with Idea Pins/videos?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Absolutamente. O DownKingo é Open Source (código aberto), o que significa que qualquer programador pode auditar nossa segurança. Não instalamos malwares, toolbars ou mineradores no seu PC, diferente da maioria dos sites de download grátis.
+                    Yes! DownKingo supports Idea Pins (formerly Story Pins) and Pinterest videos. Video content is downloaded in MP4 at the highest available quality, preserving the original resolution.
                 </div>
             </details>
         </div>

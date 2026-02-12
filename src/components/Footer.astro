@@ -24,7 +24,10 @@ const content = {
     tools: 'Ferramentas',
     ytDownloader: 'YouTube Downloader',
     igDownloader: 'Instagram Downloader',
-    ttDownloader: 'TikTok Downloader'
+    ttDownloader: 'TikTok Downloader',
+    twDownloader: 'Twitter/X Downloader',
+    fbDownloader: 'Facebook Downloader',
+    allTools: 'Todas as Ferramentas'
   },
   en: {
     homeLink: '/en/',
@@ -42,7 +45,10 @@ const content = {
     tools: 'Tools',
     ytDownloader: 'YouTube Downloader',
     igDownloader: 'Instagram Downloader',
-    ttDownloader: 'TikTok Downloader'
+    ttDownloader: 'TikTok Downloader',
+    twDownloader: 'Twitter/X Downloader',
+    fbDownloader: 'Facebook Downloader',
+    allTools: 'All Tools'
   }
 };
 
@@ -63,7 +69,7 @@ const t = content[lang];
             
             <!-- Socials (Left Aligned) -->
             <div class="flex gap-4">
-                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="p-2 -ml-2 rounded-lg hover:bg-white/5 text-muted hover:text-white transition-colors" aria-label="GitHub">
+                <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="p-2 -ml-2 rounded-lg hover:bg-white/5 text-muted hover:text-white transition-colors" aria-label="GitHub">
                     <Icon name="simple-icons:github" width={20} />
                 </a>
             </div>
@@ -80,16 +86,19 @@ const t = content[lang];
             
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.tools}</span>
-                <a href={lang === 'pt' ? "/pt/youtube-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.ytDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/instagram-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.igDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/tiktok-downloader" : "#"} class="text-muted hover:text-primary transition-colors">{t.ttDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/youtube-downloader" : "/en/youtube-downloader"} class="text-muted hover:text-primary transition-colors">{t.ytDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/instagram-downloader" : "/en/instagram-downloader"} class="text-muted hover:text-primary transition-colors">{t.igDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/tiktok-downloader" : "/en/tiktok-downloader"} class="text-muted hover:text-primary transition-colors">{t.ttDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/twitter-downloader" : "/en/twitter-downloader"} class="text-muted hover:text-primary transition-colors">{t.twDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/facebook-downloader" : "/en/facebook-downloader"} class="text-muted hover:text-primary transition-colors">{t.fbDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/ferramentas" : "/tools"} class="text-primary hover:text-white transition-colors">{t.allTools} &rarr;</a>
             </div>
 
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.resources}</span>
                 <a href="/docs" class="text-muted hover:text-primary transition-colors">{t.docs}</a>
                 <a href={`${t.homeLink}#faq`} class="text-muted hover:text-primary transition-colors">{t.qa}</a>
-                <a href="https://github.com/down-kingo/downkingo" target="_blank" class="text-muted hover:text-primary transition-colors">GitHub</a>
+                <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors">GitHub</a>
             </div>
         </div>
 
@@ -101,7 +110,7 @@ const t = content[lang];
         <div class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></span>
             <p class="font-mono text-[10px] text-muted uppercase tracking-widest">
-                {t.designBy} <a href="https://links.epixel.com.br" target="_blank" class="text-white hover:text-primary hover:underline underline-offset-4 transition-all">Emanuel Nunes</a>
+                {t.designBy} <a href="https://links.epixel.com.br" target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary hover:underline underline-offset-4 transition-all">Emanuel Nunes</a>
             </p>
         </div>
     </div>

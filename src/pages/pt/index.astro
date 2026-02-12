@@ -36,6 +36,8 @@ import wailsIcon from '../../assets/wails-icon.ico';
       }}
       twitter={{
         card: "summary_large_image",
+        site: "@downkingo",
+        creator: "@downkingo",
         title: "DownKingo - Toolbox de Mídia Universal",
         description: "A ferramenta definitiva de código aberto. Baixe, converta e processe mídia com privacidade.",
         image: "https://downkingo.com/og-image.png"
@@ -56,6 +58,11 @@ import wailsIcon from '../../assets/wails-icon.ico';
         ]
       }}
     />
+
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://downkingo.com/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://downkingo.com/pt/" />
+    <link rel="alternate" hreflang="x-default" href="https://downkingo.com/" />
 
     <!-- Preload Critical Fonts (Inter 900/400 + Mono 400/500) to avoid chains -->
     <link rel="preload" href="/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
@@ -134,8 +141,117 @@ import wailsIcon from '../../assets/wails-icon.ico';
             "@type": "Answer",
             "text": "Muito melhor. Conversores online costumam ser cheios de pop-ups, lentos e comprimem seu áudio. O DownKingo roda nativamente no seu PC, oferecendo velocidades mais rápidas, downloads em massa e extração de áudio com qualidade original."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "O DownKingo é seguro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O DownKingo é 100% código aberto. O código é publicamente auditável no GitHub. Não instalamos barras de ferramentas, software empacotado ou qualquer forma de malware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Precisa de internet para usar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Você precisa de internet para baixar conteúdo. Porém, todos os recursos de conversão (conversão de formato, remoção de fundo) funcionam completamente offline após a instalação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona no celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O DownKingo é um aplicativo para desktop (Windows, macOS e Linux). Não há app móvel, mas você pode baixar no PC e transferir os arquivos para o celular."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É legal baixar vídeos do YouTube?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Baixar conteúdo protegido por direitos autorais sem permissão pode violar os termos de serviço. O DownKingo é uma ferramenta — os usuários são responsáveis por cumprir as leis locais e políticas das plataformas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a diferença entre DownKingo e sites online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conversores online são lentos, cheios de anúncios e comprimem a qualidade. O DownKingo roda nativamente no seu PC, oferecendo velocidades maiores, downloads em massa e preservação da qualidade original."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso baixar vídeos em 4K ou 8K?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O DownKingo suporta a qualidade máxima disponível incluindo 4K (2160p), 8K (4320p) e 60fps sem nenhuma assinatura premium."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O DownKingo tem vírus ou malware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "De forma alguma. O DownKingo é código aberto e pode ser auditado por qualquer pessoa. Somos hospedados no GitHub e todos os releases são construídos de forma transparente via CI/CD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto espaço em disco preciso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O aplicativo em si tem menos de 50MB. O espaço para conteúdo baixado depende da qualidade do vídeo — um vídeo de 10 minutos em 4K ocupa aproximadamente 1-2GB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso baixar vários vídeos ao mesmo tempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O DownKingo suporta download em massa. Você pode colar múltiplas URLs ou playlists inteiras e baixar todas simultaneamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O DownKingo funciona com VPN?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O DownKingo funciona perfeitamente com VPNs. Na verdade, usar uma VPN pode ajudar a acessar conteúdo com restrição geográfica de diferentes regiões."
+          }
         }
       ]
+    }
+    </script>
+
+    <!-- JSON-LD SEO: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DownKingo",
+      "url": "https://downkingo.com",
+      "logo": "https://downkingo.com/kingo.png",
+      "sameAs": [
+        "https://github.com/down-kingo/downkingo"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD SEO: WebSite + SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DownKingo",
+      "url": "https://downkingo.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://downkingo.com/docs?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
     
@@ -528,7 +644,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                             </div>
                         </div>
                         <div class="w-px h-10 bg-white/10"></div>
-                        <a href="https://github.com/orgs/down-kingo/projects/2" target="_blank" class="flex items-center gap-4 group/roadmap cursor-pointer hover:bg-white/5 p-2 -m-2 rounded-lg transition-all">
+                        <a href="https://github.com/orgs/down-kingo/projects/2" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group/roadmap cursor-pointer hover:bg-white/5 p-2 -m-2 rounded-lg transition-all">
                             <Icon name="simple-icons:github" class="text-white group-hover/roadmap:scale-110 transition-transform duration-300" width={40} />
                             <div class="space-y-0.5">
                                 <span class="text-2xl font-black text-white block leading-none">GitHub</span>
@@ -707,6 +823,106 @@ import wailsIcon from '../../assets/wails-icon.ico';
                    </summary>
                    <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
                        Conversores online são frequentemente perigosos, cheios de pop-ups, lentos e comprimem a qualidade do áudio. O DownKingo roda <strong>nativamente no seu dispositivo</strong>, oferecendo velocidades máximas de download, downloads em massa e segurança livre de malware.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       O DownKingo é seguro?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Sim. O DownKingo é 100% código aberto. O código é publicamente auditável no GitHub. Não instalamos barras de ferramentas, software empacotado ou qualquer forma de malware.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Precisa de internet para usar?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Você precisa de internet para baixar conteúdo. Porém, todos os recursos de conversão (conversão de formato, remoção de fundo) funcionam completamente offline após a instalação.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Funciona no celular?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       O DownKingo é um aplicativo para desktop (Windows, macOS e Linux). Não há app móvel, mas você pode baixar no PC e transferir os arquivos para o celular.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       É legal baixar vídeos do YouTube?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Baixar conteúdo protegido por direitos autorais sem permissão pode violar os termos de serviço. O DownKingo é uma ferramenta — os usuários são responsáveis por cumprir as leis locais e políticas das plataformas.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Qual a diferença entre DownKingo e sites online?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Conversores online são lentos, cheios de anúncios e comprimem a qualidade. O DownKingo roda nativamente no seu PC, oferecendo velocidades maiores, downloads em massa e preservação da qualidade original.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Posso baixar vídeos em 4K ou 8K?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Sim. O DownKingo suporta a qualidade máxima disponível incluindo 4K (2160p), 8K (4320p) e 60fps sem nenhuma assinatura premium.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       O DownKingo tem vírus ou malware?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       De forma alguma. O DownKingo é código aberto e pode ser auditado por qualquer pessoa. Somos hospedados no GitHub e todos os releases são construídos de forma transparente via CI/CD.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Quanto espaço em disco preciso?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       O aplicativo em si tem menos de 50MB. O espaço para conteúdo baixado depende da qualidade do vídeo — um vídeo de 10 minutos em 4K ocupa aproximadamente 1-2GB.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Posso baixar vários vídeos ao mesmo tempo?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Sim. O DownKingo suporta download em massa. Você pode colar múltiplas URLs ou playlists inteiras e baixar todas simultaneamente.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       O DownKingo funciona com VPN?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Sim. O DownKingo funciona perfeitamente com VPNs. Na verdade, usar uma VPN pode ajudar a acessar conteúdo com restrição geográfica de diferentes regiões.
                    </div>
                </details>
             </div>

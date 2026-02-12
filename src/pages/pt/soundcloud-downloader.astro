@@ -5,14 +5,14 @@ import { Icon } from 'astro-icon/components';
 import temaClaro from '../../assets/tema-claro-com-sidebar.avif';
 
 // SEO Configuration
-const title = "Baixar Reels e Stories do Instagram (4K) - DownKingo";
-const description = "Baixe Vídeos, Reels, Stories e Fotos do Instagram com alta qualidade. Ferramenta gratuita para baixar conteúdo do Insta anonimamente e sem marca d'água.";
-const keywords = "baixar instagram reels, baixar stories instagram, baixar fotos instagram, instagram video download, salvar stories anonimo, instagram mp4";
+const title = "Baixar Músicas do SoundCloud em MP3 (320kbps) - DownKingo";
+const description = "Baixe músicas, playlists e podcasts do SoundCloud em MP3 com qualidade máxima. Ouça offline suas faixas favoritas. Grátis e sem cadastro.";
+const keywords = "baixar musica soundcloud, soundcloud mp3 download, baixar playlist soundcloud, soundcloud downloader, converter soundcloud mp3";
 
-const canonical = "https://downkingo.com/pt/instagram-downloader";
+const canonical = "https://downkingo.com/pt/soundcloud-downloader";
 const og = {
     basic: {
-        title: "Baixar Reels e Stories - DownKingo",
+        title: "Baixar Músicas do SoundCloud em MP3 (320kbps) - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -21,27 +21,27 @@ const og = {
 ---
 
 <BaseLayout title={title} description={description} lang="pt-BR" canonical={canonical} opengraph={og} keywords={keywords}>
-    
+
     <!-- Hero Section -->
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
-        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-pink-500/20 rounded-full pl-2 pr-4 py-1 bg-pink-500/5 backdrop-blur-md hover:border-pink-500/40 transition-colors mx-auto">
-                <Icon name="simple-icons:instagram" class="text-pink-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-pink-200 uppercase">Instagram Downloader Pro</span>
+             <div class="inline-flex items-center gap-3 border border-orange-500/20 rounded-full pl-2 pr-4 py-1 bg-orange-500/5 backdrop-blur-md hover:border-orange-500/40 transition-colors mx-auto">
+                <Icon name="simple-icons:soundcloud" class="text-orange-500" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-orange-200 uppercase">SoundCloud MP3 Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Baixar Reels <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">e Stories.</span>
+                Baixar Músicas<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-orange-500 to-orange-900">do SoundCloud.</span>
             </h1>
-            
+
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                A maneira mais fácil de salvar Reels, Stories, Fotos e Vídeos do Instagram em alta definição. Baixe álbuns (carrossel) completos com um clique.
+                Baixe músicas, playlists e podcasts do SoundCloud em MP3 com qualidade máxima. Ouça offline suas faixas favoritas, grátis e sem cadastro.
             </p>
 
             <!-- Actions -->
@@ -54,39 +54,39 @@ const og = {
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO INSTAGRAM -->
+    <!-- Features Section SPECIFIC TO SOUNDCLOUD -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-pink-500/10 w-fit rounded-lg text-pink-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:video" width={32} />
+                <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:music" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Reels em Full HD</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">MP3 320kbps</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Baixe Reels virais para compartilhar no TikTok ou WhatsApp sem perder qualidade. O arquivo vem limpo, em formato MP4.
+                    Qualidade máxima de áudio preservada. Baixe suas faixas favoritas do SoundCloud em MP3 com a melhor taxa de bits disponível.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-purple-500/10 w-fit rounded-lg text-purple-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:images" width={32} />
+                <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:list-music" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Carrossel Completo</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Playlists Completas</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Não baixe foto por foto. Copie o link de um post com várias imagens (carrossel) e o DownKingo baixa todas de uma vez em alta resolução.
+                    Baixe playlists inteiras de uma só vez. Cole o link da playlist e o DownKingo faz o download de todas as faixas automaticamente.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
                 <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:shield-check" width={32} />
+                    <Icon name="lucide:disc-3" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Privacidade Total</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Metadados e Capa</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Ao baixar Stories ou Destaques pelo DownKingo, ninguém saberá que você visualizou ou salvou o conteúdo.
+                    Título, artista e capa do álbum incluídos automaticamente. Seus arquivos MP3 ficam organizados e prontos para qualquer player.
                 </p>
             </div>
         </div>
@@ -95,68 +95,66 @@ const og = {
     <!-- Visual Demo Section -->
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            <!-- Image Container -->
-            <div class="relative group perspective-container order-2 lg:order-1">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-pink-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
-                 <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d-reverse hover:transition-transform duration-500">
-                      <Image src={temaClaro} alt="Baixar Instagram Reels Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
-                 </div>
-            </div>
-
-            <div class="space-y-8 order-1 lg:order-2">
-                <span class="inline-block mb-4 font-mono text-xs text-pink-500 uppercase tracking-widest border border-pink-500/20 bg-pink-500/5 px-2 py-1 rounded">Insta Saver 2025</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Salve Tudo do<br>Instagram.</h2>
+            <div class="space-y-8">
+                <span class="inline-block mb-4 font-mono text-xs text-orange-500 uppercase tracking-widest border border-orange-500/20 bg-orange-500/5 px-2 py-1 rounded">Tecnologia yt-dlp</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Suas Músicas,<br>Offline.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Ferramentas online exigem logins duvidosos ou captchas infinitos. O DownKingo é o downloader de Instagram definitivo para Desktop. Rápido, seguro e gratuito.
+                    Chega de depender de conexão instável. Baixe suas faixas favoritas do SoundCloud e ouça em qualquer lugar, a qualquer hora.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Baixe Stories expirando em 24h
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem limite de velocidade
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Salve vídeos do IGTV
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem anúncios ou pop-ups
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> Fotos na qualidade máxima originais
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Sem compressão de áudio
                     </li>
                 </ul>
             </div>
-            
+
+            <!-- Image Container -->
+            <div class="relative group perspective-container">
+                 <div class="absolute -inset-1 bg-gradient-to-r from-orange-600/20 to-yellow-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
+                      <Image src={temaClaro} alt="Baixar Músicas SoundCloud Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                 </div>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Dúvidas sobre o Instagram Downloader</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Dúvidas sobre o SoundCloud Downloader</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Como salvar Stories do Instagram?
+                    Como baixar músicas do SoundCloud?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Copie o link do Story (tocando nos 3 pontos -> Copiar Link) e cole no DownKingo. É simples assim.
+                    Copie o link da música ou playlist do SoundCloud, cole no DownKingo e clique em baixar. O download em MP3 com qualidade máxima começa automaticamente.
                 </div>
             </details>
-            
+
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Posso baixar Reels com a música original?
+                    A qualidade do áudio é preservada?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Sim! O DownKingo baixa o arquivo de vídeo original com áudio sincronizado. A qualidade de som é preservada.
+                    Sim! O DownKingo baixa o áudio na qualidade original disponível no SoundCloud. Para a maioria das faixas, isso significa MP3 a 320kbps ou a taxa de bits máxima do upload original.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    É anônimo? O usuário sabe que baixei?
+                    Posso baixar playlists inteiras?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    O Instagram não notifica quando você baixa fotos ou vídeos de postagens públicas. O download acontece de forma anônima e segura.
+                    Sim! Basta colar o link da playlist do SoundCloud. O DownKingo detecta todas as faixas e permite baixar a playlist completa de uma só vez, com metadados e capas incluídos.
                 </div>
             </details>
         </div>

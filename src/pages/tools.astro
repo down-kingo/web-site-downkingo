@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const title = "All Download Tools - DownKingo";
+const description = "Explore all DownKingo download tools. YouTube, Instagram, TikTok, Twitter, Facebook and 8 more platforms. Free and Open Source.";
+const keywords = "download tools, video downloader, youtube downloader, instagram downloader, tiktok downloader, all tools";
+const canonical = "https://downkingo.com/tools";
+
+const og = {
+    basic: {
+        title: "All Download Tools - DownKingo",
+        type: "website",
+        image: "https://downkingo.com/og-image.png",
+        url: canonical
+    }
+};
+---
+
+<BaseLayout title={title} description={description} lang="en" canonical={canonical} opengraph={og} keywords={keywords} alternateUrls={{ en: "/tools/", pt: "/pt/ferramentas/" }}>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen"></div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto space-y-6">
+            <div class="inline-flex items-center gap-3 border border-primary/20 rounded-full pl-2 pr-4 py-1 bg-primary/5 backdrop-blur-md hover:border-primary/40 transition-colors mx-auto">
+                <Icon name="lucide:layout-grid" class="text-primary" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-primary uppercase">13 Supported Platforms</span>
+            </div>
+
+            <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl">
+                All <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-red-900">Tools.</span>
+            </h1>
+
+            <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Download videos and music from any platform. YouTube, Instagram, TikTok, Twitter and much more. All free and open source.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- YouTube -->
+            <a href="/en/youtube-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-red-500/10 rounded-lg text-red-500">
+                        <Icon name="simple-icons:youtube" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">YouTube Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download videos, playlists and channels from YouTube in 4K/8K</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="/en/instagram-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-pink-500/10 rounded-lg text-pink-500">
+                        <Icon name="simple-icons:instagram" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Instagram Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download Reels, Stories, Photos and Carousels from Instagram</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- TikTok -->
+            <a href="/en/tiktok-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-cyan-400/10 rounded-lg text-cyan-400">
+                        <Icon name="simple-icons:tiktok" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">TikTok Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download TikTok videos without watermark</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Twitter/X -->
+            <a href="/en/twitter-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-white/10 rounded-lg text-white">
+                        <Icon name="simple-icons:x" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Twitter/X Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download videos, GIFs and Spaces from Twitter/X</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Facebook -->
+            <a href="/en/facebook-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-blue-500/10 rounded-lg text-blue-500">
+                        <Icon name="simple-icons:facebook" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Facebook Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download videos, Reels and Stories from Facebook</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Twitch -->
+            <a href="/en/twitch-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-purple-500/10 rounded-lg text-purple-500">
+                        <Icon name="simple-icons:twitch" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Twitch Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download VODs, clips and streams from Twitch</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Reddit -->
+            <a href="/en/reddit-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-orange-500/10 rounded-lg text-orange-500">
+                        <Icon name="simple-icons:reddit" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Reddit Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download Reddit videos with audio included</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Pinterest -->
+            <a href="/en/pinterest-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-red-600/10 rounded-lg text-red-600">
+                        <Icon name="simple-icons:pinterest" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Pinterest Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download pins, images and videos from Pinterest</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- SoundCloud -->
+            <a href="/en/soundcloud-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-orange-500/10 rounded-lg text-orange-500">
+                        <Icon name="simple-icons:soundcloud" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">SoundCloud Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download songs and playlists from SoundCloud in MP3</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Vimeo -->
+            <a href="/en/vimeo-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-cyan-400/10 rounded-lg text-cyan-400">
+                        <Icon name="simple-icons:vimeo" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Vimeo Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download Vimeo videos in HD and 4K</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Dailymotion -->
+            <a href="/en/dailymotion-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-blue-400/10 rounded-lg text-blue-400">
+                        <Icon name="simple-icons:dailymotion" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Dailymotion Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download Dailymotion videos in HD</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Kwai -->
+            <a href="/en/kwai-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-orange-400/10 rounded-lg text-orange-400">
+                        <Icon name="lucide:video" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Kwai Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download Kwai videos without watermark</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+
+            <!-- Spotify -->
+            <a href="/en/spotify-downloader" class="group p-6 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-green-500/10 rounded-lg text-green-500">
+                        <Icon name="simple-icons:spotify" width={28} />
+                    </div>
+                    <h2 class="text-lg font-bold text-white uppercase">Spotify Downloader</h2>
+                </div>
+                <p class="text-xs text-muted font-mono leading-relaxed">Download songs and podcasts from Spotify in MP3</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-primary font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open <Icon name="lucide:arrow-right" width={12} />
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 border-t border-white/5">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+            <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">Ready to Download?</h2>
+            <p class="text-muted text-lg">Download DownKingo for free and get access to all tools in a single app.</p>
+            <a href="/en/download" class="inline-flex h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <Icon name="lucide:download" width={20} />
+                <span>Download Free</span>
+            </a>
+        </div>
+    </section>
+
+</BaseLayout>

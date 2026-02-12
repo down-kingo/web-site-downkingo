@@ -13,11 +13,44 @@ interface Props {
 	opengraph?: any;
     twitter?: any;
     keywords?: string;
+    alternateUrls?: { en?: string; pt?: string };
 }
 
-const { title, description, lang = "pt-BR", canonical, opengraph, twitter, keywords } = Astro.props;
+const { title, description, lang = "pt-BR", canonical, opengraph, twitter, keywords, alternateUrls } = Astro.props;
 
 const language = lang === "pt-BR" || lang === "pt" ? "pt" : "en";
+const ogLocale = language === "pt" ? "pt_BR" : "en_US";
+
+// Hreflang logic
+const currentPath = Astro.url.pathname;
+const isPt = language === "pt";
+const baseUrl = "https://downkingo.com";
+
+// Build alternate URLs
+let enUrl: string;
+let ptUrl: string;
+
+if (alternateUrls) {
+  // Manual override for pages with different slugs (e.g. /tools ↔ /pt/ferramentas)
+  enUrl = alternateUrls.en ? baseUrl + alternateUrls.en : baseUrl + currentPath;
+  ptUrl = alternateUrls.pt ? baseUrl + alternateUrls.pt : baseUrl + currentPath;
+} else if (isPt) {
+  // PT page: replace /pt/ prefix with /en/ for EN alternate
+  enUrl = baseUrl + currentPath.replace(/^\/pt\//, "/en/");
+  ptUrl = baseUrl + currentPath;
+} else {
+  // EN page: replace /en/ prefix with /pt/ for PT alternate
+  enUrl = baseUrl + currentPath;
+  ptUrl = baseUrl + currentPath.replace(/^\/en\//, "/pt/");
+}
+
+// Merge twitter defaults
+const twitterConfig = {
+  card: "summary_large_image" as const,
+  site: "@downkingo",
+  creator: "@downkingo",
+  ...twitter
+};
 ---
 
 <!DOCTYPE html>
@@ -35,11 +68,12 @@ const language = lang === "pt-BR" || lang === "pt" ? "pt" : "en";
       description={description}
       canonical={canonical}
       openGraph={opengraph}
-      twitter={twitter}
+      twitter={twitterConfig}
       extend={{
         meta: [
           { name: "keywords", content: keywords },
           { name: "theme-color", content: "#050505" },
+          { property: "og:locale", content: ogLocale },
         ],
         link: [
           { rel: "icon", type: "image/x-icon", href: "/icon.ico?v=2" }
@@ -52,6 +86,11 @@ const language = lang === "pt-BR" || lang === "pt" ? "pt" : "en";
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="pt-BR" href={ptUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
 
     <ViewTransitions />
     <slot name="head" />

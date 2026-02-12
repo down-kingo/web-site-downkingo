@@ -20,7 +20,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
     <script is:inline src="/scripts/console-filter.js"></script>
     <SEO
       title="DownKingo - Universal Media Toolbox (Downloader & Converter)"
-      description="The all-in-one open source media toolkit. Download videos/photos from 1000+ sites, remove backgrounds with AI, and convert media (MP4/MP3/JPG/PNG). Privacy-focused engine."
+      description="The all-in-one open source media toolkit. Download videos from 1000+ sites, remove backgrounds with AI, and convert media. Privacy-focused."
       canonical="https://downkingo.com/"
       openGraph={{
         basic: {
@@ -35,6 +35,8 @@ import wailsIcon from '../../assets/wails-icon.ico';
       }}
       twitter={{
         card: "summary_large_image",
+        site: "@downkingo",
+        creator: "@downkingo",
         title: "DownKingo - Universal Media Toolbox",
         description: "The ultimate open-source toolkit. Download, convert, and process media with privacy. Powered by Go, Wails & FFmpeg.",
         image: "https://downkingo.com/og-image.png"
@@ -56,12 +58,17 @@ import wailsIcon from '../../assets/wails-icon.ico';
       }}
     />
     
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://downkingo.com/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://downkingo.com/pt/" />
+    <link rel="alternate" hreflang="x-default" href="https://downkingo.com/" />
+
     <!-- Preload Critical Fonts (Inter 900/400 + Mono 400/500) to avoid chains -->
     <link rel="preload" href="/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
-    
+
     <!-- JSON-LD SEO: SoftwareApplication -->
     <script type="application/ld+json">
     {
@@ -132,6 +139,131 @@ import wailsIcon from '../../assets/wails-icon.ico';
             "@type": "Answer",
             "text": "Much better. Online converters are often full of pop-up ads, slow, and compress your audio. DownKingo runs natively on your PC, providing faster speeds, batch downloading, and original audio quality extraction."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DownKingo safe to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo is 100% open source. The code is publicly auditable on GitHub. We don't install toolbars, bundled software, or any form of malware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an internet connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need internet to download content. However, all conversion features (format conversion, background removal) work completely offline once the app is installed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DownKingo work on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DownKingo is a desktop application for Windows, macOS, and Linux. There's no mobile app, but you can download on your PC and transfer files to your phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it legal to download YouTube videos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Downloading copyrighted content without permission may violate terms of service. DownKingo is a tool — users are responsible for complying with local laws and platform policies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between DownKingo and online sites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Online downloaders are slow, full of ads, and compress quality. DownKingo runs natively on your PC, offering faster speeds, batch downloads, and original quality preservation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download videos in 4K or 8K?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo supports the highest available quality including 4K (2160p), 8K (4320p), and 60fps without any premium subscription."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DownKingo contain viruses or malware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely not. DownKingo is open source and can be audited by anyone. We're hosted on GitHub and all releases are built transparently via CI/CD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much disk space do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The app itself is under 50MB. Storage for downloaded content depends on video quality — a 10-minute 4K video is approximately 1-2GB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download multiple videos at once?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo supports batch downloading. You can paste multiple URLs or entire playlists and download them all simultaneously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DownKingo work with a VPN?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DownKingo works perfectly with VPNs. In fact, using a VPN can help access geo-restricted content from different regions."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD SEO: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DownKingo",
+      "url": "https://downkingo.com",
+      "logo": "https://downkingo.com/kingo.png",
+      "sameAs": [
+        "https://github.com/down-kingo/downkingo"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD SEO: WebSite + SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DownKingo",
+      "url": "https://downkingo.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://downkingo.com/docs?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD SEO: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://downkingo.com/"
         }
       ]
     }
@@ -544,7 +676,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                             </div>
                         </div>
                         <div class="w-px h-10 bg-white/10"></div>
-                        <a href="https://github.com/orgs/down-kingo/projects/2" target="_blank" class="flex items-center gap-4 group/roadmap cursor-pointer hover:bg-white/5 p-2 -m-2 rounded-lg transition-all">
+                        <a href="https://github.com/orgs/down-kingo/projects/2" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group/roadmap cursor-pointer hover:bg-white/5 p-2 -m-2 rounded-lg transition-all">
                             <Icon name="simple-icons:github" class="text-white group-hover/roadmap:scale-110 transition-transform duration-300" width={40} />
                             <div class="space-y-0.5">
                                 <span class="text-2xl font-black text-white block leading-none">GitHub</span>
@@ -723,6 +855,106 @@ import wailsIcon from '../../assets/wails-icon.ico';
                    </summary>
                    <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
                        Online converters are often dangerous, full of pop-ups, slow, and compress audio quality. DownKingo runs <strong>natively on your device</strong>, offering maximum download speeds, bulk downloading, and malware-free safety.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Is DownKingo safe to use?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Yes. DownKingo is 100% open source. The code is publicly auditable on GitHub. We don't install toolbars, bundled software, or any form of malware.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Do I need an internet connection?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       You need internet to download content. However, all conversion features (format conversion, background removal) work completely offline once the app is installed.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Does DownKingo work on mobile?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       DownKingo is a desktop application for Windows, macOS, and Linux. There's no mobile app, but you can download on your PC and transfer files to your phone.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Is it legal to download YouTube videos?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Downloading copyrighted content without permission may violate terms of service. DownKingo is a tool — users are responsible for complying with local laws and platform policies.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       What's the difference between DownKingo and online sites?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Online downloaders are slow, full of ads, and compress quality. DownKingo runs natively on your PC, offering faster speeds, batch downloads, and original quality preservation.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Can I download videos in 4K or 8K?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Yes. DownKingo supports the highest available quality including 4K (2160p), 8K (4320p), and 60fps without any premium subscription.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Does DownKingo contain viruses or malware?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Absolutely not. DownKingo is open source and can be audited by anyone. We're hosted on GitHub and all releases are built transparently via CI/CD.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       How much disk space do I need?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       The app itself is under 50MB. Storage for downloaded content depends on video quality — a 10-minute 4K video is approximately 1-2GB.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Can I download multiple videos at once?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Yes. DownKingo supports batch downloading. You can paste multiple URLs or entire playlists and download them all simultaneously.
+                   </div>
+               </details>
+
+               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                       Does DownKingo work with a VPN?
+                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
+                   </summary>
+                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                       Yes. DownKingo works perfectly with VPNs. In fact, using a VPN can help access geo-restricted content from different regions.
                    </div>
                </details>
             </div>

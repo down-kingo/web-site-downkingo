@@ -67,6 +67,10 @@ export default defineConfig({
           pt: "pt-BR",
         },
       },
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
     }),
     partytown({
       config: {
