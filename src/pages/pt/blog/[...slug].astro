@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../../layouts/BlogPostLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+  const ptPosts = allPosts.filter(p => p.data.lang === 'pt');
+  const enPosts = allPosts.filter(p => p.data.lang === 'en');
+
+  return ptPosts.map((post) => {
+    const slug = post.id.replace(/^pt\//, '').replace(/\.md$/, '');
+
+    // Find translated post
+    let translatedSlug: string | undefined;
+    if (post.data.refId) {
+      const translation = enPosts.find(p => p.data.refId === post.data.refId);
+      if (translation) {
+        translatedSlug = translation.id.replace(/^en\//, '').replace(/\.md$/, '');
+      }
+    }
+
+    // Related posts: same category first, then most recent, exclude current
+    const others = ptPosts
+      .filter(p => p.id !== post.id)
+      .sort((a, b) => {
+        const aMatch = a.data.category === post.data.category ? 1 : 0;
+        const bMatch = b.data.category === post.data.category ? 1 : 0;
+        if (aMatch !== bMatch) return bMatch - aMatch;
+        return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+      })
+      .slice(0, 3)
+      .map(p => ({
+        title: p.data.title,
+        slug: p.id.replace(/^pt\//, '').replace(/\.md$/, ''),
+        heroImage: p.data.heroImage,
+        category: p.data.category,
+      }));
+
+    return {
+      params: { slug },
+      props: { post, translatedSlug, relatedPosts: others },
+    };
+  });
+}
+
+const { post, translatedSlug, relatedPosts } = Astro.props;
+const { Content } = await post.render();
+
+const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+const slug = post.id.replace(/^pt\//, '').replace(/\.md$/, '');
+---
+
+<BlogPostLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  heroImage={post.data.heroImage}
+  heroImageAlt={post.data.heroImageAlt}
+  tags={post.data.tags}
+  category={post.data.category}
+  lang="pt"
+  readingTime={readingTime}
+  wordCount={wordCount}
+  slug={slug}
+  translatedSlug={translatedSlug}
+  relatedPosts={relatedPosts}
+  howTo={post.data.howTo}
+  faq={post.data.faq}
+>
+  <Content />
+</BlogPostLayout>

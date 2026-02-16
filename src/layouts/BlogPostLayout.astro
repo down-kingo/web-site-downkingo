@@ -1,0 +1,833 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Picture } from 'astro:assets';
+
+interface RelatedPost {
+  title: string;
+  slug: string;
+  heroImage?: any; // Changed to any to accept ImageMetadata
+  category: string;
+}
+
+interface HowToStep {
+  name: string;
+  text: string;
+  url?: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author: string;
+  heroImage?: any;
+  heroImageAlt?: string;
+  tags: string[];
+  category: string;
+  lang: 'en' | 'pt';
+  readingTime: number;
+  wordCount?: number;
+  slug: string;
+  translatedSlug?: string;
+  relatedPosts?: RelatedPost[];
+  howTo?: { name: string; description?: string; totalTime?: string; steps: HowToStep[] };
+  faq?: FaqItem[];
+}
+
+const { title, description, pubDate, updatedDate, author, heroImage, heroImageAlt, tags, category, lang, readingTime, wordCount, slug, translatedSlug, relatedPosts = [], howTo, faq } = Astro.props;
+
+const basePath = lang === 'pt' ? '/pt' : '/en';
+const formattedDate = pubDate.toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const readLabel = lang === 'pt' ? 'min de leitura' : 'min read';
+const shareLabel = lang === 'pt' ? 'Compartilhar' : 'Share';
+const nextLabel = lang === 'pt' ? 'Próximo' : 'Next';
+const prevLabel = lang === 'pt' ? 'Anterior' : 'Previous';
+const copiedLabel = lang === 'pt' ? 'Link copiado!' : 'Link copied!';
+
+const initial = author.charAt(0).toUpperCase();
+const baseUrl = 'https://downkingo.com';
+const canonicalUrl = `${baseUrl}${basePath}/blog/${slug}/`;
+const encodedUrl = encodeURIComponent(canonicalUrl);
+
+// Author page URL
+const authorSlug = author.toLowerCase().replace(/\s+/g, '-');
+const authorUrl = lang === 'pt' ? `/pt/autor/${authorSlug}` : `/en/author/${authorSlug}`;
+const encodedTitle = encodeURIComponent(title);
+
+const alternateUrls = {
+  en: lang === 'en' ? `/en/blog/${slug}` : (translatedSlug ? `/en/blog/${translatedSlug}` : `/en/blog/${slug}`),
+  pt: lang === 'pt' ? `/pt/blog/${slug}` : (translatedSlug ? `/pt/blog/${translatedSlug}` : `/pt/blog/${slug}`),
+};
+
+// JSON-LD might need adjustment if heroImage is an object now.
+// We'll use heroImage.src if it exists, otherwise assume string or undefined.
+const imageUrl = heroImage?.src ? new URL(heroImage.src, baseUrl).href : (typeof heroImage === 'string' ? `${baseUrl}${heroImage}` : `${baseUrl}/og-image.png`);
+
+const categoryLabel = lang === 'pt'
+  ? { tutorial: 'Tutorial', announcement: 'Anúncio', guide: 'Guia', release: 'Lançamento' }[category] || category
+  : { tutorial: 'Tutorial', announcement: 'Announcement', guide: 'Guide', release: 'Release' }[category] || category;
+
+const blogLabel = 'Blog';
+const homeLabel = lang === 'pt' ? 'Início' : 'Home';
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": `${baseUrl}${authorUrl}`,
+    "sameAs": [
+      "https://github.com/down-kingo",
+      "https://www.linkedin.com/in/emanuel-nunes002/",
+      "https://x.com/EMANUELSOARES71",
+      "https://links.epixel.com.br"
+    ]
+  },
+  "datePublished": pubDate.toISOString(),
+  "dateModified": (updatedDate || pubDate).toISOString(),
+  "image": imageUrl,
+  "publisher": {
+    "@type": "Organization",
+    "name": "DownKingo",
+    "url": baseUrl,
+    "logo": { "@type": "ImageObject", "url": `${baseUrl}/kingo.webp` }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+  "wordCount": wordCount || 0,
+  "articleSection": categoryLabel,
+  "inLanguage": lang === 'pt' ? 'pt-BR' : 'en',
+  "keywords": tags.join(', '),
+  "isAccessibleForFree": true,
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "DownKingo Blog",
+    "url": `${baseUrl}${basePath}/blog/`
+  }
+});
+
+const breadcrumbLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": homeLabel, "item": `${baseUrl}${basePath}/` },
+    { "@type": "ListItem", "position": 2, "name": blogLabel, "item": `${baseUrl}${basePath}/blog/` },
+    { "@type": "ListItem", "position": 3, "name": title, "item": canonicalUrl }
+  ]
+});
+
+// HowTo Schema (for tutorial posts with step-by-step instructions)
+const howToLd = howTo ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": howTo.name,
+  "description": howTo.description || description,
+  "totalTime": howTo.totalTime,
+  "image": imageUrl,
+  "step": howTo.steps.map((step, i) => ({
+    "@type": "HowToStep",
+    "position": i + 1,
+    "name": step.name,
+    "text": step.text,
+    ...(step.url ? { "url": `${baseUrl}${step.url}` } : {})
+  }))
+}) : null;
+
+// FAQPage Schema
+const faqLd = faq && faq.length > 0 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+}) : null;
+---
+
+<BaseLayout
+  title={`${title} | DownKingo Blog`}
+  description={description}
+  lang={lang === 'pt' ? 'pt-BR' : 'en'}
+  canonical={canonicalUrl}
+  keywords={tags.join(', ')}
+  alternateUrls={alternateUrls}
+  currentPage="blog"
+  opengraph={{
+    basic: {
+      title: title,
+      type: "article",
+      image: imageUrl,
+      url: canonicalUrl,
+    },
+    optional: { description },
+    article: {
+      publishedTime: pubDate.toISOString(),
+      modifiedTime: (updatedDate || pubDate).toISOString(),
+      authors: [author],
+      tags: tags,
+    },
+  }}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+    <script type="application/ld+json" set:html={breadcrumbLd} />
+    {howToLd && <script type="application/ld+json" set:html={howToLd} />}
+    {faqLd && <script type="application/ld+json" set:html={faqLd} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap"></noscript>
+  </Fragment>
+
+  <div class="okiro-post-page">
+    {/* Post Header - Hero layout (same as index hero) */}
+    <section class="okiro-post-header">
+      <article class="okiro-hero-post">
+        <div class="okiro-hero-container">
+          {/* Image */}
+          {heroImage ? (
+            <div class="okiro-hero-image">
+               <Picture 
+                 src={heroImage} 
+                 formats={['avif', 'webp']} 
+                 alt={heroImageAlt || title} 
+                 loading="eager" 
+                 width={1200}
+                 height={675}
+                 class="okiro-hero-img-element"
+               />
+            </div>
+          ) : (
+            <div class="okiro-hero-image okiro-hero-placeholder">
+              <span>K</span>
+            </div>
+          )}
+
+          {/* Content */}
+          <div class="okiro-hero-content">
+            {/* Tags */}
+            {tags.length > 0 && (
+              <div class="okiro-hero-tags">
+                {tags.map((tag) => (
+                  <span class="okiro-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+
+            <h1 class="okiro-hero-title">{title}</h1>
+
+            <p class="okiro-hero-excerpt">{description}</p>
+
+            <div class="okiro-hero-meta">
+              <a href={authorUrl} class="okiro-hero-avatar-link">
+                <div class="okiro-hero-avatar">
+                  <span>{initial}</span>
+                </div>
+                <div>
+                  <span class="okiro-hero-author">{author}</span>
+                  <span class="okiro-hero-date">{formattedDate} &middot; {readingTime} {readLabel}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    {/* Post Content */}
+    <div class="okiro-post-content">
+      <slot />
+    </div>
+
+    {/* Share buttons */}
+    <div class="okiro-share-section">
+      <div class="okiro-share-wrap">
+        {/* Twitter/X */}
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="okiro-share-btn"
+          aria-label="Share on X"
+        >
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+        {/* Facebook */}
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="okiro-share-btn"
+          aria-label="Share on Facebook"
+        >
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.09.05 1.592.15v3.299a8 8 0 0 0-.916-.04c-1.3 0-1.804.493-1.804 1.776v2.373h3.681l-.497 3.667h-3.184v8.212C19.481 22.907 24 18.458 24 12.938 24 6.65 18.627 1.572 12 1.572S0 6.65 0 12.938c0 4.882 3.432 9.099 8.198 10.381.321.064.653.1.99.1l-.087.272z" />
+          </svg>
+        </a>
+        {/* Copy link */}
+        <button
+          id="copy-link-btn"
+          class="okiro-share-btn okiro-share-link"
+          aria-label="Copy link"
+          data-url={canonicalUrl}
+          data-copied={copiedLabel}
+        >
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+        </button>
+      </div>
+      <small id="copy-feedback" class="okiro-copy-feedback"></small>
+    </div>
+
+    {/* Next/Prev navigation */}
+    {relatedPosts.length > 0 && (
+      <section class="okiro-nextprev-section">
+        <div class="okiro-nextprev-wrap">
+          {relatedPosts.slice(0, 2).map((related, i) => (
+            <section class:list={["okiro-nextprev-card", { "okiro-nextprev-older": i === 1 }]}>
+              <a href={`${basePath}/blog/${related.slug}`} class="okiro-nextprev-link" aria-label={related.title}></a>
+              {related.heroImage && (
+                <div class="okiro-nextprev-image">
+                  <Picture src={related.heroImage} formats={['avif', 'webp']} alt={related.title} width={600} height={338} loading="lazy" />
+                </div>
+              )}
+              <div class="okiro-nextprev-content">
+                <small>{i === 0 ? nextLabel : prevLabel}</small>
+                <h3>{related.title}</h3>
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('copy-link-btn');
+    const feedback = document.getElementById('copy-feedback');
+    if (!btn || !feedback) return;
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-url') || window.location.href;
+      const copiedText = btn.getAttribute('data-copied') || 'Copied!';
+      try {
+        await navigator.clipboard.writeText(url);
+        feedback.textContent = copiedText;
+        feedback.style.opacity = '1';
+        setTimeout(() => { feedback.style.opacity = '0'; }, 2000);
+      } catch (e) { console.debug('Clipboard copy failed:', e); }
+    });
+  });
+</script>
+
+<style>
+  .okiro-post-page {
+    font-family: 'Nunito', sans-serif;
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+
+  /* ── Hero Header ─────────────────────────── */
+  .okiro-post-header {
+    max-width: 1240px;
+    margin: 0 auto 7vh;
+    padding: 0 20px;
+  }
+
+  .okiro-hero-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .okiro-hero-image {
+    position: relative;
+    flex: 0 0 50%;
+    min-height: 600px;
+    margin-right: 5%;
+  }
+
+  .okiro-hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 44px;
+    display: block;
+  }
+
+  .okiro-hero-placeholder {
+    background-color: #15171A;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .okiro-hero-placeholder span {
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    user-select: none;
+  }
+
+  .okiro-hero-content {
+    padding: 5vh 0;
+  }
+
+  .okiro-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-left: -3px;
+  }
+
+  .okiro-tag {
+    font-size: 9px;
+    line-height: 10px;
+    display: inline-block;
+    padding: 12px 12px 10px;
+    text-indent: 3px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    background-color: #1F2328;
+    color: #f7f9f9;
+    font-weight: 800;
+  }
+
+  .okiro-hero-title {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 30px -2px;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-excerpt {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+    max-width: 480px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-meta {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-avatar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .okiro-hero-avatar-link:hover {
+    opacity: 0.8;
+  }
+
+  .okiro-hero-avatar-link:hover .okiro-hero-author {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .okiro-hero-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #252831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 9px;
+    border: 2px solid #000;
+  }
+
+  .okiro-hero-avatar span {
+    font-size: 14px;
+    font-weight: 900;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-author {
+    display: block;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .okiro-hero-date {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  /* ── Post Content ────────────────────────── */
+  .okiro-post-content {
+    max-width: 700px;
+    margin: 0 auto 8vh;
+    padding: 0 20px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #f7f9f9;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .okiro-post-content :global(p) {
+    line-height: 1.65;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .okiro-post-content :global(h1) { font-size: 55px; font-weight: 900; line-height: 1.4; margin-top: 60px; margin-bottom: 20px; margin-left: -1px; }
+  .okiro-post-content :global(h2) { font-size: 41px; font-weight: 900; line-height: 1.4; margin-top: 55px; margin-bottom: 20px; margin-left: -1px; }
+  .okiro-post-content :global(h3) { font-size: 31px; font-weight: 900; line-height: 1.4; margin-top: 45px; margin-bottom: 20px; margin-left: -1px; }
+  .okiro-post-content :global(h4) { font-size: 24px; font-weight: 900; line-height: 1.4; margin-top: 40px; margin-bottom: 20px; }
+  .okiro-post-content :global(h5) { font-size: 20px; font-weight: 900; line-height: 1.4; margin-top: 40px; margin-bottom: 20px; }
+
+  .okiro-post-content :global(a) {
+    text-decoration: underline;
+    text-decoration-color: #f7f9f9;
+    color: #f7f9f9;
+  }
+
+  .okiro-post-content :global(a:hover) {
+    text-decoration-color: #f24e1e;
+  }
+
+  .okiro-post-content :global(strong) {
+    font-weight: 900;
+  }
+
+  .okiro-post-content :global(blockquote) {
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.4;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 60px;
+    margin-top: 65px;
+    margin-bottom: 65px;
+  }
+
+  .okiro-post-content :global(blockquote::before) {
+    font-size: 110px;
+    position: absolute;
+    top: -28px;
+    left: -8px;
+    content: '\201C';
+    color: #f24e1e;
+  }
+
+  .okiro-post-content :global(blockquote p) {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .okiro-post-content :global(hr) {
+    display: block;
+    height: 16px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+    border: none;
+    opacity: 0.08;
+  }
+
+  .okiro-post-content :global(ul),
+  .okiro-post-content :global(ol) {
+    margin-top: 0;
+    margin-bottom: 40px;
+    margin-left: 15px;
+  }
+
+  .okiro-post-content :global(ul) { padding-left: 15px; list-style: disc outside; }
+  .okiro-post-content :global(ol) { padding-left: 20px; list-style: decimal outside; }
+  .okiro-post-content :global(li) { margin-bottom: 10px; }
+
+  .okiro-post-content :global(code) {
+    font-family: "JetBrains Mono", monospace;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85em;
+  }
+
+  .okiro-post-content :global(pre) {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 15px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .okiro-post-content :global(pre code) {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .okiro-post-content :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 50px 0;
+    border-radius: 15px;
+  }
+
+  .okiro-post-content :global(table) {
+    font-size: 14px;
+    width: 100%;
+    max-width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .okiro-post-content :global(th) {
+    font-size: 16px;
+    font-weight: 900;
+    padding: 10px 12px;
+    border-top: 1px solid #1F2328;
+    border-bottom: 1px solid #1F2328;
+  }
+
+  .okiro-post-content :global(td) {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1F2328;
+  }
+
+  /* ── Share ───────────────────────────────── */
+  .okiro-share-section {
+    width: 100%;
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  .okiro-share-wrap {
+    display: inline-flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .okiro-share-btn {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    color: #f7f9f9;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+  }
+
+  .okiro-share-btn::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: '';
+    transition: transform 0.2s ease;
+    border-radius: 100px;
+    background-color: #191C21;
+  }
+
+  .okiro-share-btn:hover::after {
+    transform: scale(0.94);
+  }
+
+  .okiro-copy-feedback {
+    font-size: 13px;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    opacity: 0;
+    color: #f7f9f9;
+    transition: opacity 0.3s ease;
+  }
+
+  /* ── Next/Prev ───────────────────────────── */
+  .okiro-nextprev-section {
+    width: 100%;
+    max-width: 1120px;
+    margin: 8vh auto;
+    padding: 0 20px;
+  }
+
+  .okiro-nextprev-wrap {
+    display: flex;
+    gap: 20px;
+  }
+
+  .okiro-nextprev-card {
+    position: relative;
+    display: flex;
+    flex: 1 0 calc(50% - 10px);
+    box-sizing: border-box;
+    padding: 18px;
+    transition: transform 0.2s ease;
+    border-radius: 22px;
+    background-color: #15171A;
+  }
+
+  .okiro-nextprev-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .okiro-nextprev-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .okiro-nextprev-older {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .okiro-nextprev-content {
+    max-width: 400px;
+    padding: 0 10px;
+  }
+
+  .okiro-nextprev-content small {
+    font-size: 13px;
+    font-weight: 800;
+    display: block;
+    margin-top: 14px;
+    color: #f7f9f9;
+    opacity: 0.5;
+  }
+
+  .okiro-nextprev-content h3 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    color: #f7f9f9;
+  }
+
+  .okiro-nextprev-image {
+    position: relative;
+    flex: 0 0 120px;
+    min-height: 120px;
+  }
+
+  .okiro-nextprev-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 11px;
+  }
+
+  .okiro-nextprev-older .okiro-nextprev-image {
+    order: 1;
+    margin-left: 10px;
+  }
+
+  .okiro-nextprev-card:not(.okiro-nextprev-older) .okiro-nextprev-image {
+    margin-right: 10px;
+  }
+
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 1280px) {
+    .okiro-hero-image { min-height: 500px; }
+    .okiro-hero-title { font-size: 44px; }
+    .okiro-post-content :global(h2) { font-size: 35px; }
+    .okiro-post-content :global(h3) { font-size: 26px; }
+  }
+
+  @media (max-width: 1024px) {
+    .okiro-hero-image { min-height: 450px; }
+    .okiro-hero-title { font-size: 40px; }
+    .okiro-hero-meta { font-size: 14px; }
+    .okiro-hero-excerpt { font-size: 14px; }
+    .okiro-hero-avatar { width: 34px; height: 34px; }
+    .okiro-nextprev-content h3 { font-size: 20px; }
+    .okiro-nextprev-image { flex-basis: 100px; min-height: 100px; }
+  }
+
+  @media (max-width: 768px) {
+    .okiro-post-page { padding-top: 100px; }
+    .okiro-hero-container { flex-wrap: wrap; }
+    .okiro-hero-image { flex-basis: 100%; min-height: initial; margin-right: 0; margin-bottom: 20px; }
+    .okiro-hero-image img { position: initial; height: 450px; border-radius: 29px; }
+    .okiro-hero-placeholder { min-height: 300px; }
+    .okiro-hero-content { padding: 0; }
+    .okiro-hero-title { font-size: 36px; margin: 0 0 20px; text-indent: 0; }
+    .okiro-hero-excerpt { font-size: 16px; font-weight: 500; margin-top: 20px; line-height: 1.6; }
+    .okiro-post-content { font-size: 18px; padding: 0 25px; line-height: 1.7; }
+    .okiro-post-content :global(h2) { font-size: 28px; margin-top: 40px; }
+    .okiro-post-content :global(h3) { font-size: 22px; margin-top: 35px; }
+    .okiro-post-content :global(blockquote) { font-size: 22px; padding-left: 30px; }
+    .okiro-nextprev-wrap { flex-wrap: wrap; }
+    .okiro-nextprev-card { flex-basis: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .okiro-hero-image img { height: 320px; border-radius: 20px; }
+    .okiro-hero-content { padding: 0; }
+    .okiro-hero-title { font-size: 30px; margin-bottom: 15px; }
+    .okiro-hero-excerpt { font-size: 16px; margin-top: 15px; margin-bottom: 20px; }
+    .okiro-post-content { font-size: 18px; padding: 0 25px; line-height: 1.7; }
+    .okiro-post-content :global(p) { margin-bottom: 25px; }
+    .okiro-post-content :global(blockquote) { font-size: 18px; padding-left: 25px; margin-top: 30px; margin-bottom: 30px; }
+    .okiro-post-content :global(blockquote::before) { font-size: 80px; top: -20px; left: -5px; }
+    .okiro-share-btn { width: 54px; height: 54px; }
+    .okiro-share-btn svg { width: 22px; height: 22px; }
+    .okiro-nextprev-card { padding: 14px; }
+    .okiro-nextprev-content h3 { font-size: 15px; margin-top: 5px; margin-bottom: 5px; }
+    .okiro-nextprev-content small { margin-top: 5px; }
+    .okiro-nextprev-image { flex-basis: 80px; min-height: 80px; }
+  }
+
+  @media (max-width: 320px) {
+    .okiro-hero-image img { height: 280px; }
+    .okiro-hero-title { font-size: 32px; }
+  }
+</style>

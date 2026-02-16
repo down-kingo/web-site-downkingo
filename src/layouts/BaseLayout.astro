@@ -14,9 +14,10 @@ interface Props {
     twitter?: any;
     keywords?: string;
     alternateUrls?: { en?: string; pt?: string };
+    currentPage?: 'home' | 'download' | 'roadmap' | 'docs' | 'online' | 'blog';
 }
 
-const { title, description, lang = "pt-BR", canonical, opengraph, twitter, keywords, alternateUrls } = Astro.props;
+const { title, description, lang = "pt-BR", canonical, opengraph, twitter, keywords, alternateUrls, currentPage = "home" } = Astro.props;
 
 const language = lang === "pt-BR" || lang === "pt" ? "pt" : "en";
 const ogLocale = language === "pt" ? "pt_BR" : "en_US";
@@ -44,11 +45,15 @@ if (alternateUrls) {
   ptUrl = baseUrl + currentPath.replace(/^\/en\//, "/pt/");
 }
 
+// Ensure trailing slashes for Hreflang to match Canonical
+if (!enUrl.endsWith('/')) enUrl += '/';
+if (!ptUrl.endsWith('/')) ptUrl += '/';
+
 // Merge twitter defaults
 const twitterConfig = {
   card: "summary_large_image" as const,
-  site: "@downkingo",
-  creator: "@downkingo",
+  site: "@EMANUELSOARES71",
+  creator: "@EMANUELSOARES71",
   ...twitter
 };
 ---
@@ -73,6 +78,7 @@ const twitterConfig = {
         meta: [
           { name: "keywords", content: keywords },
           { name: "theme-color", content: "#050505" },
+          { name: "robots", content: "index, follow, max-image-preview:large" },
           { property: "og:locale", content: ogLocale },
         ],
         link: [
@@ -98,7 +104,7 @@ const twitterConfig = {
     <script type="text/partytown" defer data-domain="downkingo.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
-    <Navigation lang={language} currentPage="home" />
+    <Navigation lang={language} currentPage={currentPage} />
 
     <main class="relative z-10 w-full overflow-hidden">
         <slot />

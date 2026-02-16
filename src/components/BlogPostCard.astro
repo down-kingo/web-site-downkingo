@@ -1,0 +1,298 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  heroImage?: any;
+  heroImageAlt?: string;
+  tags: string[];
+  category: string;
+  slug: string;
+  lang: 'en' | 'pt';
+  author?: string;
+}
+
+const { title, description, pubDate, heroImage, heroImageAlt, tags, category, slug, lang, author = 'Emanuel Nunes' } = Astro.props;
+
+const basePath = lang === 'pt' ? '/pt' : '/en';
+const href = `${basePath}/blog/${slug}`;
+
+const formattedDate = pubDate.toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const initial = author.charAt(0).toUpperCase();
+const readLabel = lang === 'pt' ? 'min de leitura' : 'min read';
+---
+
+<article class="okiro-card">
+  <a href={href} class="okiro-card-link" aria-label={title}></a>
+  <div class="okiro-card-container">
+    {/* Image */}
+    <div class="okiro-card-image">
+      {heroImage ? (
+        <Image
+          src={heroImage}
+          alt={heroImageAlt || title}
+          width={600}
+          height={330}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="okiro-card-placeholder">
+          <span>K</span>
+        </div>
+      )}
+    </div>
+
+    {/* Content */}
+    <div class="okiro-card-content">
+      <h2 class="okiro-card-title">
+        <a href={href}>{title}</a>
+      </h2>
+      <div class="okiro-card-meta">
+        <div class="okiro-card-avatar">
+          <span>{initial}</span>
+        </div>
+        <div class="okiro-card-author-info">
+          <span class="okiro-card-author">{author}</span>
+          <span class="okiro-card-date">{formattedDate}</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Tags */}
+    {tags.length > 0 && (
+      <div class="okiro-card-tags">
+        {tags.slice(0, 3).map((tag) => (
+          <span class="okiro-tag">{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .okiro-card {
+    position: relative;
+    border-radius: 29px;
+    background-color: #15171A;
+    transition: transform 0.2s ease;
+    overflow: hidden;
+  }
+
+  .okiro-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .okiro-card-link {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+  }
+
+  .okiro-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .okiro-card-image img {
+    display: block;
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+  }
+
+  .okiro-card-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 330px;
+    background-color: #191C21;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+  }
+
+  .okiro-card-placeholder span {
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    user-select: none;
+  }
+
+  .okiro-card-content {
+    padding: 0 28px 24px;
+  }
+
+  .okiro-card-title {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.2;
+    max-width: 360px;
+    margin: 20px 0 12px -1px;
+    color: #f7f9f9;
+  }
+
+  .okiro-card-title a {
+    position: relative;
+    z-index: 2;
+    color: inherit;
+    text-decoration: none;
+    pointer-events: auto;
+  }
+
+  .okiro-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #f7f9f9;
+  }
+
+  .okiro-card-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #252831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid #000;
+  }
+
+  .okiro-card-avatar span {
+    font-size: 14px;
+    font-weight: 900;
+    color: #f7f9f9;
+  }
+
+  .okiro-card-author {
+    display: block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .okiro-card-date {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  .okiro-card-tags {
+    padding: 0 28px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .okiro-tag {
+    font-size: 9px;
+    line-height: 10px;
+    display: inline-block;
+    padding: 12px 12px 10px;
+    text-indent: 3px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    background-color: #1F2328;
+    color: #f7f9f9;
+    font-weight: 800;
+    transition: background-color 0.15s ease;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .okiro-tag:hover {
+    background-color: #252831;
+  }
+
+  @media (max-width: 1280px) {
+    .okiro-card-image img,
+    .okiro-card-placeholder {
+      height: 280px;
+    }
+
+    .okiro-card-title {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .okiro-card-image img,
+    .okiro-card-placeholder {
+      height: 230px;
+    }
+
+    .okiro-card-content {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+
+    .okiro-card-title {
+      font-size: 20px;
+    }
+
+    .okiro-card-meta {
+      font-size: 14px;
+    }
+
+    .okiro-card-avatar {
+      width: 34px;
+      height: 34px;
+    }
+
+    .okiro-card-avatar span {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .okiro-card-image img,
+    .okiro-card-placeholder {
+      height: 200px;
+    }
+
+    .okiro-card-content {
+      padding: 0 20px 20px;
+    }
+
+    .okiro-card-title {
+      font-size: 18px;
+    }
+
+    .okiro-card-tags {
+      padding: 0 20px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .okiro-card {
+      border-radius: 22px;
+    }
+
+    .okiro-card-image img,
+    .okiro-card-placeholder {
+      border-top-left-radius: 22px;
+      border-top-right-radius: 22px;
+    }
+
+    .okiro-card-title {
+      font-size: 22px;
+    }
+  }
+</style>

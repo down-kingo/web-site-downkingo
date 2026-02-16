@@ -19,18 +19,22 @@ export default defineConfig({
     // This dramatically improves LCP on mobile devices
     inlineStylesheets: "always",
   },
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "pt"],
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: true,
-    },
-  },
   integrations: [
     icon(),
     starlight({
       title: "DownKingo Docs",
+      disable404Route: true,
+      defaultLocale: "root",
+      locales: {
+        root: {
+          label: "English",
+          lang: "en",
+        },
+        pt: {
+          label: "Português",
+          lang: "pt-BR",
+        },
+      },
       favicon: "/icon.ico",
       social: [
         {
@@ -59,19 +63,7 @@ export default defineConfig({
         },
       ],
     }),
-    sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: {
-          en: "en",
-          pt: "pt-BR",
-        },
-      },
-      serialize(item) {
-        item.lastmod = new Date().toISOString();
-        return item;
-      },
-    }),
+    sitemap(),
     partytown({
       config: {
         forward: ["plausible"],

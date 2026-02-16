@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const content = {
   pt: {
     homeLink: '/pt/',
-    tagline: 'O kit de ferramentas de mídia open source definitivo.<br />Desenvolvido com Wails v2 + React.',
+    tagline: 'O kit de ferramentas de mídia open source definitivo.<br />Desenvolvido com Wails v3 + React.',
     product: 'Produto',
     download: 'Baixar',
     downloadLink: '/pt/download',
@@ -18,6 +18,7 @@ const content = {
     roadmap: 'Roadmap',
     resources: 'Recursos',
     docs: 'Docs',
+    blog: 'Blog',
     qa: 'Q&A',
     copyright: '© 2026 DownKingo. MIT License.',
     designBy: 'Design por ',
@@ -31,7 +32,7 @@ const content = {
   },
   en: {
     homeLink: '/en/',
-    tagline: 'The ultimate open source media toolkit.<br />Built with Wails v2 + React.',
+    tagline: 'The ultimate open source media toolkit.<br />Built with Wails v3 + React.',
     product: 'Product',
     download: 'Download',
     downloadLink: '/en/download',
@@ -39,6 +40,7 @@ const content = {
     roadmap: 'Roadmap',
     resources: 'Resources',
     docs: 'Docs',
+    blog: 'Blog',
     qa: 'Q&A',
     copyright: '© 2026 DownKingo. MIT License.',
     designBy: 'Designed by ',
@@ -96,6 +98,7 @@ const t = content[lang];
 
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.resources}</span>
+                <a href={lang === 'pt' ? '/pt/blog' : '/en/blog'} class="text-muted hover:text-primary transition-colors">{t.blog}</a>
                 <a href="/docs" class="text-muted hover:text-primary transition-colors">{t.docs}</a>
                 <a href={`${t.homeLink}#faq`} class="text-muted hover:text-primary transition-colors">{t.qa}</a>
                 <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors">GitHub</a>

@@ -1,0 +1,508 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../../components/BlogPostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => {
+  return data.lang === 'en' && !data.draft;
+})).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featured = posts[0];
+const remaining = posts.slice(1);
+
+const featuredSlug = featured ? featured.id.replace(/^en\//, '').replace(/\.md$/, '') : '';
+const featuredHref = `/en/blog/${featuredSlug}`;
+const featuredDate = featured?.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const featuredInitial = featured?.data.author?.charAt(0).toUpperCase() || 'D';
+
+const wordCount = featured?.body ? featured.body.split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+const baseUrl = 'https://downkingo.com';
+const blogJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "DownKingo Blog",
+  "description": "Guides, tutorials, and updates about DownKingo — the free open-source video downloader, media converter, and AI transcription toolkit.",
+  "url": `${baseUrl}/en/blog/`,
+  "isPartOf": { "@type": "WebSite", "name": "DownKingo", "url": baseUrl },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": posts.length,
+    "itemListElement": posts.map((post, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `${baseUrl}/en/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+    }))
+  }
+});
+---
+
+<BaseLayout
+  title="Blog | DownKingo"
+  description="Guides, tutorials, and updates about DownKingo — the free open-source video downloader and media toolkit. Download YouTube, TikTok, Instagram videos, convert formats, and transcribe audio with AI."
+  lang="en"
+  canonical="https://downkingo.com/en/blog/"
+  keywords="downkingo blog, video downloader, download youtube videos, tiktok downloader, media converter, ai transcription, open source"
+  alternateUrls={{ en: '/en/blog/', pt: '/pt/blog/' }}
+  opengraph={{
+    basic: {
+      title: "Blog | DownKingo",
+      type: "website",
+      image: "https://downkingo.com/og-image.png",
+      url: "https://downkingo.com/en/blog/",
+    },
+    optional: {
+      description: "Guides, tutorials, and updates about DownKingo.",
+    },
+  }}
+  currentPage="blog"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={blogJsonLd} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap"></noscript>
+  </Fragment>
+
+  <div class="okiro-blog">
+    <h1 class="okiro-blog-title">Blog</h1>
+    {/* Hero / Featured post */}
+    {featured && (
+      <section class="okiro-hero-section">
+        <article class="okiro-hero">
+          <div class="okiro-hero-container">
+            {/* Image */}
+            {featured.data.heroImage ? (
+              <a href={featuredHref} class="okiro-hero-image">
+                <Image src={featured.data.heroImage} alt={featured.data.heroImageAlt || featured.data.title} width={1200} height={675} loading="eager" />
+              </a>
+            ) : (
+              <a href={featuredHref} class="okiro-hero-image okiro-hero-placeholder">
+                <span>K</span>
+              </a>
+            )}
+
+            {/* Content */}
+            <div class="okiro-hero-content">
+              {/* Tags */}
+              {featured.data.tags.length > 0 && (
+                <div class="okiro-hero-tags">
+                  {featured.data.tags.slice(0, 3).map((tag) => (
+                    <span class="okiro-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              {/* Title */}
+              <h2 class="okiro-hero-title">
+                <a href={featuredHref}>{featured.data.title}</a>
+              </h2>
+
+              {/* Excerpt */}
+              {featured.data.description && (
+                <p class="okiro-hero-excerpt">{featured.data.description}</p>
+              )}
+
+              {/* Meta */}
+              <div class="okiro-hero-meta">
+                <div class="okiro-hero-avatar">
+                  <span>{featuredInitial}</span>
+                </div>
+                <div class="okiro-hero-author-info">
+                  <span class="okiro-hero-author">{featured.data.author}</span>
+                  <span class="okiro-hero-date">{featuredDate} &middot; {readingTime} min read</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    )}
+
+    {/* Post grid */}
+    {remaining.length > 0 && (
+      <section class="okiro-loop-section">
+        <div class="okiro-loop-wrap">
+          {remaining.map((post) => {
+            const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+            return (
+              <BlogPostCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                heroImage={post.data.heroImage}
+                heroImageAlt={post.data.heroImageAlt}
+                tags={post.data.tags}
+                category={post.data.category}
+                slug={slug}
+                lang="en"
+                author={post.data.author}
+              />
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    {/* Empty state */}
+    {posts.length === 0 && (
+      <div class="okiro-empty">
+        <p>No posts yet.</p>
+      </div>
+    )}
+
+  </div>
+</BaseLayout>
+
+<style>
+  .okiro-blog {
+    font-family: 'Nunito', sans-serif;
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+
+  .okiro-blog-title {
+    max-width: 1240px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(247, 249, 249, 0.35);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Hero ────────────────────────────────── */
+  .okiro-hero-section {
+    max-width: 1240px;
+    margin: 0 auto 7vh;
+    padding: 0 20px;
+  }
+
+  .okiro-hero-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .okiro-hero-image {
+    position: relative;
+    flex: 0 0 50%;
+    min-height: 600px;
+    margin-right: 5%;
+    display: block;
+  }
+
+  .okiro-hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 44px;
+    display: block;
+  }
+
+  .okiro-hero-placeholder {
+    background-color: #15171A;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .okiro-hero-placeholder span {
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    user-select: none;
+  }
+
+  .okiro-hero-content {
+    padding: 5vh 0;
+  }
+
+  .okiro-hero-tags {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-left: -3px;
+  }
+
+  .okiro-tag {
+    font-size: 9px;
+    line-height: 10px;
+    display: inline-block;
+    padding: 12px 12px 10px;
+    text-indent: 3px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    background-color: #1F2328;
+    color: #f7f9f9;
+    font-weight: 800;
+    transition: background-color 0.15s ease;
+  }
+
+  .okiro-tag:hover {
+    background-color: #252831;
+  }
+
+  .okiro-hero-title {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 30px -2px;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .okiro-hero-title a::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin-top: 8px;
+    margin-left: 4px;
+    border-radius: 100px;
+    background-color: transparent;
+    transition: background-color 0.15s ease;
+  }
+
+  .okiro-hero-title a:hover::after {
+    background-color: #f24e1e;
+  }
+
+  .okiro-hero-excerpt {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+    max-width: 480px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: #f7f9f9;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow-y: hidden;
+  }
+
+  .okiro-hero-meta {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #252831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 9px;
+    border: 2px solid #000;
+  }
+
+  .okiro-hero-avatar span {
+    font-size: 14px;
+    font-weight: 900;
+    color: #f7f9f9;
+  }
+
+  .okiro-hero-author {
+    display: block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .okiro-hero-date {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  /* ── Loop / Grid ────────────────────────── */
+  .okiro-loop-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .okiro-loop-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .okiro-loop-wrap > :global(article) {
+    flex: 1 0 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
+  }
+
+  .okiro-loop-wrap > :global(article:last-child:nth-child(3n+1)) {
+    max-width: calc(50% - 10px);
+  }
+
+  /* ── Empty state ────────────────────────── */
+  .okiro-empty {
+    text-align: center;
+    padding: 20vh 20px;
+    color: rgba(247, 249, 249, 0.3);
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 1280px) {
+    .okiro-hero-image {
+      min-height: 500px;
+    }
+
+    .okiro-hero-title {
+      font-size: 44px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .okiro-hero-container {
+      margin-bottom: 45px;
+    }
+
+    .okiro-hero-image {
+      min-height: 450px;
+    }
+
+    .okiro-hero-title {
+      font-size: 40px;
+    }
+
+    .okiro-hero-meta {
+      font-size: 14px;
+    }
+
+    .okiro-hero-excerpt {
+      font-size: 14px;
+    }
+
+    .okiro-hero-avatar {
+      width: 34px;
+      height: 34px;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .okiro-blog {
+      padding-top: 100px;
+    }
+
+    .okiro-hero-container {
+      flex-wrap: wrap;
+    }
+
+    .okiro-hero-image {
+      flex-basis: 100%;
+      min-height: initial;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .okiro-hero-image img {
+      position: initial;
+      height: 450px;
+      border-radius: 29px;
+    }
+
+    .okiro-hero-placeholder {
+      min-height: 300px;
+    }
+
+    .okiro-hero-content {
+      padding: 0 25px;
+    }
+
+    .okiro-hero-title {
+      font-size: 48px;
+      margin: 5px 0 25px;
+    }
+
+    .okiro-hero-title a::after {
+      display: none;
+    }
+
+    .okiro-hero-excerpt {
+      max-width: 100%;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .okiro-loop-wrap > :global(article) {
+      flex: 1 0 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+    }
+
+    .okiro-loop-wrap > :global(article:last-child:nth-child(3n+1)) {
+      max-width: 100%;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+    .okiro-hero-image img {
+      height: 340px;
+      border-radius: 22px;
+    }
+
+    .okiro-hero-content {
+      padding: 0 10px;
+    }
+
+    .okiro-hero-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .okiro-loop-wrap > :global(article) {
+      flex: 1 0 100%;
+      max-width: 100%;
+    }
+
+    .okiro-loop-wrap > :global(article:last-child:nth-child(3n+1)) {
+      max-width: 100%;
+    }
+
+  }
+
+  @media (max-width: 320px) {
+    .okiro-hero-image img {
+      height: 280px;
+    }
+
+    .okiro-hero-title {
+      font-size: 32px;
+    }
+  }
+</style>

@@ -3,8 +3,6 @@ title: Development
 description: Set up your development environment for DownKingo.
 ---
 
-# Development
-
 Want to contribute or build DownKingo yourself? Here's everything you need to get started.
 
 ## Prerequisites
@@ -56,7 +54,7 @@ This will start the app in development mode with hot-reload enabled.
 
 ## Project Structure
 
-```
+```txt
 downkingo/
 ├── internal/              # Backend logic (Go)
 │   ├── auth/              # OAuth2 Device Flow
@@ -113,7 +111,7 @@ Wails includes hot-reload by default in dev mode. Frontend changes reload instan
 
 Create a `.env` file in the root for local configuration:
 
-```env
+```ini
 GITHUB_CLIENT_ID=your_client_id
 DOWNKINGO_DEV_MODE=true
 ```

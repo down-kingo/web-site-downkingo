@@ -1,0 +1,181 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../../../components/BlogPostCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.lang === 'en' && !data.draft);
+
+  const allTags = new Set<string>();
+  posts.forEach(post => post.data.tags.forEach(tag => allTags.add(tag)));
+
+  return Array.from(allTags).map(tag => {
+    const filtered = posts
+      .filter(p => p.data.tags.includes(tag))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    return {
+      params: { tag },
+      props: { tag, posts: filtered },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+const tagTitle = tag.charAt(0).toUpperCase() + tag.slice(1);
+const baseUrl = 'https://downkingo.com';
+
+const tagJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": `${tagTitle} — DownKingo Blog`,
+  "url": `${baseUrl}/en/blog/tag/${tag}/`,
+  "isPartOf": { "@type": "WebSite", "name": "DownKingo", "url": baseUrl },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": posts.length,
+    "itemListElement": posts.map((post: any, i: number) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `${baseUrl}/en/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+    }))
+  }
+});
+---
+
+<BaseLayout
+  title={`${tagTitle} — Blog | DownKingo`}
+  description={`Browse all articles tagged "${tag}" on the DownKingo blog. Guides, tutorials, and tips about ${tag}.`}
+  lang="en"
+  canonical={`https://downkingo.com/en/blog/tag/${tag}/`}
+  keywords={`${tag}, downkingo, blog, video downloader, open source`}
+  alternateUrls={{ en: `/en/blog/tag/${tag}/`, pt: `/pt/blog/tag/${tag}/` }}
+  opengraph={{
+    basic: {
+      title: `${tagTitle} — Blog | DownKingo`,
+      type: "website",
+      image: "https://downkingo.com/og-image.png",
+      url: `https://downkingo.com/en/blog/tag/${tag}/`,
+    },
+    optional: {
+      description: `All articles tagged "${tag}" on the DownKingo blog.`,
+    },
+  }}
+  currentPage="blog"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={tagJsonLd} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap"></noscript>
+  </Fragment>
+
+  <div class="tag-page">
+    <div class="tag-header">
+      <a href="/en/blog/" class="tag-back">&larr; Blog</a>
+      <h1 class="tag-title">
+        <span class="tag-label">{tag}</span>
+        <span class="tag-count">{posts.length} {posts.length === 1 ? 'article' : 'articles'}</span>
+      </h1>
+    </div>
+
+    <div class="tag-grid">
+      {posts.map((post: any) => {
+        const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+        return (
+          <BlogPostCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            heroImage={post.data.heroImage}
+            heroImageAlt={post.data.heroImageAlt}
+            tags={post.data.tags}
+            category={post.data.category}
+            slug={slug}
+            lang="en"
+            author={post.data.author}
+          />
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .tag-page {
+    font-family: 'Nunito', sans-serif;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 140px 20px 60px;
+  }
+
+  .tag-header {
+    margin-bottom: 48px;
+  }
+
+  .tag-back {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(247, 249, 249, 0.5);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+
+  .tag-back:hover {
+    color: #f7f9f9;
+  }
+
+  .tag-title {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .tag-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 14px 20px 12px;
+    background: #1F2328;
+    border-radius: 100px;
+    color: #f7f9f9;
+  }
+
+  .tag-count {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(247, 249, 249, 0.35);
+  }
+
+  .tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .tag-grid > :global(article) {
+    flex: 1 0 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
+  }
+
+  @media (max-width: 768px) {
+    .tag-page { padding-top: 110px; }
+    .tag-grid > :global(article) {
+      flex: 1 0 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tag-grid > :global(article) {
+      flex: 1 0 100%;
+      max-width: 100%;
+    }
+  }
+</style>

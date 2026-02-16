@@ -3,13 +3,11 @@ title: Installation
 description: Download and install DownKingo on your system.
 ---
 
-# Installation
-
 DownKingo is available for **Windows**, **macOS**, and **Linux**.
 
 ## Download
 
-Visit our [Download Page](/download) to get the latest version for your operating system.
+Visit our [Download Page](/en/download/) to get the latest version for your operating system.
 
 ### Windows
 
