@@ -1,5 +1,5 @@
 
 /download /en/download/ 301
 /download/ /en/download/ 301
-/install /docs/installation/ 301
-/installation /docs/installation/ 301
+/install /installation 301
+/docs/installation/ /installation 301

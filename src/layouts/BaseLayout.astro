@@ -25,7 +25,11 @@ const ogLocale = language === "pt" ? "pt_BR" : "en_US";
 // Hreflang logic
 const currentPath = Astro.url.pathname;
 const isPt = language === "pt";
+// Strict canonical domain without trailing slash initially
 const baseUrl = "https://downkingo.com";
+
+// Helper to ensure trailing slash
+const ensureSlash = (url: string) => url.endsWith('/') ? url : `${url}/`;
 
 // Build alternate URLs
 let enUrl: string;
@@ -37,17 +41,41 @@ if (alternateUrls) {
   ptUrl = alternateUrls.pt ? baseUrl + alternateUrls.pt : baseUrl + currentPath;
 } else if (isPt) {
   // PT page: replace /pt/ prefix with /en/ for EN alternate
-  enUrl = baseUrl + currentPath.replace(/^\/pt\//, "/en/");
+  // Handle root /pt/ specifically to avoid double slash issues or bad replace
+  const cleanPath = currentPath.replace(/\/$/, ""); // Strip trailing slash for processing
+  const pathWithoutLang = cleanPath.replace(/^\/pt/, "") || ""; // Remove /pt
+  
+  // Construct new paths
+  enUrl = baseUrl + (pathWithoutLang ? `/en${pathWithoutLang}` : "/"); // Default to root if empty
+  if (pathWithoutLang && !pathWithoutLang.startsWith('/')) enUrl = baseUrl + `/en/${pathWithoutLang}`; // Safety check
+  
+  // Actually simplest way is regex if path structure is consistent:
+  // /pt/foo -> /en/foo
+  enUrl = baseUrl + currentPath.replace(/^\/pt\//, "/en/").replace(/^\/pt$/, "/"); 
   ptUrl = baseUrl + currentPath;
 } else {
   // EN page: replace /en/ prefix with /pt/ for PT alternate
-  enUrl = baseUrl + currentPath;
-  ptUrl = baseUrl + currentPath.replace(/^\/en\//, "/pt/");
+  // If we are at root /, currentPath is "/"
+  if (currentPath === "/" || currentPath === "") {
+      enUrl = baseUrl + "/";
+      ptUrl = baseUrl + "/pt/";
+  } else {
+      enUrl = baseUrl + currentPath;
+      ptUrl = baseUrl + currentPath.replace(/^\/en\//, "/pt/");
+      // Handle case where path is just /en/ (if that ever happens)
+      if (currentPath === "/en/" || currentPath === "/en") {
+          ptUrl = baseUrl + "/pt/";
+      } else if (!currentPath.startsWith('/en/')) {
+         // Page at root like /docs -> /pt/docs (assuming simple mapping, or no mapping?)
+         // If generic page, assume direct mapping
+         ptUrl = baseUrl + "/pt" + currentPath;
+      }
+  }
 }
 
-// Ensure trailing slashes for Hreflang to match Canonical
-if (!enUrl.endsWith('/')) enUrl += '/';
-if (!ptUrl.endsWith('/')) ptUrl += '/';
+// Ensure trailing slashes for Hreflang to match Canonical standard
+enUrl = ensureSlash(enUrl);
+ptUrl = ensureSlash(ptUrl);
 
 // Merge twitter defaults
 const twitterConfig = {

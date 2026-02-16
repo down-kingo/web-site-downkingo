@@ -1,9 +1,7 @@
 ---
 title: Roadmap
-description: See what's coming next for DownKingo.
+description: Discover the DownKingo development roadmap. See upcoming features like playlist downloads and browser extensions.
 ---
-
-# Roadmap
 
 DownKingo is built in public. Here's our development roadmap.
 

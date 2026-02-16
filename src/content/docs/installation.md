@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Download and install DownKingo on your system.
+description: Step-by-step guide to download and install DownKingo on Windows, macOS, and Linux. Includes setup instructions.
 ---
 
 DownKingo is available for **Windows**, **macOS**, and **Linux**.

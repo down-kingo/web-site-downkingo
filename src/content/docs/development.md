@@ -1,6 +1,6 @@
 ---
 title: Development
-description: Set up your development environment for DownKingo.
+description: Learn how to set up your local development environment for contributing to the open-source DownKingo project.
 ---
 
 Want to contribute or build DownKingo yourself? Here's everything you need to get started.

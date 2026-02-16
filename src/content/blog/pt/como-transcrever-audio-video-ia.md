@@ -1,6 +1,6 @@
 ---
 title: "Como Transcrever Áudio e Vídeo com IA Usando o DownKingo"
-description: "Transcreva áudio e vídeo em texto com IA no DownKingo. Usa Whisper da OpenAI, funciona offline e suporta múltiplos idiomas. Grátis, privado, sem limites."
+description: "Transcreva áudio/vídeo em texto offline com DownKingo e IA Whisper. Alta precisão, multilíngue e 100% privado. Gratuito e ilimitado."
 pubDate: 2026-02-13
 refId: "transcriber-guide"
 author: "Emanuel Nunes"
