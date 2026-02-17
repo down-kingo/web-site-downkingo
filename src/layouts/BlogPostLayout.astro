@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { Picture } from 'astro:assets';
+import { Picture, getImage } from 'astro:assets';
 
 interface RelatedPost {
   title: string;
@@ -72,7 +72,22 @@ const alternateUrls = {
 
 // JSON-LD might need adjustment if heroImage is an object now.
 // We'll use heroImage.src if it exists, otherwise assume string or undefined.
-const imageUrl = heroImage?.src ? new URL(heroImage.src, baseUrl).href : (typeof heroImage === 'string' ? `${baseUrl}${heroImage}` : `${baseUrl}/og-image.png`);
+// Resolve the hero image URL explicitly to WebP for SEO/JSON-LD
+let imageUrl = `${baseUrl}/og-image.png`;
+if (heroImage) {
+  try {
+    const optimizedHero = await getImage({
+      src: heroImage,
+      format: 'webp',
+      width: 1200,
+      height: 675
+    });
+    imageUrl = new URL(optimizedHero.src, baseUrl).href;
+  } catch (e) {
+    // Fallback if image processing fails or if it's a string path
+    imageUrl = typeof heroImage === 'string' ? `${baseUrl}${heroImage}` : `${baseUrl}/og-image.png`;
+  }
+}
 
 const categoryLabel = lang === 'pt'
   ? { tutorial: 'Tutorial', announcement: 'Anúncio', guide: 'Guia', release: 'Lançamento' }[category] || category
