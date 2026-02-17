@@ -206,6 +206,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
                <Picture 
                  src={heroImage} 
                  formats={['avif', 'webp']} 
+                 fallbackFormat="webp" 
                  alt={heroImageAlt || title} 
                  loading="eager" 
                  width={1200}
@@ -307,7 +308,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
               <a href={`${basePath}/blog/${related.slug}/`} class="okiro-nextprev-link" aria-label={related.title}></a>
               {related.heroImage && (
                 <div class="okiro-nextprev-image">
-                  <Picture src={related.heroImage} formats={['avif', 'webp']} alt={related.title} width={600} height={338} loading="lazy" />
+                  <Picture src={related.heroImage} formats={['avif', 'webp']} fallbackFormat="webp" alt={related.title} width={600} height={338} loading="lazy" />
                 </div>
               )}
               <div class="okiro-nextprev-content">
