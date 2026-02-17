@@ -81,7 +81,7 @@ const blogJsonLd = JSON.stringify({
             {/* Image */}
             {featured.data.heroImage ? (
               <a href={featuredHref} class="okiro-hero-image">
-                <Image src={featured.data.heroImage} alt={featured.data.heroImageAlt || featured.data.title} width={1200} height={675} loading="eager" />
+                <Image src={featured.data.heroImage} alt={featured.data.heroImageAlt || featured.data.title} width={1200} height={675} loading="eager" format="webp" />
               </a>
             ) : (
               <a href={featuredHref} class="okiro-hero-image okiro-hero-placeholder">
