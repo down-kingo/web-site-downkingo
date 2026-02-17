@@ -12,7 +12,7 @@ const featured = posts[0];
 const remaining = posts.slice(1);
 
 const featuredSlug = featured ? featured.id.replace(/^en\//, '').replace(/\.md$/, '') : '';
-const featuredHref = `/en/blog/${featuredSlug}`;
+const featuredHref = `/en/blog/${featuredSlug}/`;
 const featuredDate = featured?.data.pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -45,7 +45,7 @@ const blogJsonLd = JSON.stringify({
 
 <BaseLayout
   title="Blog | DownKingo"
-  description="Guides, tutorials, and updates about DownKingo — the free open-source video downloader and media toolkit. Download YouTube, TikTok, Instagram videos, convert formats, and transcribe audio with AI."
+  description="Guides, tutorials and updates about DownKingo — free open-source media toolkit. Download videos, convert formats and transcribe audio with AI."
   lang="en"
   canonical="https://downkingo.com/en/blog/"
   keywords="downkingo blog, video downloader, download youtube videos, tiktok downloader, media converter, ai transcription, open source"

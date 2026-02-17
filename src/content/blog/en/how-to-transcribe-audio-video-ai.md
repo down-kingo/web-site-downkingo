@@ -1,5 +1,5 @@
 ---
-title: "How to Transcribe Audio and Video with AI Using DownKingo"
+title: "Transcribe Audio & Video with AI Using DownKingo"
 description: "Transcribe audio/video to text offline with DownKingo using OpenAI Whisper. High accuracy, multi-language support, and 100% private. Free and unlimited."
 pubDate: 2026-02-13
 refId: "transcriber-guide"
@@ -11,7 +11,7 @@ category: "tutorial"
 lang: "en"
 draft: false
 howTo:
-  name: "How to Transcribe Audio and Video with AI Using DownKingo"
+  name: "Transcribe Audio & Video with AI Using DownKingo"
   description: "Transcribe audio and video to text using Whisper AI locally and offline with DownKingo."
   totalTime: "PT5M"
   steps:

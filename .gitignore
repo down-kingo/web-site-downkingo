@@ -42,3 +42,5 @@ temp-api-analysis/
 
 # Claude code
 .claude/
+
+issues_reports/

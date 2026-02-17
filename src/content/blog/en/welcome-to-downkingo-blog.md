@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the DownKingo Blog"
-description: "Discover the DownKingo blog: tutorials, release notes, and tips for downloading videos, converting formats, and transcribing audio with AI. Free and open source."
+description: "Discover the DownKingo blog: tutorials, tips for downloading videos, converting formats, and transcribing audio with AI. Free and open source."
 pubDate: 2026-02-12
 refId: "welcome"
 author: "Emanuel Nunes"

@@ -1,5 +1,5 @@
 ---
-title: "Best Open Source Video Downloaders in 2026: An Honest Comparison"
+title: "Best Open Source Video Downloaders in 2026"
 description: "Compare the best open-source video downloaders in 2026: yt-dlp, DownKingo, Tartube, Parabolic, and Stacher. Features, platforms, and honest pros and cons."
 pubDate: 2026-02-08
 refId: "open-source-comparison"

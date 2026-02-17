@@ -1,5 +1,5 @@
 ---
-title: "How to Convert Video Formats: MP4, MKV, WebM, MP3 and More"
+title: "Convert Video Formats: MP4, MKV, WebM & More"
 description: "Guide to converting video formats (MP4, MKV, WebM, MP3). Learn about codecs vs containers, remuxing, and how to use DownKingo's free built-in converter."
 pubDate: 2026-02-04
 refId: "format-conversion"

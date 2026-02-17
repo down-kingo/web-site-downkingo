@@ -62,12 +62,12 @@ const encodedUrl = encodeURIComponent(canonicalUrl);
 
 // Author page URL
 const authorSlug = author.toLowerCase().replace(/\s+/g, '-');
-const authorUrl = lang === 'pt' ? `/pt/autor/${authorSlug}` : `/en/author/${authorSlug}`;
+const authorUrl = lang === 'pt' ? `/pt/autor/${authorSlug}/` : `/en/author/${authorSlug}/`;
 const encodedTitle = encodeURIComponent(title);
 
 const alternateUrls = {
-  en: lang === 'en' ? `/en/blog/${slug}` : (translatedSlug ? `/en/blog/${translatedSlug}` : `/en/blog/${slug}`),
-  pt: lang === 'pt' ? `/pt/blog/${slug}` : (translatedSlug ? `/pt/blog/${translatedSlug}` : `/pt/blog/${slug}`),
+  en: lang === 'en' ? `/en/blog/${slug}/` : (translatedSlug ? `/en/blog/${translatedSlug}/` : `/en/blog/${slug}/`),
+  pt: lang === 'pt' ? `/pt/blog/${slug}/` : (translatedSlug ? `/pt/blog/${translatedSlug}/` : `/pt/blog/${slug}/`),
 };
 
 // JSON-LD might need adjustment if heroImage is an object now.
@@ -305,7 +305,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
         <div class="okiro-nextprev-wrap">
           {relatedPosts.slice(0, 2).map((related, i) => (
             <section class:list={["okiro-nextprev-card", { "okiro-nextprev-older": i === 1 }]}>
-              <a href={`${basePath}/blog/${related.slug}`} class="okiro-nextprev-link" aria-label={related.title}></a>
+              <a href={`${basePath}/blog/${related.slug}/`} class="okiro-nextprev-link" aria-label={related.title}></a>
               {related.heroImage && (
                 <div class="okiro-nextprev-image">
                   <Picture src={related.heroImage} formats={['avif', 'webp']} alt={related.title} width={600} height={338} loading="lazy" />

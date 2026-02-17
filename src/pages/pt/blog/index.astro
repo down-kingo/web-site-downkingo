@@ -12,7 +12,7 @@ const featured = posts[0];
 const remaining = posts.slice(1);
 
 const featuredSlug = featured ? featured.id.replace(/^pt\//, '').replace(/\.md$/, '') : '';
-const featuredHref = `/pt/blog/${featuredSlug}`;
+const featuredHref = `/pt/blog/${featuredSlug}/`;
 const featuredDate = featured?.data.pubDate.toLocaleDateString('pt-BR', {
   year: 'numeric',
   month: 'long',
@@ -44,15 +44,15 @@ const blogJsonLd = JSON.stringify({
 ---
 
 <BaseLayout
-  title="Blog | DownKingo"
-  description="Guias, tutoriais e novidades sobre o DownKingo — kit de ferramentas de mídia open source gratuito. Baixe vídeos do YouTube, TikTok, Instagram, converta formatos e transcreva áudio com IA."
+  title="Blog - Guias e Tutoriais de Download | DownKingo"
+  description="Guias e tutoriais sobre o DownKingo — kit de ferramentas open source. Baixe videos, converta formatos e transcreva audio com IA."
   lang="pt-BR"
   canonical="https://downkingo.com/pt/blog/"
   keywords="downkingo blog, baixar vídeos, download youtube, tiktok downloader, conversor de mídia, transcrição ia, open source"
   alternateUrls={{ en: '/en/blog/', pt: '/pt/blog/' }}
   opengraph={{
     basic: {
-      title: "Blog | DownKingo",
+      title: "Blog - Guias e Tutoriais de Download | DownKingo",
       type: "website",
       image: "https://downkingo.com/og-image.png",
       url: "https://downkingo.com/pt/blog/",

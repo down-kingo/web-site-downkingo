@@ -1,6 +1,6 @@
 ---
-title: "Como Baixar Vídeos do YouTube em 2026 (4K, MP3 e Mais)"
-description: "Baixe vídeos do YouTube em 4K, 8K ou MP3 grátis com o DownKingo. Guia passo a passo com seleção de formato, opções de qualidade e extração de áudio em 2026."
+title: "Baixar Videos do YouTube em 2026 (4K, MP3 e Mais)"
+description: "Baixe videos do YouTube em 4K, 8K ou MP3 gratis com o DownKingo. Guia com selecao de formato, qualidade e extracao de audio."
 pubDate: 2026-02-10
 refId: "youtube-guide"
 author: "Emanuel Nunes"
