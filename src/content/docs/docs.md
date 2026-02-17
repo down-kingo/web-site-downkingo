@@ -19,7 +19,7 @@ DownKingo is a complete rewrite focused on **performance**, **design**, and **us
 
 ## Quick Links
 
-- [Features](/features) — Explore all capabilities
-- [Installation](/installation) — Download and install
-- [Development](/development) — Set up your dev environment
-- [Roadmap](/roadmap) — See what's coming next
+- [Features](/features/) — Explore all capabilities
+- [Installation](/installation/) — Download and install
+- [Development](/development/) — Set up your dev environment
+- [Roadmap](/roadmap/) — See what's coming next

@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Instale o DownKingo"
       text: "Baixe o app na página de download e siga o processo de instalação normal. Na primeira execução, ele baixa yt-dlp e FFmpeg automaticamente."
-      url: "/pt/download"
+      url: "/pt/download/"
     - name: "Abra o Transcritor"
       text: "Navegue até a aba Transcritor na navegação principal do app."
     - name: "Baixe o Modelo"
@@ -121,13 +121,13 @@ Em hardware moderno, um áudio de 10 minutos é transcrito em cerca de 1-3 minut
 
 ---
 
-Combine a transcrição com outras ferramentas do DownKingo: [baixe vídeos do YouTube](/pt/blog/como-baixar-videos-youtube-2026) e transcreva localmente, ou [converta formatos de vídeo](/pt/blog/guia-converter-formatos-video) antes de processar.
+Combine a transcrição com outras ferramentas do DownKingo: [baixe vídeos do YouTube](/pt/blog/como-baixar-videos-youtube-2026/) e transcreva localmente, ou [converta formatos de vídeo](/pt/blog/guia-converter-formatos-video/) antes de processar.
 
 ## Começando
 
 ### 1. Instale o DownKingo
 
-[Baixe o app](/pt/download) e siga o processo de instalação normal. Na primeira execução, o setup automático baixa as dependências básicas (yt-dlp e FFmpeg).
+[Baixe o app](/pt/download/) e siga o processo de instalação normal. Na primeira execução, o setup automático baixa as dependências básicas (yt-dlp e FFmpeg).
 
 ### 2. Abra o Transcritor
 

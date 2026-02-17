@@ -144,11 +144,11 @@ Algumas regras gerais para situações comuns:
 
 ---
 
-Guias relacionados: [Como Baixar Vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026) cobre seleção de formato durante o download, e nosso [comparativo de downloaders open source](/pt/blog/melhores-downloaders-video-open-source) avalia ferramentas com suporte a conversão integrado.
+Guias relacionados: [Como Baixar Vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026/) cobre seleção de formato durante o download, e nosso [comparativo de downloaders open source](/pt/blog/melhores-downloaders-video-open-source/) avalia ferramentas com suporte a conversão integrado.
 
 ## Comece Agora
 
-O DownKingo baixa o FFmpeg automaticamente na primeira execução -- sem necessidade de instalação manual. Basta [baixar o app](/pt/download), abrir e seguir o setup inicial. O conversor está disponível junto com o downloader no mesmo aplicativo.
+O DownKingo baixa o FFmpeg automaticamente na primeira execução -- sem necessidade de instalação manual. Basta [baixar o app](/pt/download/), abrir e seguir o setup inicial. O conversor está disponível junto com o downloader no mesmo aplicativo.
 
 Para acessar configurações avançadas, use a barra inferior ou o atalho **Ctrl + ,**. Lá você encontra opções de tema, menu, privacidade, vídeo, imagens e atalhos.
 

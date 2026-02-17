@@ -111,6 +111,6 @@ Cada ferramenta nesta lista (exceto o 4K Video Downloader) é gratuita, open sou
 
 ---
 
-Para guias detalhados sobre plataformas específicas, confira [como baixar vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026), [baixar TikTok sem marca d'água](/pt/blog/como-baixar-tiktok-sem-marca-dagua) ou [transcrever áudio e vídeo com IA](/pt/blog/como-transcrever-audio-video-ia).
+Para guias detalhados sobre plataformas específicas, confira [como baixar vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026/), [baixar TikTok sem marca d'água](/pt/blog/como-baixar-tiktok-sem-marca-dagua/) ou [transcrever áudio e vídeo com IA](/pt/blog/como-transcrever-audio-video-ia/).
 
-Quer experimentar o DownKingo? [Baixe gratuitamente](/pt/download) -- sem conta, sem anúncios, sem rastreamento. Código fonte em [github.com/down-kingo/downkingo](https://github.com/down-kingo/downkingo).
+Quer experimentar o DownKingo? [Baixe gratuitamente](/pt/download/) -- sem conta, sem anúncios, sem rastreamento. Código fonte em [github.com/down-kingo/downkingo](https://github.com/down-kingo/downkingo).

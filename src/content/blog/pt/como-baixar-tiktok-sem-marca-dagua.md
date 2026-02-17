@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Baixe o App"
       text: "Vá até a página de download e baixe o instalador para o seu sistema operacional."
-      url: "/pt/download"
+      url: "/pt/download/"
     - name: "Instale e Abra"
       text: "Execute o instalador. No Windows, clique em 'Mais informações' e depois em 'Executar assim mesmo' se o SmartScreen avisar."
     - name: "Setup Automático"
@@ -95,13 +95,13 @@ Baixar para uso pessoal, visualização offline ou projetos criativos onde você
 
 ---
 
-Se você também quer baixar de YouTube, Instagram ou outras plataformas, confira nossos guias sobre [como baixar vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026) e nosso [comparativo dos melhores downloaders open source](/pt/blog/melhores-downloaders-video-open-source).
+Se você também quer baixar de YouTube, Instagram ou outras plataformas, confira nossos guias sobre [como baixar vídeos do YouTube em 4K](/pt/blog/como-baixar-videos-youtube-2026/) e nosso [comparativo dos melhores downloaders open source](/pt/blog/melhores-downloaders-video-open-source/).
 
 ## Começando: Instalação Passo a Passo
 
 ### 1. Baixe o App
 
-Vá até a [página de download](/pt/download) e baixe o instalador para o seu sistema operacional.
+Vá até a [página de download](/pt/download/) e baixe o instalador para o seu sistema operacional.
 
 ### 2. Instale e Abra
 

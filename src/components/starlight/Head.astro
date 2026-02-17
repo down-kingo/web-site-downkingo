@@ -1,0 +1,10 @@
+---
+import DefaultHead from '@astrojs/starlight/components/Head.astro';
+
+const baseUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://downkingo.com';
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const xDefault = `${baseUrl}${path}`;
+---
+
+<DefaultHead {...Astro.props} />
+<link rel="alternate" hreflang="x-default" href={xDefault} />

@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Download the App"
       text: "Go to the download page and get the installer for your operating system."
-      url: "/en/download"
+      url: "/en/download/"
     - name: "Install and Open"
       text: "Run the installer. On Windows, click 'More info' then 'Run anyway' if SmartScreen shows a warning."
     - name: "Automatic Setup"
@@ -95,13 +95,13 @@ Downloading for personal use, offline viewing, or creative projects where you ha
 
 ---
 
-If you also want to download from YouTube, Instagram, or other platforms, check our guides on [downloading YouTube videos in 4K](/en/blog/how-to-download-youtube-videos-2026) and our [comparison of the best open-source video downloaders](/en/blog/best-open-source-video-downloaders).
+If you also want to download from YouTube, Instagram, or other platforms, check our guides on [downloading YouTube videos in 4K](/en/blog/how-to-download-youtube-videos-2026/) and our [comparison of the best open-source video downloaders](/en/blog/best-open-source-video-downloaders/).
 
 ## Getting Started: Step by Step
 
 ### 1. Download the App
 
-Head to the [download page](/en/download) and grab the installer for your operating system.
+Head to the [download page](/en/download/) and grab the installer for your operating system.
 
 ### 2. Install and Open
 

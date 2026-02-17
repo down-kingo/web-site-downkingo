@@ -23,7 +23,7 @@ O blog vai cobrir uma variedade de tópicos para ajudar você a aproveitar ao m�
 - **Mergulhos Técnicos** -- Bastidores de como o DownKingo funciona por dentro, desde o backend em Go até o frontend em React 19.
 - **Destaques da Comunidade** -- Contribuições, pedidos de funcionalidades e como a comunidade molda o projeto através do roadmap interativo.
 
-Para começar agora mesmo, confira nossos guias mais populares: [Como Baixar Vídeos do YouTube em 2026](/pt/blog/como-baixar-videos-youtube-2026), [Como Baixar TikTok Sem Marca D'Água](/pt/blog/como-baixar-tiktok-sem-marca-dagua) e [Como Converter Formatos de Vídeo](/pt/blog/guia-converter-formatos-video).
+Para começar agora mesmo, confira nossos guias mais populares: [Como Baixar Vídeos do YouTube em 2026](/pt/blog/como-baixar-videos-youtube-2026/), [Como Baixar TikTok Sem Marca D'Água](/pt/blog/como-baixar-tiktok-sem-marca-dagua/) e [Como Converter Formatos de Vídeo](/pt/blog/guia-converter-formatos-video/).
 
 ## O que é o DownKingo
 

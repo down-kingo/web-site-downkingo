@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Baixe o Instalador"
       text: "Vá até a página de download e baixe o instalador para o seu sistema operacional (Windows, macOS ou Linux)."
-      url: "/pt/download"
+      url: "/pt/download/"
     - name: "Instale o App"
       text: "Execute o instalador. No Windows, clique em 'Mais informações' e depois em 'Executar assim mesmo' se o SmartScreen avisar."
     - name: "Setup Inicial"
@@ -95,7 +95,7 @@ Baixar vídeos do YouTube é uma capacidade, não uma permissão geral. Respeite
 
 ---
 
-Quer saber mais sobre formatos de vídeo? Leia nosso [guia completo de conversão de formatos](/pt/blog/guia-converter-formatos-video). Se também precisa baixar do TikTok, veja [como baixar vídeos do TikTok sem marca d'água](/pt/blog/como-baixar-tiktok-sem-marca-dagua).
+Quer saber mais sobre formatos de vídeo? Leia nosso [guia completo de conversão de formatos](/pt/blog/guia-converter-formatos-video/). Se também precisa baixar do TikTok, veja [como baixar vídeos do TikTok sem marca d'água](/pt/blog/como-baixar-tiktok-sem-marca-dagua/).
 
 ## Começando: Instalação Passo a Passo
 
@@ -103,7 +103,7 @@ Instalar o DownKingo é simples e não requer nenhum conhecimento técnico. Veja
 
 ### 1. Baixe o Instalador
 
-Vá até a [página de download](/pt/download) e baixe o instalador para o seu sistema operacional (Windows, macOS ou Linux).
+Vá até a [página de download](/pt/download/) e baixe o instalador para o seu sistema operacional (Windows, macOS ou Linux).
 
 ### 2. Instale o App
 
