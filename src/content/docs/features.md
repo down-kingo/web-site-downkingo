@@ -1,6 +1,6 @@
 ---
 title: Features
-description: Discover DownKingo's features: 4K video downloads, audio conversion, smart clipboard monitoring, and privacy tools.
+description: "Discover DownKingo's features: 4K video downloads, audio conversion, smart clipboard monitoring, and privacy tools."
 ---
 
 DownKingo is packed with features designed to make media downloading effortless.
