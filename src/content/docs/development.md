@@ -1,5 +1,5 @@
 ---
-title: Development
+title: Development Guide & Contribution
 description: Learn how to set up your local development environment for contributing to the open-source DownKingo project.
 ---
 

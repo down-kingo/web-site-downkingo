@@ -1,5 +1,5 @@
 ---
-title: Roadmap
+title: Project Roadmap & Future Plans
 description: Discover the DownKingo development roadmap. See upcoming features like playlist downloads and browser extensions.
 ---
 

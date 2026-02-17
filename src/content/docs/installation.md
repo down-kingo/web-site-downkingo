@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Installation Guide for All Platforms
 description: Step-by-step guide to download and install DownKingo on Windows, macOS, and Linux. Includes setup instructions.
 ---
 

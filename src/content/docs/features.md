@@ -1,5 +1,5 @@
 ---
-title: Features
+title: Key Features & Capabilities
 description: "Discover DownKingo's features: 4K video downloads, audio conversion, smart clipboard monitoring, and privacy tools."
 ---
 

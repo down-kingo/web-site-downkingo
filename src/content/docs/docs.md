@@ -3,8 +3,6 @@ title: Welcome to DownKingo
 description: Get started with DownKingo, the modern cross-platform media companion.
 ---
 
-# DownKingo
-
 A modern, cross-platform media companion for **Windows**, **macOS**, and **Linux**.  
 Built with **Go**. Designed for **speed**.
 
