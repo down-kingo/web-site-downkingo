@@ -4,7 +4,7 @@ description: "Download TikTok videos without watermark in HD with DownKingo. Fre
 pubDate: 2026-02-06
 refId: "tiktok-guide"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/tiktok-download.webp"
+heroImage: "../../assets/blog/tiktok-download.webp"
 heroImageAlt: "Smartphone displaying TikTok logo next to a desktop app downloading video without watermark"
 tags: ["tiktok", "video-download", "tutorial"]
 category: "tutorial"

@@ -4,7 +4,7 @@ description: "Best open-source video downloaders 2026: yt-dlp, DownKingo, Tartub
 pubDate: 2026-02-08
 refId: "open-source-comparison"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/open-source-downloaders.webp"
+heroImage: "../../assets/blog/open-source-downloaders.webp"
 heroImageAlt: "Five colorful download arrows representing open source video tools side by side"
 tags: ["open-source", "comparison", "video-download"]
 category: "guide"

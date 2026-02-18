@@ -4,7 +4,7 @@ description: "Discover the DownKingo blog: tutorials, tips for downloading video
 pubDate: 2026-02-12
 refId: "welcome"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/welcome-hero.webp"
+heroImage: "../../assets/blog/welcome-hero.webp"
 heroImageAlt: "Modern desktop displaying DownKingo interface with floating icons"
 tags: ["downkingo", "open-source", "announcement"]
 category: "announcement"

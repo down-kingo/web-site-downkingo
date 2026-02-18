@@ -4,7 +4,7 @@ description: "Download YouTube videos in 4K, 8K or MP3 free with DownKingo. Guid
 pubDate: 2026-02-10
 refId: "youtube-guide"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/youtube-download.webp"
+heroImage: "../../assets/blog/youtube-download.webp"
 heroImageAlt: "Ultrawide monitor displaying YouTube icon with 4K 8K MP3 badges and download progress bar"
 tags: ["youtube", "video-download", "tutorial"]
 category: "tutorial"

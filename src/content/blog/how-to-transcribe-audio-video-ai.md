@@ -4,7 +4,7 @@ description: "Transcribe audio/video to text offline with DownKingo using OpenAI
 pubDate: 2026-02-13
 refId: "transcriber-guide"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/transcriber-ai.webp"
+heroImage: "../../assets/blog/transcriber-ai.webp"
 heroImageAlt: "Sound waves being converted to text by artificial intelligence with blue and purple gradient"
 tags: ["transcription", "whisper", "ai", "tutorial"]
 category: "tutorial"

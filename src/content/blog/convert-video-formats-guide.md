@@ -4,7 +4,7 @@ description: "Video conversion guide (MP4, MKV, WebM). Understand codecs, contai
 pubDate: 2026-02-04
 refId: "format-conversion"
 author: "Emanuel Nunes"
-heroImage: "../../../assets/blog/video-formats.webp"
+heroImage: "../../assets/blog/video-formats.webp"
 heroImageAlt: "3D cubes representing video formats MP4 MKV WebM with codecs H264 VP9 and AAC"
 tags: ["conversion", "formats", "guide"]
 category: "guide"
