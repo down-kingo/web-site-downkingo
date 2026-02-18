@@ -38,7 +38,7 @@ const tagJsonLd = JSON.stringify({
     "itemListElement": posts.map((post: any, i: number) => ({
       "@type": "ListItem",
       "position": i + 1,
-      "url": `${baseUrl}/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+      "url": `${baseUrl}/blog/${post.id.replace(/\.md$/, '')}/`
     }))
   }
 });
@@ -83,7 +83,7 @@ const tagJsonLd = JSON.stringify({
 
     <div class="tag-grid">
       {posts.map((post: any) => {
-        const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+        const slug = post.id.replace(/\.md$/, '');
         return (
           <BlogPostCard
             title={post.data.title}

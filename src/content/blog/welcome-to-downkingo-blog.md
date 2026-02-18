@@ -23,7 +23,7 @@ The blog will cover a variety of topics designed to help you get the most out of
 - **Technical Deep Dives** -- Behind-the-scenes looks at how DownKingo works under the hood, from the Go backend to the React 19 frontend.
 - **Community Highlights** -- Showcasing contributions, feature requests, and how the community shapes the project through the interactive roadmap.
 
-To get started right away, check out our most popular guides: [How to Download YouTube Videos in 2026](/en/blog/how-to-download-youtube-videos-2026/), [How to Download TikTok Without Watermark](/en/blog/how-to-download-tiktok-without-watermark/), and [How to Convert Video Formats](/en/blog/convert-video-formats-guide/).
+To get started right away, check out our most popular guides: [How to Download YouTube Videos in 2026](/blog/how-to-download-youtube-videos-2026/), [How to Download TikTok Without Watermark](/blog/how-to-download-tiktok-without-watermark/), and [How to Convert Video Formats](/blog/convert-video-formats-guide/).
 
 ## What is DownKingo
 

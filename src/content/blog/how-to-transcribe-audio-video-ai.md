@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Install DownKingo"
       text: "Download the app from the download page and follow the normal installation process. On first run, it downloads yt-dlp and FFmpeg automatically."
-      url: "/en/download/"
+      url: "/download/"
     - name: "Open the Transcriber"
       text: "Navigate to the Transcriber tab in the app's main navigation."
     - name: "Download the Model"
@@ -121,13 +121,13 @@ On modern hardware, a 10-minute audio file is transcribed in about 1-3 minutes w
 
 ---
 
-Combine transcription with DownKingo's other tools: [download YouTube videos](/en/blog/how-to-download-youtube-videos-2026/) and transcribe them locally, or [convert video formats](/en/blog/convert-video-formats-guide/) before processing.
+Combine transcription with DownKingo's other tools: [download YouTube videos](/blog/how-to-download-youtube-videos-2026/) and transcribe them locally, or [convert video formats](/blog/convert-video-formats-guide/) before processing.
 
 ## Getting Started
 
 ### 1. Install DownKingo
 
-[Download the app](/en/download/) and follow the normal installation process. On first launch, the automatic setup downloads the basic dependencies (yt-dlp and FFmpeg).
+[Download the app](/download/) and follow the normal installation process. On first launch, the automatic setup downloads the basic dependencies (yt-dlp and FFmpeg).
 
 ### 2. Open the Transcriber
 

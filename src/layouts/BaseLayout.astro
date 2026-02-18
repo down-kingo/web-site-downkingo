@@ -36,40 +36,24 @@ let enUrl: string;
 let ptUrl: string;
 
 if (alternateUrls) {
-  // Manual override for pages with different slugs (e.g. /tools ↔ /pt/ferramentas)
+  // Manual override
   enUrl = alternateUrls.en ? baseUrl + alternateUrls.en : baseUrl + currentPath;
   ptUrl = alternateUrls.pt ? baseUrl + alternateUrls.pt : baseUrl + currentPath;
 } else if (isPt) {
-  // PT page: replace /pt/ prefix with /en/ for EN alternate
-  // Handle root /pt/ specifically to avoid double slash issues or bad replace
-  const cleanPath = currentPath.replace(/\/$/, ""); // Strip trailing slash for processing
-  const pathWithoutLang = cleanPath.replace(/^\/pt/, "") || ""; // Remove /pt
-  
-  // Construct new paths
-  enUrl = baseUrl + (pathWithoutLang ? `/en${pathWithoutLang}` : "/"); // Default to root if empty
-  if (pathWithoutLang && !pathWithoutLang.startsWith('/')) enUrl = baseUrl + `/en/${pathWithoutLang}`; // Safety check
-  
-  // Actually simplest way is regex if path structure is consistent:
-  // /pt/foo -> /en/foo
-  enUrl = baseUrl + currentPath.replace(/^\/pt\//, "/en/").replace(/^\/pt$/, "/"); 
+  // PT page: strip /pt/ prefix to get root English URL
+  // /pt/foo -> /foo
+  const pathWithoutLang = currentPath.replace(/^\/pt\//, "/").replace(/^\/pt$/, "/");
+  enUrl = baseUrl + pathWithoutLang;
   ptUrl = baseUrl + currentPath;
 } else {
-  // EN page: replace /en/ prefix with /pt/ for PT alternate
-  // If we are at root /, currentPath is "/"
+  // EN page (root): prepend /pt/ for PT alternate
   if (currentPath === "/" || currentPath === "") {
       enUrl = baseUrl + "/";
       ptUrl = baseUrl + "/pt/";
   } else {
       enUrl = baseUrl + currentPath;
-      ptUrl = baseUrl + currentPath.replace(/^\/en\//, "/pt/");
-      // Handle case where path is just /en/ (if that ever happens)
-      if (currentPath === "/en/" || currentPath === "/en") {
-          ptUrl = baseUrl + "/pt/";
-      } else if (!currentPath.startsWith('/en/')) {
-         // Page at root like /docs -> /pt/docs (assuming simple mapping, or no mapping?)
-         // If generic page, assume direct mapping
-         ptUrl = baseUrl + "/pt" + currentPath;
-      }
+      // Prepend /pt to path, handling potential double slash if path starts with /
+      ptUrl = baseUrl + "/pt" + (currentPath.startsWith('/') ? currentPath : '/' + currentPath);
   }
 }
 

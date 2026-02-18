@@ -15,7 +15,7 @@ export async function getStaticPaths() {
     if (post.data.refId) {
       const translation = enPosts.find(p => p.data.refId === post.data.refId);
       if (translation) {
-        translatedSlug = translation.id.replace(/^en\//, '').replace(/\.md$/, '');
+        translatedSlug = translation.id.replace(/\.md$/, '');
       }
     }
 

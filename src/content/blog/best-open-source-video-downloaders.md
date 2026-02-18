@@ -111,6 +111,6 @@ Every tool on this list (except 4K Video Downloader) is free, open source, and r
 
 ---
 
-For detailed guides on specific platforms, check out [how to download YouTube videos in 4K](/en/blog/how-to-download-youtube-videos-2026/), [downloading TikTok without watermark](/en/blog/how-to-download-tiktok-without-watermark/), or [transcribing audio and video with AI](/en/blog/how-to-transcribe-audio-video-ai/).
+For detailed guides on specific platforms, check out [how to download YouTube videos in 4K](/blog/how-to-download-youtube-videos-2026/), [downloading TikTok without watermark](/blog/how-to-download-tiktok-without-watermark/), or [transcribing audio and video with AI](/blog/how-to-transcribe-audio-video-ai/).
 
-Ready to try DownKingo? [Download it for free](/en/download/) -- no account, no ads, no tracking. Source code at [github.com/down-kingo/downkingo](https://github.com/down-kingo/downkingo).
+Ready to try DownKingo? [Download it for free](/download/) -- no account, no ads, no tracking. Source code at [github.com/down-kingo/downkingo](https://github.com/down-kingo/downkingo).

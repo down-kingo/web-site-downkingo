@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
 
 export async function getStaticPaths() {
@@ -8,7 +9,7 @@ export async function getStaticPaths() {
   const ptPosts = allPosts.filter(p => p.data.lang === 'pt');
 
   return enPosts.map((post) => {
-    const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+    const slug = post.id.replace(/\.md$/, '');
 
     // Find translated post
     let translatedSlug: string | undefined;
@@ -31,7 +32,7 @@ export async function getStaticPaths() {
       .slice(0, 3)
       .map(p => ({
         title: p.data.title,
-        slug: p.id.replace(/^en\//, '').replace(/\.md$/, ''),
+        slug: p.id.replace(/\.md$/, ''),
         heroImage: p.data.heroImage,
         category: p.data.category,
       }));
@@ -43,12 +44,18 @@ export async function getStaticPaths() {
   });
 }
 
+interface Props {
+	post: CollectionEntry<'blog'>;
+	translatedSlug: string | undefined;
+	relatedPosts: any[];
+}
+
 const { post, translatedSlug, relatedPosts } = Astro.props;
 const { Content } = await post.render();
 
 const wordCount = post.body ? post.body.split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+const slug = post.id.replace(/\.md$/, '');
 ---
 
 <BlogPostLayout

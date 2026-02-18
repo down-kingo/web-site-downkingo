@@ -17,7 +17,7 @@ howTo:
   steps:
     - name: "Download the Installer"
       text: "Go to the download page and get the installer for your operating system (Windows, macOS, or Linux)."
-      url: "/en/download/"
+      url: "/download/"
     - name: "Install the App"
       text: "Run the installer. On Windows, click 'More info' then 'Run anyway' if SmartScreen warns you."
     - name: "Complete Initial Setup"
@@ -95,7 +95,7 @@ Downloading YouTube videos is a capability, not a blanket permission. Respect co
 
 ---
 
-Want to learn more about video formats? Read our [complete guide to video format conversion](/en/blog/convert-video-formats-guide/). If you also need to download from TikTok, see [how to download TikTok videos without watermark](/en/blog/how-to-download-tiktok-without-watermark/).
+Want to learn more about video formats? Read our [complete guide to video format conversion](/blog/convert-video-formats-guide/). If you also need to download from TikTok, see [how to download TikTok videos without watermark](/blog/how-to-download-tiktok-without-watermark/).
 
 ## Getting Started: Step-by-Step Installation
 
@@ -103,7 +103,7 @@ Installing DownKingo is straightforward and requires no technical knowledge. Her
 
 ### 1. Download the Installer
 
-Head to the [download page](/en/download/) and grab the installer for your operating system (Windows, macOS, or Linux).
+Head to the [download page](/download/) and grab the installer for your operating system (Windows, macOS, or Linux).
 
 ### 2. Install the App
 

@@ -11,7 +11,7 @@ const posts = (await getCollection('blog', ({ data }) => {
 const featured = posts[0];
 const remaining = posts.slice(1);
 
-const featuredSlug = featured ? featured.id.replace(/^en\//, '').replace(/\.md$/, '') : '';
+const featuredSlug = featured ? featured.id.replace(/\.md$/, '') : '';
 const featuredHref = `/blog/${featuredSlug}/`;
 const featuredDate = featured?.data.pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -37,7 +37,7 @@ const blogJsonLd = JSON.stringify({
     "itemListElement": posts.map((post, i) => ({
       "@type": "ListItem",
       "position": i + 1,
-      "url": `${baseUrl}/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+      "url": `${baseUrl}/blog/${post.id.replace(/\.md$/, '')}/`
     }))
   }
 });
@@ -134,7 +134,7 @@ const blogJsonLd = JSON.stringify({
       <section class="okiro-loop-section">
         <div class="okiro-loop-wrap">
           {remaining.map((post) => {
-            const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+            const slug = post.id.replace(/\.md$/, '');
             return (
               <BlogPostCard
                 title={post.data.title}
