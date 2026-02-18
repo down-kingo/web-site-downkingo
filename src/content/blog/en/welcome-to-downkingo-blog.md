@@ -5,7 +5,7 @@ pubDate: 2026-02-12
 refId: "welcome"
 author: "Emanuel Nunes"
 heroImage: "../../../assets/blog/welcome-hero.webp"
-heroImageAlt: "Modern desktop displaying DownKingo interface with floating download audio and transcription icons"
+heroImageAlt: "Modern desktop displaying DownKingo interface with floating icons"
 tags: ["downkingo", "open-source", "announcement"]
 category: "announcement"
 lang: "en"

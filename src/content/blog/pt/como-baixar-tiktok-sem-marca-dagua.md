@@ -1,6 +1,6 @@
 ---
 title: "Como Baixar Vídeos do TikTok Sem Marca D'Água"
-description: "Aprenda como baixar vídeos do TikTok sem marca d'água em HD com o DownKingo. Grátis, privado e sem anúncios. Inclui extração de áudio e downloads em lote."
+description: "Baixe vídeos do TikTok sem marca d'água em HD com DownKingo. Grátis, privado, sem anúncios. Extraia áudio e faça downloads em lote."
 pubDate: 2026-02-06
 refId: "tiktok-guide"
 author: "Emanuel Nunes"

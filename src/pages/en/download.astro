@@ -176,6 +176,68 @@ try {
             </div>
 
         </div>
+        
+        <!-- Detailed Instructions & Requirements (SEO Content) -->
+        <section class="max-w-4xl mx-auto mt-24 space-y-16 border-t border-white/5 pt-16">
+            
+            <!-- Installation Guide -->
+            <div class="space-y-8">
+                <h2 class="text-3xl font-black uppercase text-white tracking-tight">Installation Guide</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Windows Instructions -->
+                    <div class="space-y-4">
+                        <h3 class="flex items-center gap-2 text-blue-400 font-bold uppercase text-sm selection:bg-blue-500/30">
+                            <Icon name="simple-icons:windows" width={16} /> Windows
+                        </h3>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-muted marker:text-blue-500/50">
+                            <li>Download the <code class="bg-white/5 px-1 py-0.5 rounded text-white">DownKingo.exe</code> file.</li>
+                            <li>Run the installer. Usually, Windows will protect your PC with SmartScreen since we are an open-source project without a costly EV certificate.</li>
+                            <li>Click "More Info" -> "Run Anyway" to complete installation.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Linux Instructions -->
+                    <div class="space-y-4">
+                        <h3 class="flex items-center gap-2 text-orange-400 font-bold uppercase text-sm selection:bg-orange-500/30">
+                            <Icon name="simple-icons:linux" width={16} /> Linux
+                        </h3>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-muted marker:text-orange-500/50">
+                            <li>Download the <code class="bg-white/5 px-1 py-0.5 rounded text-white">.AppImage</code> file.</li>
+                            <li>Open your terminal in the download folder.</li>
+                            <li>Make it executable: <code class="bg-white/5 px-1 py-0.5 rounded text-white">chmod +x DownKingo.AppImage</code></li>
+                            <li>Run it: <code class="bg-white/5 px-1 py-0.5 rounded text-white">./DownKingo.AppImage</code></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Requirements -->
+            <div class="space-y-8">
+                 <h2 class="text-3xl font-black uppercase text-white tracking-tight">System Requirements</h2>
+                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                     <div class="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                         <span class="block text-xs font-mono uppercase text-muted mb-2">OS Version</span>
+                         <p class="text-white font-bold text-sm">Windows 10/11 (64-bit)</p>
+                         <p class="text-white font-bold text-sm">macOS 10.15+ (Catalina)</p>
+                         <p class="text-white font-bold text-sm">Ubuntu 20.04+ / Arch / Fedora</p>
+                     </div>
+                     <div class="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                         <span class="block text-xs font-mono uppercase text-muted mb-2">Hardware</span>
+                         <p class="text-white font-bold text-sm">4GB RAM (8GB recommended)</p>
+                         <p class="text-white font-bold text-sm">200MB Disk Space</p>
+                         <p class="text-muted text-xs mt-1">Downloading 4K/8K video requires more RAM and fast internet connection.</p>
+                     </div>
+                     <div class="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                         <span class="block text-xs font-mono uppercase text-muted mb-2">Dependencies</span>
+                         <p class="text-white font-bold text-sm">FFmpeg (Included)</p>
+                         <p class="text-white font-bold text-sm">yt-dlp (Included)</p>
+                         <p class="text-muted text-xs mt-1">No external installation required. Everything is bundled.</p>
+                     </div>
+                 </div>
+            </div>
+            
+        </section>
 
     </main>
 

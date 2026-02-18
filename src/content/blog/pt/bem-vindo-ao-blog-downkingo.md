@@ -5,7 +5,7 @@ pubDate: 2026-02-12
 refId: "welcome"
 author: "Emanuel Nunes"
 heroImage: "../../../assets/blog/welcome-hero.webp"
-heroImageAlt: "Desktop moderno exibindo a interface do DownKingo com ícones de download, áudio e transcrição flutuando ao redor"
+heroImageAlt: "Interface moderna do DownKingo com ícones de mídia flutuantes"
 tags: ["downkingo", "open-source", "anúncio"]
 category: "announcement"
 lang: "pt"

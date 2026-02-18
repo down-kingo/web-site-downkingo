@@ -73,6 +73,9 @@ const blogJsonLd = JSON.stringify({
 
   <div class="okiro-blog">
     <h1 class="okiro-blog-title">DownKingo Blog</h1>
+    <p class="okiro-blog-description">
+      Discover the latest updates, tutorials, and deep-dives into the technology powering DownKingo. Learn how to download videos, convert formats, and master your media library with our open-source tools.
+    </p>
     {/* Hero / Featured post */}
     {featured && (
       <section class="okiro-hero-section">
@@ -170,7 +173,7 @@ const blogJsonLd = JSON.stringify({
 
   .okiro-blog-title {
     max-width: 1240px;
-    margin: 0 auto 24px;
+    margin: 0 auto 12px;
     padding: 0 20px;
     font-size: 13px;
     font-weight: 800;
@@ -178,6 +181,16 @@ const blogJsonLd = JSON.stringify({
     letter-spacing: 3px;
     color: rgba(247, 249, 249, 0.35);
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  .okiro-blog-description {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #f7f9f9;
+    opacity: 0.8;
   }
 
   /* ── Hero ────────────────────────────────── */

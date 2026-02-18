@@ -79,6 +79,7 @@ if (heroImage) {
     const optimizedHero = await getImage({
       src: heroImage,
       format: 'webp',
+      quality: 60,
       width: 1200,
       height: 675
     });
@@ -226,6 +227,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
                  loading="eager" 
                  width={1200}
                  height={675}
+                 quality={60}
                  class="okiro-hero-img-element"
                />
             </div>

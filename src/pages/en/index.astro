@@ -1,5 +1,8 @@
 ---
-import EnIndex from '../../components/pages/EnIndex.astro';
+// Redirect /en/ to / to avoid duplicate content and solve hreflang self-reference issues
 ---
 
-<EnIndex canonical="https://downkingo.com/en/" hreflangEn="https://downkingo.com/en/" hreflangPt="https://downkingo.com/pt/" />
+<meta http-equiv="refresh" content="0;url=/" />
+<script>
+    window.location.href = "/";
+</script>
