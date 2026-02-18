@@ -16,7 +16,7 @@ interface Props {
 
 const { title, description, pubDate, heroImage, heroImageAlt, tags, category, slug, lang, author = 'Emanuel Nunes' } = Astro.props;
 
-const basePath = lang === 'pt' ? '/pt' : '/en';
+const basePath = lang === 'pt' ? '/pt' : '';
 const href = `${basePath}/blog/${slug}/`;
 
 const formattedDate = pubDate.toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
