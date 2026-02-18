@@ -5,8 +5,6 @@ import icon from "astro-icon";
 
 import sitemap from "@astrojs/sitemap";
 
-import partytown from "@astrojs/partytown";
-
 import robotsTxt from "astro-robots-txt";
 import compress from "@playform/compress";
 
@@ -68,11 +66,7 @@ export default defineConfig({
       ],
     }),
     sitemap(),
-    partytown({
-      config: {
-        forward: ["plausible"],
-      },
-    }),
+
     robotsTxt(),
     compress({
       exclude: ["**/*.xml"],
