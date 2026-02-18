@@ -205,10 +205,9 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
     <script type="application/ld+json" set:html={breadcrumbLd} />
     {howToLd && <script type="application/ld+json" set:html={howToLd} />}
     {faqLd && <script type="application/ld+json" set:html={faqLd} />}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap"></noscript>
+    <link rel="preload" href="/fonts/nunito-normal-400.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/nunito-normal-800.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/nunito-normal-900.ttf" as="font" type="font/ttf" crossorigin>
   </Fragment>
 
   <div class="okiro-post-page">

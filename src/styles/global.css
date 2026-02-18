@@ -43,6 +43,49 @@
   src: url("/fonts/jetbrains-mono-500.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nunito-italic-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/nunito-italic-800.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/nunito-italic-900.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nunito-normal-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/nunito-normal-800.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/nunito-normal-900.ttf") format("truetype");
+}
+
 /* Starlight + Tailwind v4 Cascade Layers */
 @layer base, starlight, theme, components, utilities;
 
