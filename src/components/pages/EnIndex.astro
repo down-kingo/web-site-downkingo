@@ -270,22 +270,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
 
     
     <!-- Language Auto-Redirect -->
-    <script is:inline>
-        (function() {
-            try {
-                // Only redirect once per session to allow manual override
-                var redirectKey = 'downkingo_redirected';
-                if (!sessionStorage.getItem(redirectKey)) {
-                    var lang = navigator.language || navigator.userLanguage;
-                    // Check if language starts with 'pt' (pt-BR, pt-PT)
-                    if (lang && lang.toLowerCase().indexOf('pt') === 0) {
-                        sessionStorage.setItem(redirectKey, 'true');
-                        window.location.href = '/pt/';
-                    }
-                }
-            } catch(e) {}
-        })();
-    </script>
+    <script src="/scripts/lang-redirect.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
 

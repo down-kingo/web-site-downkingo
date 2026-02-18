@@ -245,39 +245,6 @@ try {
     <Footer lang="pt" />
 
     <!-- OS Detection Script -->
-    <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-             const userAgent = window.navigator.userAgent;
-             const platform = window.navigator.platform;
-             
-             const winCard = document.getElementById('card-windows');
-             const macCard = document.getElementById('card-mac');
-             const linCard = document.getElementById('card-linux');
-
-             // Reset all to base state
-             const resetCards = () => {
-                 [winCard, macCard, linCard].forEach(card => {
-                     card.classList.add('opacity-80');
-                     card.classList.remove('scale-105', 'border-primary', 'shadow-2xl', 'opacity-100');
-                     const btn = card.querySelector('a');
-                     if(btn.id !== 'primary-btn-win') { // Keep structure simple
-                        // Reset buttons if we had complex logic, but CSS handles hover mostly
-                     }
-                 });
-             };
-
-             // Highlight Logic
-             if (platform.indexOf('Win') !== -1) {
-                 winCard.classList.remove('opacity-80');
-                 winCard.classList.add('scale-105', 'border-blue-500', 'shadow-[0_0_30px_rgba(59,130,246,0.2)]', 'z-10', 'opacity-100');
-             } else if (platform.indexOf('Mac') !== -1) {
-                 macCard.classList.remove('opacity-80');
-                 macCard.classList.add('scale-105', 'border-yellow-500', 'shadow-[0_0_30px_rgba(234,179,8,0.2)]', 'z-10', 'opacity-100');
-             } else if (platform.indexOf('Linux') !== -1) {
-                 linCard.classList.remove('opacity-80');
-                 linCard.classList.add('scale-105', 'border-cyan-500', 'shadow-[0_0_30px_rgba(6,182,212,0.2)]', 'z-10', 'opacity-100');
-             }
-        });
-    </script>
+    <script src="/scripts/os-detect.js" defer></script>
 </body>
 </html>
