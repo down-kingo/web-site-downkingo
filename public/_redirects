@@ -1,3 +1,8 @@
 
+# Force remove /en/ prefix (Fix ghost routes)
+/en/blog/*  /blog/:splat  301
+/en/*       /:splat       301
+
+# Default redirects
 /install /installation 301
 /docs/installation/ /installation 301
