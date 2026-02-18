@@ -1,0 +1,27 @@
+---
+const { toc = { items: [] }, labels = {} } = Astro.props;
+---
+
+{toc && (
+  <nav aria-labelledby="starlight-toc-heading">
+    <div id="starlight-toc-heading" class="font-bold text-lg mb-4 text-white">
+      {labels['tableOfContents.onThisPage'] || 'On this page'}
+    </div>
+    <ul class="list-none p-0 text-sm text-gray-400 border-l border-white/10 space-y-2">
+      {toc.items.map((item: any) => (
+        <li class="pl-4 border-l -ml-px border-transparent hover:border-primary hover:text-white transition-colors m-0">
+          <a href={`#${item.slug}`} class="block py-1 no-underline text-inherit">{item.text}</a>
+          {item.children.length > 0 && (
+             <ul class="mt-1 space-y-1 list-none p-0 m-0">
+               {item.children.map((child: any) => (
+                 <li class="m-0">
+                   <a href={`#${child.slug}`} class="block py-1 text-xs opacity-80 hover:opacity-100 no-underline text-inherit">{child.text}</a>
+                 </li>
+               ))}
+             </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

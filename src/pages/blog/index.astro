@@ -88,6 +88,7 @@ const blogJsonLd = JSON.stringify({
               </a>
             ) : (
               <a href={featuredHref} class="okiro-hero-image okiro-hero-placeholder">
+                <span class="sr-only">{featured.data.title}</span>
                 <span>K</span>
               </a>
             )}

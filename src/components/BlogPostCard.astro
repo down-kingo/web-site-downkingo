@@ -30,7 +30,7 @@ const readLabel = lang === 'pt' ? 'min de leitura' : 'min read';
 ---
 
 <article class="okiro-card">
-  <a href={href} class="okiro-card-link" aria-label={title}></a>
+  <a href={href} class="okiro-card-link"><span class="sr-only">{title}</span></a>
   <div class="okiro-card-container">
     {/* Image */}
     <div class="okiro-card-image">

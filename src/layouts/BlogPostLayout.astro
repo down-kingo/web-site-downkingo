@@ -322,7 +322,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
         <div class="okiro-nextprev-wrap">
           {relatedPosts.slice(0, 2).map((related, i) => (
             <section class:list={["okiro-nextprev-card", { "okiro-nextprev-older": i === 1 }]}>
-              <a href={`${basePath}/blog/${related.slug}/`} class="okiro-nextprev-link" aria-label={related.title}></a>
+              <a href={`${basePath}/blog/${related.slug}/`} class="okiro-nextprev-link"><span class="sr-only">{related.title}</span></a>
               {related.heroImage && (
                 <div class="okiro-nextprev-image">
                   <Picture src={related.heroImage} formats={['webp']} fallbackFormat="webp" alt={related.title} width={600} height={338} loading="lazy" />

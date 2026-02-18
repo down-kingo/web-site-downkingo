@@ -1,9 +1,10 @@
 ---
-title: Project Roadmap & Future Plans
+title: Development Roadmap
 description: Discover the DownKingo development roadmap. See upcoming features like playlist downloads and browser extensions.
 ---
 
 DownKingo is built in public. Here's our development roadmap.
+We are constantly working to improve the application based on user feedback. The features listed below represent our current priorities and future vision for the project. By voting on features within the app, you help shape this list.
 
 ## ✅ Completed
 

@@ -46,6 +46,7 @@ export default defineConfig({
       customCss: ["./src/styles/global.css"],
       components: {
         Head: "./src/components/starlight/Head.astro",
+        TableOfContents: "./src/components/starlight/TableOfContents.astro",
       },
       sidebar: [
         {
