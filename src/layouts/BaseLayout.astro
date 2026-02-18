@@ -31,35 +31,48 @@ const baseUrl = "https://downkingo.com";
 // Helper to ensure trailing slash
 const ensureSlash = (url: string) => url.endsWith('/') ? url : `${url}/`;
 
+// Normalize path: ignore trailing slash for logic
+const cleanPath = currentPath.replace(/\/$/, "") || "/";
+
 // Build alternate URLs
 let enUrl: string;
 let ptUrl: string;
 
 if (alternateUrls) {
   // Manual override
-  enUrl = alternateUrls.en ? baseUrl + alternateUrls.en : baseUrl + currentPath;
-  ptUrl = alternateUrls.pt ? baseUrl + alternateUrls.pt : baseUrl + currentPath;
-} else if (isPt) {
-  // PT page: strip /pt/ prefix to get root English URL
-  // /pt/foo -> /foo
-  const pathWithoutLang = currentPath.replace(/^\/pt\//, "/").replace(/^\/pt$/, "/");
-  enUrl = baseUrl + pathWithoutLang;
-  ptUrl = baseUrl + currentPath;
+  enUrl = alternateUrls.en ? baseUrl + alternateUrls.en : baseUrl + cleanPath;
+  ptUrl = alternateUrls.pt ? baseUrl + alternateUrls.pt : baseUrl + cleanPath;
 } else {
-  // EN page (root): prepend /pt/ for PT alternate
-  if (currentPath === "/" || currentPath === "") {
-      enUrl = baseUrl + "/";
-      ptUrl = baseUrl + "/pt/";
-  } else {
-      enUrl = baseUrl + currentPath;
-      // Prepend /pt to path, handling potential double slash if path starts with /
-      ptUrl = baseUrl + "/pt" + (currentPath.startsWith('/') ? currentPath : '/' + currentPath);
+  // Standard logic:
+  // If we are on PT, strip /pt prefix.
+  // If we are on EN (root) or phantom /en/, ensure we point to root.
+  
+  let pathCore = cleanPath;
+  
+  if (isPt) {
+      // Remove /pt or /pt/ from start
+      pathCore = cleanPath.replace(/^\/pt(\/|$)/, "/");
+  } else if (cleanPath.startsWith("/en/") || cleanPath === "/en") {
+      // Handle phantom /en/ paths by stripping /en
+      pathCore = cleanPath.replace(/^\/en(\/|$)/, "/");
   }
+
+  // Ensure pathCore starts with /
+  if (!pathCore.startsWith("/")) pathCore = "/" + pathCore;
+
+  // EN URL is always root + core path
+  enUrl = baseUrl + (pathCore === "/" ? "" : pathCore);
+  
+  // PT URL is always root + /pt + core path
+  ptUrl = baseUrl + "/pt" + (pathCore === "/" ? "" : pathCore);
 }
 
 // Ensure trailing slashes for Hreflang to match Canonical standard
 enUrl = ensureSlash(enUrl);
 ptUrl = ensureSlash(ptUrl);
+
+// If no canonical prop provided, derive it from the detected correct URL for this language
+const computedCanonical = canonical || (isPt ? ptUrl : enUrl);
 
 // Merge twitter defaults
 const twitterConfig = {
@@ -83,7 +96,7 @@ const twitterConfig = {
     <SEO
       title={title}
       description={description}
-      canonical={canonical}
+      canonical={computedCanonical}
       openGraph={opengraph}
       twitter={twitterConfig}
       extend={{
