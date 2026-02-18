@@ -1,0 +1,4 @@
+Contact: mailto:security@downkingo.com
+Expires: 2026-12-31T23:59:00.000Z
+Preferred-Languages: en, pt-BR
+Canonical: https://downkingo.com/.well-known/security.txt
