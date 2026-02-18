@@ -281,9 +281,14 @@ import wailsIcon from '../../assets/wails-icon.ico';
                 </div>
 
                 <!-- Main Title -->
-                <h1 class="font-black text-[13vw] sm:text-7xl md:text-9xl tracking-tighter uppercase leading-[0.85] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                    Baixar. <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">Converter.</span>
-                </h1>
+                <!-- Semantic H1 for SEO (Hidden) -->
+                <h1 class="sr-only">Baixe, Converta e Transcreva com o Kingo</h1>
+
+                <!-- Visual Title Animation (Aria-Hidden) -->
+                <div aria-hidden="true" class="font-black tracking-tighter uppercase leading-none select-none text-white drop-shadow-2xl text-center mx-auto max-w-full flex flex-col items-center gap-2 md:gap-4">
+                    <span id="rotating-text" class="block transition-all duration-500 ease-out h-[1.1em] text-6xl sm:text-7xl md:text-8xl lg:text-9xl">BAIXE</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">COM O KINGO</span>
+                </div>
                 
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
@@ -295,10 +300,47 @@ import wailsIcon from '../../assets/wails-icon.ico';
                         <Icon name="lucide:book-open" width={20} />
                         <span>Documentação</span>
                      </a>
-                     </a>
                 </div>
             </div>
             
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const words = ["BAIXE", "CONVERTA", "TRANSCREVA"];
+                    let currentIndex = 0;
+                    const textElement = document.getElementById('rotating-text');
+                    
+                    if (textElement) {
+                        // Initial Text
+                        textElement.innerText = words[0];
+
+                        setInterval(() => {
+                            // Exit
+                            textElement.style.opacity = '0';
+                            textElement.style.transform = 'translateY(-0.5em) scale(0.95)';
+                            textElement.style.filter = 'blur(10px)';
+                            
+                            setTimeout(() => {
+                                currentIndex = (currentIndex + 1) % words.length;
+                                textElement.innerText = words[currentIndex];
+                                
+                                // Reset for entry
+                                textElement.style.transition = 'none';
+                                textElement.style.transform = 'translateY(0.5em) scale(1.1)';
+                                textElement.style.filter = 'blur(10px)';
+                                
+                                // Hardware acceleration hint
+                                void textElement.offsetWidth; // Force Reflow
+                                
+                                // Enter
+                                textElement.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                                textElement.style.opacity = '1';
+                                textElement.style.transform = 'translateY(0) scale(1)';
+                                textElement.style.filter = 'blur(0)';
+                            }, 400); // Wait for exit
+                        }, 2500); // 2.5s display time
+                    }
+                });
+            </script>
         </section>
 
         <!-- Marquee / Supported Sites -->
@@ -364,7 +406,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper">
                         <span class="inline-block mb-4 font-mono text-xs text-primary uppercase tracking-widest border border-primary/20 bg-primary/5 px-2 py-1 rounded">Acelerador de Downloads</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Aplicativo leve<br>e Rápido.</h2>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Aplicativo leve <br>e Rápido.</h2>
                         
                         <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
@@ -526,7 +568,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper order-1 lg:order-2">
                         <span class="inline-block mb-4 font-mono text-xs text-indigo-400 uppercase tracking-widest border border-indigo-500/20 bg-indigo-500/5 px-2 py-1 rounded">Aplicativo Universal de Vídeo</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Baixe qualquer<br>Video.</h2>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Baixe qualquer <br>Video.</h2>
                             Usa o poderoso motor <code>yt-dlp</code> oficial, garantindo que você consiga <strong>baixar vídeos do YouTube</strong>, Instagram, TikTok e qualquer rede social.
                          <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
@@ -560,7 +602,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8 reveal-wrapper">
                     <span class="inline-block font-mono text-xs text-secondary max-w-[200px] uppercase tracking-widest border border-secondary/20 bg-secondary/5 px-2 py-1 rounded mb-4">Guia Rápido</span>
-                    <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-6">Como Baixar Vídeos<br>em 3 Passos Simples.</h2>
+                    <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-6">Como Baixar Vídeos <br>em 3 Passos Simples.</h2>
                     
                     <div class="space-y-8 relative pl-8 border-l border-white/10">
                         <div class="relative group">
