@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Picture } from 'astro:assets';
 
@@ -7,7 +7,7 @@ const author = "Emanuel Nunes";
 const authorSlug = "emanuel-nunes";
 const title = `${author} — Author at DownKingo Blog`;
 const description = `${author} is a software developer and creator of DownKingo. Check out all articles, tutorials, and guides published on the blog.`;
-const canonical = `https://downkingo.com/en/author/${authorSlug}/`;
+const canonical = `https://downkingo.com/author/${authorSlug}/`;
 const baseUrl = "https://downkingo.com";
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -43,7 +43,7 @@ const jsonLd = JSON.stringify({
   lang="en"
   canonical={canonical}
   keywords="emanuel nunes, downkingo, author, developer, software"
-  alternateUrls={{ en: `/en/author/${authorSlug}/`, pt: `/pt/autor/${authorSlug}/` }}
+  alternateUrls={{ en: `/author/${authorSlug}/`, pt: `/pt/autor/${authorSlug}/` }}
   currentPage="blog"
 >
   <Fragment slot="head">
@@ -63,7 +63,7 @@ const jsonLd = JSON.stringify({
 
         <p class="author-bio">
           Developer passionate about building tools that respect user privacy.
-          Creator of <a href="/en/">DownKingo</a>, an open source media toolkit built
+          Creator of <a href="/">DownKingo</a>, an open source media toolkit built
           with Go, Wails v3, and React 19. Believes that good software should be free, transparent, and tracking-free.
         </p>
 
@@ -106,7 +106,7 @@ const jsonLd = JSON.stringify({
             const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
             return (
-              <a href={`/en/blog/${slug}/`} class="author-article-card">
+              <a href={`/blog/${slug}/`} class="author-article-card">
                 {post.data.heroImage && (
                   <div class="author-article-image">
                     <Picture

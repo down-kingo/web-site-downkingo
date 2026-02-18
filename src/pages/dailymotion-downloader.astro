@@ -1,19 +1,18 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
-import wailsIcon from '../../assets/wails-icon.ico';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
-const title = "YouTube Downloader MP4 & MP3 (4K/8K) - DownKingo";
-const description = "The best YouTube downloader for PC. Download videos in 4K, 8K, playlists & channels. Convert to MP3/M4A with max quality. Free, Open Source & ad-free.";
-const keywords = "download youtube video, youtube mp4, youtube mp3, download youtube playlist, download youtube channel, 4k downloader, youtube 8k, no watermark";
+const title = "Download Dailymotion Videos in HD - DownKingo";
+const description = "Download Dailymotion videos in MP4 with HD quality. Save documentaries, music clips and Dailymotion videos on PC. Free and fast.";
+const keywords = "download dailymotion video, dailymotion download mp4, dailymotion downloader, download dailymotion hd, convert dailymotion";
 
-const canonical = "https://downkingo.com/en/youtube-downloader/";
+const canonical = "https://downkingo.com/dailymotion-downloader/";
 const og = {
     basic: {
-        title: "Download YouTube Videos in 4K - DownKingo",
+        title: "Download Dailymotion Videos in HD - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -27,67 +26,67 @@ const og = {
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-red-500/20 rounded-full pl-2 pr-4 py-1 bg-red-500/5 backdrop-blur-md hover:border-red-500/40 transition-colors mx-auto">
-                <Icon name="simple-icons:youtube" class="text-red-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">YouTube Downloader Official v2.0</span>
+             <div class="inline-flex items-center gap-3 border border-blue-400/20 rounded-full pl-2 pr-4 py-1 bg-blue-400/5 backdrop-blur-md hover:border-blue-400/40 transition-colors mx-auto">
+                <Icon name="simple-icons:dailymotion" class="text-blue-400" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-blue-200 uppercase">Dailymotion HD Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Download YouTube<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-900">Videos.</span>
+                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-900">from Dailymotion.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Download complete playlists, videos in 4K/8K, Shorts and convert to MP3/M4A with one click. The ultimate tool to save YouTube videos on your PC.
+                Download Dailymotion videos in MP4 with HD quality. Save documentaries, music clips and your favorite videos to your PC. Free and fast.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                         <span id="hero-download-text">Download Free</span>
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                         <span id="hero-download-text">Free Download</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO YOUTUBE -->
+    <!-- Features Section SPECIFIC TO DAILYMOTION -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
+                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
                     <Icon name="lucide:monitor-play" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">4K & 8K Support</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Full HD Guaranteed</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Don't settle for 1080p. DownKingo downloads YouTube videos at their original quality, supporting 4K (2160p) at 60fps and even 8K HDR.
+                    Download in 1080p or the maximum available resolution. DownKingo ensures you get the best quality Dailymotion has to offer.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:list-video" width={32} />
+                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:shield-check" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Playlists & Channels</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">No Ads in File</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Paste the link of an entire playlist or channel and download hundreds of videos at once. Perfect for courses and series.
+                    The downloaded video comes clean, without ads. Unlike watching online, the MP4 file contains no embedded advertisements.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-red-500/10 w-fit rounded-lg text-red-500 group-hover:scale-110 transition-transform">
+                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
                     <Icon name="lucide:music" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">YouTube to MP3</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Convert to MP3</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Extract audio only from music videos and podcasts. Automatic conversion to MP3, M4A or FLAC with metadata and album art.
+                    Extract only the audio to listen offline. Perfect for music clips and podcasts hosted on Dailymotion.
                 </p>
             </div>
         </div>
@@ -97,11 +96,10 @@ const og = {
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-red-500 uppercase tracking-widest border border-red-500/20 bg-red-500/5 px-2 py-1 rounded">yt-dlp Technology</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Faster Than<br>Any Website.</h2>
+                <span class="inline-block mb-4 font-mono text-xs text-blue-400 uppercase tracking-widest border border-blue-400/20 bg-blue-400/5 px-2 py-1 rounded">yt-dlp Technology</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Your Videos,<br>Ad-Free.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Online download sites are slow, full of pop-ups and throttle your speed.
-                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download YouTube videos instantly.
+                    Dailymotion is full of ads during playback. Download the video and watch without interruptions.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
@@ -111,16 +109,16 @@ const og = {
                         <Icon name="lucide:check" class="text-green-500" width={18} /> No ads or pop-ups
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No audio compression
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No video compression
                     </li>
                 </ul>
             </div>
 
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-orange-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={appInterface} format="webp" alt="Download YouTube Video Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={appInterface} format="webp" alt="Download Dailymotion Videos Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -128,35 +126,35 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">YouTube Downloader FAQ</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Dailymotion Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    How to download YouTube videos in 4K?
+                    How to download videos from Dailymotion?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Simply copy the video link, paste it into DownKingo and select the maximum available quality. If the original video was uploaded in 4K or 8K, DownKingo will download that exact version with no quality loss.
+                    Copy the Dailymotion video link, paste it into DownKingo and select your desired quality. The MP4 download starts automatically at your chosen resolution.
                 </div>
             </details>
 
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Can I download an entire playlist?
+                    Is HD quality maintained?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! Copy the Playlist or YouTube Channel link. DownKingo will detect all videos and allow you to download them all at once or select only the ones you want.
+                    Yes! DownKingo downloads at the maximum resolution available on Dailymotion, including 1080p Full HD. There is no video recompression during download.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Is this downloader safe?
+                    Can I convert to MP3?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Absolutely. DownKingo is Open Source, which means any developer can audit our security. We don't install malware, toolbars or crypto miners on your PC, unlike most free download sites.
+                    Yes! DownKingo lets you extract only the audio from Dailymotion videos and save it as MP3. Ideal for music clips and content you want to listen to offline.
                 </div>
             </details>
         </div>

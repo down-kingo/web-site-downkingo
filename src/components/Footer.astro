@@ -31,11 +31,11 @@ const content = {
     allTools: 'Todas as Ferramentas'
   },
   en: {
-    homeLink: '/en/',
+    homeLink: '/',
     tagline: 'The ultimate open source media toolkit.<br />Built with Wails v3 + React.',
     product: 'Product',
     download: 'Download',
-    downloadLink: '/en/download/',
+    downloadLink: '/download/',
     features: 'Features',
     roadmap: 'Roadmap',
     resources: 'Resources',
@@ -55,7 +55,7 @@ const content = {
 };
 
 const t = content[lang];
-const authorLink = lang === 'pt' ? '/pt/autor/emanuel-nunes/' : '/en/author/emanuel-nunes/';
+const authorLink = lang === 'pt' ? '/pt/autor/emanuel-nunes/' : '/author/emanuel-nunes/';
 ---
 
 <footer class="relative py-12 px-6 border-t border-white/5 bg-black overflow-hidden print:hidden">
@@ -89,17 +89,17 @@ const authorLink = lang === 'pt' ? '/pt/autor/emanuel-nunes/' : '/en/author/eman
             
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.tools}</span>
-                <a href={lang === 'pt' ? "/pt/youtube-downloader/" : "/en/youtube-downloader/"} class="text-muted hover:text-primary transition-colors">{t.ytDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/instagram-downloader/" : "/en/instagram-downloader/"} class="text-muted hover:text-primary transition-colors">{t.igDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/tiktok-downloader/" : "/en/tiktok-downloader/"} class="text-muted hover:text-primary transition-colors">{t.ttDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/twitter-downloader/" : "/en/twitter-downloader/"} class="text-muted hover:text-primary transition-colors">{t.twDownloader}</a>
-                <a href={lang === 'pt' ? "/pt/facebook-downloader/" : "/en/facebook-downloader/"} class="text-muted hover:text-primary transition-colors">{t.fbDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/youtube-downloader/" : "/youtube-downloader/"} class="text-muted hover:text-primary transition-colors">{t.ytDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/instagram-downloader/" : "/instagram-downloader/"} class="text-muted hover:text-primary transition-colors">{t.igDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/tiktok-downloader/" : "/tiktok-downloader/"} class="text-muted hover:text-primary transition-colors">{t.ttDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/twitter-downloader/" : "/twitter-downloader/"} class="text-muted hover:text-primary transition-colors">{t.twDownloader}</a>
+                <a href={lang === 'pt' ? "/pt/facebook-downloader/" : "/facebook-downloader/"} class="text-muted hover:text-primary transition-colors">{t.fbDownloader}</a>
                 <a href={lang === 'pt' ? "/pt/ferramentas/" : "/tools/"} class="text-primary hover:text-white transition-colors">{t.allTools} &rarr;</a>
             </div>
 
             <div class="flex flex-col gap-3">
                 <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest font-bold mb-1">{t.resources}</span>
-                <a href={lang === 'pt' ? '/pt/blog/' : '/en/blog/'} class="text-muted hover:text-primary transition-colors">{t.blog}</a>
+                <a href={lang === 'pt' ? '/pt/blog/' : '/blog/'} class="text-muted hover:text-primary transition-colors">{t.blog}</a>
                 <a href="/docs/" class="text-muted hover:text-primary transition-colors">{t.docs}</a>
                 <a href={`${t.homeLink}#faq`} class="text-muted hover:text-primary transition-colors">{t.qa}</a>
                 <a href="https://github.com/down-kingo/downkingo" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary transition-colors">GitHub</a>

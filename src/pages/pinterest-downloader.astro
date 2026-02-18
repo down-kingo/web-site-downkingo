@@ -1,18 +1,18 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
-const title = "Download Facebook Videos in HD & Full HD - DownKingo";
-const description = "Download Facebook videos, Reels and Stories in high quality. Save videos from pages, groups and profiles. Free, fast and secure download.";
-const keywords = "download facebook video, facebook mp4 download, facebook video downloader, download facebook reels, save facebook video hd";
+const title = "Download Pinterest Images & Videos (HD) - DownKingo";
+const description = "Download Pinterest pins, images and videos in high resolution. Save entire boards and individual pins without watermark. Free and fast.";
+const keywords = "download pinterest image, download pinterest hd, save pinterest pin, pinterest video download, download pinterest board";
 
-const canonical = "https://downkingo.com/en/facebook-downloader/";
+const canonical = "https://downkingo.com/pinterest-downloader/";
 const og = {
     basic: {
-        title: "Download Facebook Videos in HD & Full HD - DownKingo",
+        title: "Download Pinterest Images & Videos (HD) - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -26,27 +26,27 @@ const og = {
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-blue-500/20 rounded-full pl-2 pr-4 py-1 bg-blue-500/5 backdrop-blur-md hover:border-blue-500/40 transition-colors mx-auto">
-                <Icon name="simple-icons:facebook" class="text-blue-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-blue-200 uppercase">Facebook Video Downloader</span>
+             <div class="inline-flex items-center gap-3 border border-red-600/20 rounded-full pl-2 pr-4 py-1 bg-red-600/5 backdrop-blur-md hover:border-red-600/40 transition-colors mx-auto">
+                <Icon name="simple-icons:pinterest" class="text-red-600" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">Pinterest HD Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-500 to-blue-900">from Facebook.</span>
+                Download Pins<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-900">from Pinterest.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Download Facebook videos, Reels and Stories in high quality. Save videos from pages, groups and profiles with one click.
+                Download pins, images and videos from Pinterest in high resolution. Save entire boards and individual pins without watermark with one click.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                          <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
@@ -54,39 +54,39 @@ const og = {
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO FACEBOOK -->
+    <!-- Features Section SPECIFIC TO PINTEREST -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:monitor-play" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:image" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Page Videos</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">High Resolution Images</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Download videos from any public page or Facebook group. HD and Full HD support for the best offline experience.
+                    Download pins at their original resolution without compression. Get images at maximum quality, perfect for inspiration and design reference.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:film" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:video" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Facebook Reels</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Videos & Idea Pins</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Save viral Reels in Full HD MP4. Download the most popular short videos from Facebook to watch offline anytime you want.
+                    Save videos and Idea Pins in MP4 at maximum quality. Download video content from Pinterest to watch offline anytime you want.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:radio" width={32} />
+                <div class="mb-6 p-3 bg-red-600/10 w-fit rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:folder-open" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Stories & Lives</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Complete Boards</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Record live streams and stories before they expire. Save temporary Facebook content permanently on your device.
+                    Download all pins from a board at once. Save entire Pinterest collections on your device without downloading one by one.
                 </p>
             </div>
         </div>
@@ -96,11 +96,11 @@ const og = {
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-blue-500 uppercase tracking-widest border border-blue-500/20 bg-blue-500/5 px-2 py-1 rounded">yt-dlp Technology</span>
+                <span class="inline-block mb-4 font-mono text-xs text-red-600 uppercase tracking-widest border border-red-600/20 bg-red-600/5 px-2 py-1 rounded">yt-dlp Technology</span>
                 <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Faster Than<br>Any Website.</h2>
                 <p class="text-muted text-lg leading-relaxed">
                     Online download sites are slow, full of pop-ups and throttle your speed.
-                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download Facebook videos instantly.
+                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download Pinterest images and videos instantly.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
@@ -117,9 +117,9 @@ const og = {
 
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-blue-400/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={appInterface} format="webp" alt="Download Facebook Video Interface DownKingo" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={appInterface} format="webp" alt="Download Pinterest Images Interface DownKingo" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -127,35 +127,35 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Facebook Downloader FAQ</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Pinterest Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    How to download Facebook videos?
+                    How to download Pinterest images in HD?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Copy the Facebook video link, paste it into DownKingo and click download. The app will automatically detect the video and offer quality options such as SD, HD and Full HD for download.
+                    Copy the pin link you want to download, paste it into DownKingo and click download. The app will automatically detect the image at its original resolution, without the compression applied by Pinterest in the browser.
                 </div>
             </details>
 
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Does it work with private videos?
+                    Can I download an entire board?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    DownKingo can download videos from public pages and profiles. For private videos or closed groups, authorized access is required. Always respect the privacy settings of content creators.
+                    Yes! Paste the board link into DownKingo and the app will list all available pins. You can download the complete board or select only the pins you want to save on your device.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Can I download Facebook Reels?
+                    Does it work with Idea Pins/videos?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! Simply copy the Reel link and paste it into DownKingo. The app will download the short video in MP4 at the highest available quality, including Full HD when the original supports it.
+                    Yes! DownKingo supports Idea Pins (formerly Story Pins) and Pinterest videos. Video content is downloaded in MP4 at the highest available quality, preserving the original resolution.
                 </div>
             </details>
         </div>

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import BlogPostCard from '../../../components/BlogPostCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../components/BlogPostCard.astro';
 
 const posts = (await getCollection('blog', ({ data }) => {
   return data.lang === 'en' && !data.draft;
@@ -12,7 +12,7 @@ const featured = posts[0];
 const remaining = posts.slice(1);
 
 const featuredSlug = featured ? featured.id.replace(/^en\//, '').replace(/\.md$/, '') : '';
-const featuredHref = `/en/blog/${featuredSlug}/`;
+const featuredHref = `/blog/${featuredSlug}/`;
 const featuredDate = featured?.data.pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -29,7 +29,7 @@ const blogJsonLd = JSON.stringify({
   "@type": "CollectionPage",
   "name": "DownKingo Blog",
   "description": "Guides, tutorials, and updates about DownKingo — the free open-source video downloader, media converter, and AI transcription toolkit.",
-  "url": `${baseUrl}/en/blog/`,
+  "url": `${baseUrl}/blog/`,
   "isPartOf": { "@type": "WebSite", "name": "DownKingo", "url": baseUrl },
   "mainEntity": {
     "@type": "ItemList",
@@ -37,7 +37,7 @@ const blogJsonLd = JSON.stringify({
     "itemListElement": posts.map((post, i) => ({
       "@type": "ListItem",
       "position": i + 1,
-      "url": `${baseUrl}/en/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+      "url": `${baseUrl}/blog/${post.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
     }))
   }
 });
@@ -47,15 +47,15 @@ const blogJsonLd = JSON.stringify({
   title="Official DownKingo Blog - News, Guides & Updates"
   description="Guides, tutorials and updates about DownKingo — free open-source media toolkit. Download videos, convert formats and transcribe audio with AI."
   lang="en"
-  canonical="https://downkingo.com/en/blog/"
+  canonical="https://downkingo.com/blog/"
   keywords="downkingo blog, video downloader, download youtube videos, tiktok downloader, media converter, ai transcription, open source"
-  alternateUrls={{ en: '/en/blog/', pt: '/pt/blog/' }}
+  alternateUrls={{ en: '/blog/', pt: '/pt/blog/' }}
   opengraph={{
     basic: {
       title: "Blog | DownKingo",
       type: "website",
       image: "https://downkingo.com/og-image.png",
-      url: "https://downkingo.com/en/blog/",
+      url: "https://downkingo.com/blog/",
     },
     optional: {
       description: "Guides, tutorials, and updates about DownKingo.",

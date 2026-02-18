@@ -1,18 +1,18 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
-const title = "Download Vimeo Videos in HD & 4K - DownKingo";
-const description = "Download Vimeo videos in high quality (up to 4K). Save documentaries, shorts and artistic videos. Free, secure and no watermark.";
-const keywords = "download vimeo video, vimeo download hd, vimeo mp4, download vimeo 4k, vimeo downloader free";
+const title = "Download Facebook Videos in HD & Full HD - DownKingo";
+const description = "Download Facebook videos, Reels and Stories in high quality. Save videos from pages, groups and profiles. Free, fast and secure download.";
+const keywords = "download facebook video, facebook mp4 download, facebook video downloader, download facebook reels, save facebook video hd";
 
-const canonical = "https://downkingo.com/en/vimeo-downloader/";
+const canonical = "https://downkingo.com/facebook-downloader/";
 const og = {
     basic: {
-        title: "Download Vimeo Videos in HD & 4K - DownKingo",
+        title: "Download Facebook Videos in HD & Full HD - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -26,67 +26,67 @@ const og = {
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-400/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-cyan-400/20 rounded-full pl-2 pr-4 py-1 bg-cyan-400/5 backdrop-blur-md hover:border-cyan-400/40 transition-colors mx-auto">
-                <Icon name="simple-icons:vimeo" class="text-cyan-400" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-cyan-200 uppercase">Vimeo HD & 4K Downloader</span>
+             <div class="inline-flex items-center gap-3 border border-blue-500/20 rounded-full pl-2 pr-4 py-1 bg-blue-500/5 backdrop-blur-md hover:border-blue-500/40 transition-colors mx-auto">
+                <Icon name="simple-icons:facebook" class="text-blue-500" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-blue-200 uppercase">Facebook Video Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-cyan-400 to-cyan-900">from Vimeo.</span>
+                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-500 to-blue-900">from Facebook.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Download Vimeo videos in high quality, up to 4K. Save documentaries, shorts and artistic videos to your PC. Free and no watermark.
+                Download Facebook videos, Reels and Stories in high quality. Save videos from pages, groups and profiles with one click.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                         <span id="hero-download-text">Free Download</span>
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                         <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO VIMEO -->
+    <!-- Features Section SPECIFIC TO FACEBOOK -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-cyan-400/10 w-fit rounded-lg text-cyan-400 group-hover:scale-110 transition-transform">
+                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
                     <Icon name="lucide:monitor-play" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Original Quality</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Page Videos</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Download at the exact upload resolution, up to 4K HDR. Vimeo's cinematic quality is fully preserved in the download.
+                    Download videos from any public page or Facebook group. HD and Full HD support for the best offline experience.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-cyan-400/10 w-fit rounded-lg text-cyan-400 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:subtitles" width={32} />
+                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:film" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Embedded Subtitles</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Facebook Reels</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Option to download with subtitles embedded in the video. Ideal for documentaries and international content with multiple languages.
+                    Save viral Reels in Full HD MP4. Download the most popular short videos from Facebook to watch offline anytime you want.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-cyan-400/10 w-fit rounded-lg text-cyan-400 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:shield-check" width={32} />
+                <div class="mb-6 p-3 bg-blue-600/10 w-fit rounded-lg text-blue-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:radio" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">No Watermark</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Stories & Lives</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Clean files without Vimeo watermark. Download videos ready for presentations, editing or personal archive.
+                    Record live streams and stories before they expire. Save temporary Facebook content permanently on your device.
                 </p>
             </div>
         </div>
@@ -96,10 +96,11 @@ const og = {
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-cyan-400 uppercase tracking-widest border border-cyan-400/20 bg-cyan-400/5 px-2 py-1 rounded">yt-dlp Technology</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Cinema<br>Quality.</h2>
+                <span class="inline-block mb-4 font-mono text-xs text-blue-500 uppercase tracking-widest border border-blue-500/20 bg-blue-500/5 px-2 py-1 rounded">yt-dlp Technology</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Faster Than<br>Any Website.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Vimeo is known for high-quality content. DownKingo ensures that quality is preserved in the download.
+                    Online download sites are slow, full of pop-ups and throttle your speed.
+                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download Facebook videos instantly.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
@@ -109,16 +110,16 @@ const og = {
                         <Icon name="lucide:check" class="text-green-500" width={18} /> No ads or pop-ups
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No video compression
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No quality compression
                     </li>
                 </ul>
             </div>
 
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600/20 to-blue-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-blue-400/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={appInterface} format="webp" alt="Download Vimeo Videos Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={appInterface} format="webp" alt="Download Facebook Video Interface DownKingo" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -126,15 +127,15 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Vimeo Downloader FAQ</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Facebook Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    How to download videos from Vimeo?
+                    How to download Facebook videos?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Copy the Vimeo video link, paste it into DownKingo and select your desired quality. The download starts automatically in MP4 at your chosen resolution.
+                    Copy the Facebook video link, paste it into DownKingo and click download. The app will automatically detect the video and offer quality options such as SD, HD and Full HD for download.
                 </div>
             </details>
 
@@ -144,17 +145,17 @@ const og = {
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    DownKingo can download password-protected videos if you provide the access password. Completely private videos (without a shareable link) are not accessible.
+                    DownKingo can download videos from public pages and profiles. For private videos or closed groups, authorized access is required. Always respect the privacy settings of content creators.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Can I download in 4K?
+                    Can I download Facebook Reels?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! If the original video was uploaded in 4K or higher, DownKingo lets you download at the maximum available resolution, including 4K HDR when supported by the upload.
+                    Yes! Simply copy the Reel link and paste it into DownKingo. The app will download the short video in MP4 at the highest available quality, including Full HD when the original supports it.
                 </div>
             </details>
         </div>

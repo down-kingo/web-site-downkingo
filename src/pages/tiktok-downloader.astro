@@ -1,18 +1,18 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
-const title = "Download Dailymotion Videos in HD - DownKingo";
-const description = "Download Dailymotion videos in MP4 with HD quality. Save documentaries, music clips and Dailymotion videos on PC. Free and fast.";
-const keywords = "download dailymotion video, dailymotion download mp4, dailymotion downloader, download dailymotion hd, convert dailymotion";
+const title = "Download TikTok Without Watermark (MP4/MP3) - DownKingo";
+const description = "Download TikTok videos without watermark in HD. Save music, sounds and viral clips from TikTok on PC in seconds. Superior alternative to Snaptik.";
+const keywords = "download tiktok no watermark, tiktok mp3, tiktok mp4, save tiktok video, snaptik alternative, tiktok download pc";
 
-const canonical = "https://downkingo.com/en/dailymotion-downloader/";
+const canonical = "https://downkingo.com/tiktok-downloader/";
 const og = {
     basic: {
-        title: "Download Dailymotion Videos in HD - DownKingo",
+        title: "Download TikTok Without Watermark - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -26,67 +26,67 @@ const og = {
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-blue-400/20 rounded-full pl-2 pr-4 py-1 bg-blue-400/5 backdrop-blur-md hover:border-blue-400/40 transition-colors mx-auto">
-                <Icon name="simple-icons:dailymotion" class="text-blue-400" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-blue-200 uppercase">Dailymotion HD Downloader</span>
+             <div class="inline-flex items-center gap-3 border border-cyan-500/20 rounded-full pl-2 pr-4 py-1 bg-cyan-500/5 backdrop-blur-md hover:border-cyan-500/40 transition-colors mx-auto">
+                <Icon name="simple-icons:tiktok" class="text-cyan-400" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-cyan-200 uppercase">TikTok No-Watermark Tool</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-900">from Dailymotion.</span>
+                TikTok Without<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">Watermark.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Download Dailymotion videos in MP4 with HD quality. Save documentaries, music clips and your favorite videos to your PC. Free and fast.
+                Remove the annoying watermark from your favorite TikTok videos. Download in HD (MP4) or extract audio only (MP3) from viral trends.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                         <span id="hero-download-text">Free Download</span>
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                         <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO DAILYMOTION -->
+    <!-- Features Section SPECIFIC TO TIKTOK -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:monitor-play" width={32} />
+                <div class="mb-6 p-3 bg-cyan-500/10 w-fit rounded-lg text-cyan-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:scissors" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Full HD Guaranteed</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Removes User ID</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Download in 1080p or the maximum available resolution. DownKingo ensures you get the best quality Dailymotion has to offer.
+                    DownKingo automatically removes the TikTok logo and the floating username from the screen, delivering a 100% clean video.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:shield-check" width={32} />
+                <div class="mb-6 p-3 bg-pink-500/10 w-fit rounded-lg text-pink-500 group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:music-2" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">No Ads in File</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Viral Sounds & Audio</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    The downloaded video comes clean, without ads. Unlike watching online, the MP4 file contains no embedded advertisements.
+                    Love the song? DownKingo lets you download just the audio in MP3 to use in your own videos or listen offline.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-blue-400/10 w-fit rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:music" width={32} />
+                <div class="mb-6 p-3 bg-white/10 w-fit rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:download-cloud" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Convert to MP3</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Bulk Downloads</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Extract only the audio to listen offline. Perfect for music clips and podcasts hosted on Dailymotion.
+                    Back up all your TikTok videos or download every video from a profile in one click.
                 </p>
             </div>
         </div>
@@ -95,30 +95,31 @@ const og = {
     <!-- Visual Demo Section -->
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-blue-400 uppercase tracking-widest border border-blue-400/20 bg-blue-400/5 px-2 py-1 rounded">yt-dlp Technology</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Your Videos,<br>Ad-Free.</h2>
+             <div class="space-y-8">
+                <span class="inline-block mb-4 font-mono text-xs text-cyan-400 uppercase tracking-widest border border-cyan-500/20 bg-cyan-500/5 px-2 py-1 rounded">Better Than Snaptik</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Original Quality.<br>No Marks.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Dailymotion is full of ads during playback. Download the video and watch without interruptions.
+                    Sites like Snaptik or SSSTikTok are full of invasive ads and often compress the video.
+                    DownKingo is the premium, secure and fast alternative for PC.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No speed limits
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Instant Download
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No ads or pop-ups
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Videos without floating logo
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No video compression
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> Perfect for Video Editors
                     </li>
                 </ul>
             </div>
 
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 to-pink-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={appInterface} format="webp" alt="Download Dailymotion Videos Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={appInterface} format="webp" alt="Download TikTok Without Watermark Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -126,35 +127,35 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Dailymotion Downloader FAQ</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">TikTok Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    How to download videos from Dailymotion?
+                    How to remove TikTok watermark?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Copy the Dailymotion video link, paste it into DownKingo and select your desired quality. The MP4 download starts automatically at your chosen resolution.
+                    DownKingo does it automatically. When you paste the link, our software identifies the original video source on TikTok's servers before the watermark is applied, downloading the clean file.
                 </div>
             </details>
 
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Is HD quality maintained?
+                    Does it work for private TikToks?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! DownKingo downloads at the maximum resolution available on Dailymotion, including 1080p Full HD. There is no video recompression during download.
+                    If you follow the private account, yes (using cookies). For public accounts, it works instantly without login.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Can I convert to MP3?
+                    Can I download on my phone?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! DownKingo lets you extract only the audio from Dailymotion videos and save it as MP3. Ideal for music clips and content you want to listen to offline.
+                    DownKingo is a PC software (Windows, Mac, Linux). However, you can download on PC and transfer to your phone, ensuring much better quality than ad-filled mobile apps.
                 </div>
             </details>
         </div>

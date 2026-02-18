@@ -1,18 +1,18 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
-const title = "Download SoundCloud Music in MP3 (320kbps) - DownKingo";
-const description = "Download SoundCloud music, playlists and podcasts in MP3 with maximum quality. Listen offline to your favorite tracks. Free, no signup required.";
-const keywords = "download soundcloud music, soundcloud mp3 download, download soundcloud playlist, soundcloud downloader, convert soundcloud mp3";
+const title = "Download Twitter/X Videos in MP4 (HD) - DownKingo";
+const description = "Download videos, GIFs and media from Twitter (X) in high quality. Save video tweets, Spaces and live streams. Free and ad-free.";
+const keywords = "download twitter video, twitter mp4 download, download twitter gif, save x video, twitter downloader, download twitter spaces";
 
-const canonical = "https://downkingo.com/en/soundcloud-downloader/";
+const canonical = "https://downkingo.com/twitter-downloader/";
 const og = {
     basic: {
-        title: "Download SoundCloud Music in MP3 (320kbps) - DownKingo",
+        title: "Download Twitter/X Videos in MP4 (HD) - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -26,67 +26,67 @@ const og = {
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
              <!-- Eyebrow -->
-             <div class="inline-flex items-center gap-3 border border-orange-500/20 rounded-full pl-2 pr-4 py-1 bg-orange-500/5 backdrop-blur-md hover:border-orange-500/40 transition-colors mx-auto">
-                <Icon name="simple-icons:soundcloud" class="text-orange-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-orange-200 uppercase">SoundCloud MP3 Downloader</span>
+             <div class="inline-flex items-center gap-3 border border-white/20 rounded-full pl-2 pr-4 py-1 bg-white/5 backdrop-blur-md hover:border-white/40 transition-colors mx-auto">
+                <Icon name="simple-icons:x" class="text-white" width={16} />
+                <span class="font-mono text-[10px] tracking-widest text-gray-200 uppercase">Twitter/X Media Downloader</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl text-center mx-auto max-w-full">
-                Download Music<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-orange-500 to-orange-900">from SoundCloud.</span>
+                Download Videos<br><span class="text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-gray-500">from Twitter/X.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Download music, playlists and podcasts from SoundCloud in MP3 with maximum quality. Listen offline to your favorite tracks, free and no signup required.
+                Download videos, GIFs and media from Twitter (X) in high quality. Save video tweets, Spaces and live streams with one click.
             </p>
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                         <span id="hero-download-text">Free Download</span>
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                         <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section SPECIFIC TO SOUNDCLOUD -->
+    <!-- Features Section SPECIFIC TO TWITTER -->
     <section id="features" class="py-24 px-6 max-w-7xl mx-auto border-y border-white/5 bg-black/20">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:music" width={32} />
+                <div class="mb-6 p-3 bg-white/10 w-fit rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:video" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">MP3 320kbps</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">HD Videos</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Maximum audio quality preserved. Download your favorite SoundCloud tracks in MP3 with the best available bitrate.
+                    Download video tweets at the highest available quality. Full support for HD and Full HD videos directly from Twitter/X.
                 </p>
             </div>
 
             <!-- Feature 2 -->
             <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:list-music" width={32} />
+                <div class="mb-6 p-3 bg-white/10 w-fit rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:image" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Full Playlists</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Animated GIFs</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Download entire playlists at once. Paste the playlist link and DownKingo downloads all tracks automatically.
+                    Save Twitter GIFs as MP4 or real GIF files. Preserve the original quality of animations without losing any frames.
                 </p>
             </div>
 
              <!-- Feature 3 -->
              <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl hover:bg-white/[0.04] transition-colors group">
-                <div class="mb-6 p-3 bg-orange-500/10 w-fit rounded-lg text-orange-500 group-hover:scale-110 transition-transform">
-                    <Icon name="lucide:disc-3" width={32} />
+                <div class="mb-6 p-3 bg-white/10 w-fit rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <Icon name="lucide:radio" width={32} />
                 </div>
-                <h2 class="text-lg font-bold text-white mb-2 uppercase">Metadata & Cover Art</h2>
+                <h2 class="text-lg font-bold text-white mb-2 uppercase">Twitter Spaces</h2>
                 <p class="text-xs text-muted leading-relaxed font-mono">
-                    Title, artist and album cover included automatically. Your MP3 files are organized and ready for any player.
+                    Record audio from Twitter Spaces and live streams. Save live broadcasts and audio conversations to listen offline anytime.
                 </p>
             </div>
         </div>
@@ -96,10 +96,11 @@ const og = {
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
-                <span class="inline-block mb-4 font-mono text-xs text-orange-500 uppercase tracking-widest border border-orange-500/20 bg-orange-500/5 px-2 py-1 rounded">yt-dlp Technology</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Your Music,<br>Offline.</h2>
+                <span class="inline-block mb-4 font-mono text-xs text-white uppercase tracking-widest border border-white/20 bg-white/5 px-2 py-1 rounded">yt-dlp Technology</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Faster Than<br>Any Website.</h2>
                 <p class="text-muted text-lg leading-relaxed">
-                    Stop relying on unstable connections. Download your favorite SoundCloud tracks and listen anywhere, anytime.
+                    Online download sites are slow, full of pop-ups and throttle your speed.
+                    DownKingo runs natively on your Windows, Mac or Linux, using your full bandwidth to download Twitter videos instantly.
                 </p>
                 <ul class="space-y-4 pt-4">
                     <li class="flex items-center gap-3 text-sm text-gray-300">
@@ -109,16 +110,16 @@ const og = {
                         <Icon name="lucide:check" class="text-green-500" width={18} /> No ads or pop-ups
                     </li>
                     <li class="flex items-center gap-3 text-sm text-gray-300">
-                        <Icon name="lucide:check" class="text-green-500" width={18} /> No audio compression
+                        <Icon name="lucide:check" class="text-green-500" width={18} /> No quality compression
                     </li>
                 </ul>
             </div>
 
             <!-- Image Container -->
             <div class="relative group perspective-container">
-                 <div class="absolute -inset-1 bg-gradient-to-r from-orange-600/20 to-yellow-500/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+                 <div class="absolute -inset-1 bg-gradient-to-r from-gray-400/20 to-gray-600/20 rounded-xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
                  <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] rotate-3d hover:transition-transform duration-500">
-                      <Image src={appInterface} format="webp" alt="Download SoundCloud Music Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      <Image src={appInterface} format="webp" alt="Download Twitter Video Interface DownKingo" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                  </div>
             </div>
         </div>
@@ -126,35 +127,35 @@ const og = {
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">SoundCloud Downloader FAQ</h2>
+        <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Twitter Downloader FAQ</h2>
         <div class="space-y-4">
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    How to download music from SoundCloud?
+                    How to download videos from Twitter?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Copy the SoundCloud song or playlist link, paste it into DownKingo and click download. The MP3 download at maximum quality starts automatically.
+                    Copy the link of the tweet containing the video, paste it into DownKingo and click download. The app will automatically detect the video and offer available quality options, including HD and Full HD.
                 </div>
             </details>
 
             <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Is the audio quality preserved?
+                    Does it work with protected tweets?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! DownKingo downloads the audio at the original quality available on SoundCloud. For most tracks, this means MP3 at 320kbps or the maximum bitrate of the original upload.
+                    DownKingo can download videos from public tweets. For tweets from protected (private) accounts, authorized access to the account is required. Always respect the privacy of content creators.
                 </div>
             </details>
 
              <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                    Can I download entire playlists?
+                    Can I download GIFs?
                     <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
                 </summary>
                 <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                    Yes! Just paste the SoundCloud playlist link. DownKingo detects all tracks and lets you download the complete playlist at once, with metadata and cover art included.
+                    Yes! DownKingo automatically detects GIFs in tweets and allows you to save them as MP4 or real GIF files. Twitter GIFs are technically looping videos, and DownKingo preserves the original quality.
                 </div>
             </details>
         </div>

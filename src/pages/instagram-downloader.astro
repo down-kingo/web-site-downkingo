@@ -1,15 +1,15 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import appInterface from '../../assets/build-in-public-kingo.avif';
+import appInterface from '../assets/build-in-public-kingo.avif';
 
 // SEO Configuration
 const title = "Download Instagram Reels & Stories (4K) - DownKingo";
 const description = "Download Instagram Videos, Reels, Stories and Photos in high quality. Free tool to download Instagram content anonymously without watermark.";
 const keywords = "download instagram reels, download instagram stories, download instagram photos, instagram video download, save stories anonymous, instagram mp4";
 
-const canonical = "https://downkingo.com/en/instagram-downloader/";
+const canonical = "https://downkingo.com/instagram-downloader/";
 const og = {
     basic: {
         title: "Download Instagram Reels & Stories - DownKingo",
@@ -46,7 +46,7 @@ const og = {
 
             <!-- Actions -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                 <a id="hero-download-btn" href="/en/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                 <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                          <span id="hero-download-text">Download Free</span>
                          <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                  </a>
