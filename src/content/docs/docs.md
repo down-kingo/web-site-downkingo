@@ -1,7 +1,9 @@
 ---
-title: Welcome to DownKingo
+title: Official Documentation
 description: Get started with DownKingo, the modern cross-platform media companion.
 ---
+
+Welcome to the **official documentation** for DownKingo. This guide will help you understand, install, and maximize the potential of your new media companion.
 
 A modern, cross-platform media companion for **Windows**, **macOS**, and **Linux**.  
 Built with **Go**. Designed for **speed**.
