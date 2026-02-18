@@ -928,62 +928,7 @@ import wailsIcon from '../../assets/wails-icon.ico';
 
     </main>
 
-    <script is:inline>
-        // Smooth Mouse Follower
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            
-            const spotlight = document.getElementById('spotlight');
-            if(spotlight) {
-                spotlight.style.setProperty('--x', `${x}px`);
-                spotlight.style.setProperty('--y', `${y}px`);
-            }
-        });
-
-        // Intersection Observer for Reveal
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-wrapper').forEach(el => observer.observe(el));
-
-        // OS Detection Logic
-        (function() {
-            const btnText = document.getElementById('hero-download-text');
-            const userAgent = window.navigator.userAgent;
-            const platform = window.navigator.platform;
-            
-            let osName = null;
-
-            if (platform.indexOf('Win') !== -1) {
-                osName = 'Windows';
-            } else if (platform.indexOf('Mac') !== -1) {
-                osName = 'macOS';
-            } else if (platform.indexOf('Linux') !== -1) {
-                // Try to detect distro if possible, usually hard via JS but we can check UA string
-                if (userAgent.indexOf('Ubuntu') !== -1) osName = 'Linux (Ubuntu)';
-                else osName = 'Linux';
-            } else if (/Android/.test(userAgent)) {
-                osName = 'Android';
-            } else if (/iPhone|iPad|iPod/.test(userAgent)) {
-                osName = 'iOS';
-            }
-
-            if (osName && btnText) {
-                btnText.textContent = `Baixar para ${osName}`;
-            }
-        })();
-    </script>
+    <script is:inline src="/scripts/ui-effects.js" defer></script>
+    <script is:inline src="/scripts/os-detect.js" defer></script>
 </body>
 </html>

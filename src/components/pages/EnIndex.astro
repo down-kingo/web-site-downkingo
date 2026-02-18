@@ -270,7 +270,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
 
     
     <!-- Language Auto-Redirect -->
-    <script src="/scripts/lang-redirect.js"></script>
+    <script is:inline src="/scripts/lang-redirect.js"></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
 
@@ -827,18 +827,6 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
     </main>
 
     <!-- Scroll Reveal Script -->
-     <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal-wrapper').forEach(el => observer.observe(el));
-        });
-    </script>
+     <script is:inline src="/scripts/ui-effects.js" defer></script>
 </body>
 </html>
