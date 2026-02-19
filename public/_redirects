@@ -1,7 +1,2 @@
-
-# Force 404 on all /en/ paths to eradicate ghost content and duplicate SEO
-/en/*  /404  404
-
-# Existing redirects
-/install /installation 301
-/docs/installation/ /installation 301
+/index.html  /  301
+/index.php   /  301

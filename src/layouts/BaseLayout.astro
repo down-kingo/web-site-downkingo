@@ -5,6 +5,8 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 
+import kingoIcon from '../assets/kingo.ico';
+
 interface Props {
 	title: string;
 	description: string;
@@ -28,11 +30,11 @@ const isPt = language === "pt";
 // Strict canonical domain without trailing slash initially
 const baseUrl = "https://downkingo.com";
 
-// Helper to ensure trailing slash
-const ensureSlash = (url: string) => url.endsWith('/') ? url : `${url}/`;
+// Helper to remove trailing slash
+const removeTrailingSlash = (str: string) => str.replace(/\/+$/, '');
 
 // Normalize path: ignore trailing slash for logic
-const cleanPath = currentPath.replace(/\/$/, "") || "/";
+const cleanPath = removeTrailingSlash(currentPath) || "/";
 
 // Build alternate URLs
 let enUrl: string;
@@ -67,9 +69,9 @@ if (alternateUrls) {
   ptUrl = baseUrl + "/pt" + (pathCore === "/" ? "" : pathCore);
 }
 
-// Ensure trailing slashes for Hreflang to match Canonical standard
-enUrl = ensureSlash(enUrl);
-ptUrl = ensureSlash(ptUrl);
+// Ensure NO trailing slashes for Hreflang to match Canonical standard
+enUrl = removeTrailingSlash(enUrl);
+ptUrl = removeTrailingSlash(ptUrl);
 
 // If no canonical prop provided, derive it from the detected correct URL for this language
 const computedCanonical = canonical || (isPt ? ptUrl : enUrl);
@@ -107,7 +109,7 @@ const twitterConfig = {
           { property: "og:locale", content: ogLocale },
         ],
         link: [
-          { rel: "icon", type: "image/x-icon", href: "/icon.ico?v=2" }
+          { rel: "icon", type: "image/x-icon", href: kingoIcon }
         ]
       }}
     />
