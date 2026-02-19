@@ -19,7 +19,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Console Filter: Removes third-party/extension logs -->
-    <script is:inline src="/scripts/console-filter.js"></script>
+    <script is:inline src="/scripts/console-filter.js" defer></script>
     <SEO
       title="DownKingo - Universal Media Toolbox"
       description="The all-in-one open source media toolkit. Download videos from 1000+ sites, remove backgrounds with AI, and convert media. Privacy-focused."
@@ -68,8 +68,6 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
     <!-- Preload Critical Fonts (Inter 900/400 + Mono 400/500) to avoid chains -->
     <link rel="preload" href="/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- JSON-LD SEO: SoftwareApplication -->
     <script type="application/ld+json">
@@ -270,7 +268,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
 
     
     <!-- Language Auto-Redirect -->
-    <script is:inline src="/scripts/lang-redirect.js"></script>
+    <script is:inline src="/scripts/lang-redirect.js" defer></script>
 </head>
 <body class="bg-page text-swiss antialiased overflow-x-hidden relative" id="body">
 
