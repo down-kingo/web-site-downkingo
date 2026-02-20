@@ -321,43 +321,41 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                 </div>
             </div>
             
-            <script is:inline>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const words = ["DOWNLOAD", "CONVERT", "TRANSCRIBE"];
-                    let currentIndex = 0;
-                    const textElement = document.getElementById('rotating-text');
-                    
-                    if (textElement) {
-                        // Initial Text
-                        textElement.innerText = words[0];
+            <script>
+                const words = ["DOWNLOAD", "CONVERT", "TRANSCRIBE"];
+                let currentIndex = 0;
+                const textElement = document.getElementById('rotating-text');
+                
+                if (textElement) {
+                    // Initial Text
+                    textElement.innerText = words[0];
 
-                        setInterval(() => {
-                            // Exit
-                            textElement.style.opacity = '0';
-                            textElement.style.transform = 'translateY(-0.5em) scale(0.95)';
+                    setInterval(() => {
+                        // Exit
+                        textElement.style.opacity = '0';
+                        textElement.style.transform = 'translateY(-0.5em) scale(0.95)';
+                        textElement.style.filter = 'blur(10px)';
+                        
+                        setTimeout(() => {
+                            currentIndex = (currentIndex + 1) % words.length;
+                            textElement.innerText = words[currentIndex];
+                            
+                            // Reset for entry
+                            textElement.style.transition = 'none';
+                            textElement.style.transform = 'translateY(0.5em) scale(1.1)';
                             textElement.style.filter = 'blur(10px)';
                             
-                            setTimeout(() => {
-                                currentIndex = (currentIndex + 1) % words.length;
-                                textElement.innerText = words[currentIndex];
-                                
-                                // Reset for entry
-                                textElement.style.transition = 'none';
-                                textElement.style.transform = 'translateY(0.5em) scale(1.1)';
-                                textElement.style.filter = 'blur(10px)';
-                                
-                                // Hardware acceleration hint
-                                void textElement.offsetWidth; // Force Reflow
-                                
-                                // Enter
-                                textElement.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                                textElement.style.opacity = '1';
-                                textElement.style.transform = 'translateY(0) scale(1)';
-                                textElement.style.filter = 'blur(0)';
-                            }, 400); // Wait for exit
-                        }, 2500); // 2.5s display time
-                    }
-                });
+                            // Hardware acceleration hint
+                            void textElement.offsetWidth; // Force Reflow
+                            
+                            // Enter
+                            textElement.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                            textElement.style.opacity = '1';
+                            textElement.style.transform = 'translateY(0) scale(1)';
+                            textElement.style.filter = 'blur(0)';
+                        }, 400); // Wait for exit
+                    }, 2500); // 2.5s display time
+                }
             </script>
         </section>
 
