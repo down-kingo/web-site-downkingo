@@ -17,7 +17,7 @@ export default defineConfig({
     // This dramatically improves LCP on mobile devices
     inlineStylesheets: "always",
   },
-  trailingSlash: "never",
+  trailingSlash: "ignore",
   integrations: [
     icon(),
     starlight({

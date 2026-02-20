@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const title = "404 - Página Não Encontrada | DownKingo";
+const description = "A página que você está procurando não existe. Volte para a página inicial do DownKingo.";
+---
+
+<BaseLayout title={title} description={description} lang="pt" canonical="https://downkingo.com/pt/404">
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 px-6">
+        <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
+
+        <div class="relative z-10 text-center max-w-3xl mx-auto space-y-8">
+            <div class="text-[120px] md:text-[200px] font-black leading-none text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 select-none">
+                404
+            </div>
+
+            <h1 class="font-black text-3xl md:text-5xl tracking-tighter uppercase text-white -mt-12">
+                Página Não Encontrada
+            </h1>
+
+            <p class="text-muted text-lg max-w-md mx-auto">
+                A página que você está procurando não existe ou foi movida.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+                <a href="/pt/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
+                    <Icon name="lucide:home" width={20} />
+                    <span>Ir para o Início</span>
+                </a>
+                <a href="/pt/download/" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
+                    <Icon name="lucide:download" width={20} />
+                    <span>Baixar App</span>
+                </a>
+            </div>
+
+            <div class="pt-12">
+                <p class="text-xs text-muted font-mono uppercase tracking-widest mb-6">Links Rápidos</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="/pt/youtube-downloader/" class="text-sm text-muted hover:text-white transition-colors">YouTube Downloader</a>
+                    <span class="text-white/20">|</span>
+                    <a href="/pt/instagram-downloader/" class="text-sm text-muted hover:text-white transition-colors">Instagram Downloader</a>
+                    <span class="text-white/20">|</span>
+                    <a href="/pt/tiktok-downloader/" class="text-sm text-muted hover:text-white transition-colors">TikTok Downloader</a>
+                    <span class="text-white/20">|</span>
+                    <a href="/docs/" class="text-sm text-muted hover:text-white transition-colors">Documentação</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
