@@ -299,9 +299,14 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                 </div>
 
                 <!-- Main Title -->
-                <h1 class="font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] select-none text-white drop-shadow-2xl">
-                    Media <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">Toolbox.</span>
-                </h1>
+                <!-- Semantic H1 for SEO (Hidden) -->
+                <h1 class="sr-only">Download, Convert and Transcribe with Kingo</h1>
+
+                <!-- Visual Title Animation (Aria-Hidden) -->
+                <div aria-hidden="true" class="font-black tracking-tighter uppercase leading-none text-white drop-shadow-2xl text-center mx-auto max-w-full flex flex-col items-center gap-2 md:gap-4">
+                    <span id="rotating-text" class="block transition-all duration-500 ease-out h-[1.1em] text-5xl sm:text-7xl md:text-8xl lg:text-9xl">DOWNLOAD</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 block text-3xl sm:text-5xl md:text-6xl lg:text-7xl">WITH KINGO</span>
+                </div>
                 
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
@@ -316,6 +321,44 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                 </div>
             </div>
             
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const words = ["DOWNLOAD", "CONVERT", "TRANSCRIBE"];
+                    let currentIndex = 0;
+                    const textElement = document.getElementById('rotating-text');
+                    
+                    if (textElement) {
+                        // Initial Text
+                        textElement.innerText = words[0];
+
+                        setInterval(() => {
+                            // Exit
+                            textElement.style.opacity = '0';
+                            textElement.style.transform = 'translateY(-0.5em) scale(0.95)';
+                            textElement.style.filter = 'blur(10px)';
+                            
+                            setTimeout(() => {
+                                currentIndex = (currentIndex + 1) % words.length;
+                                textElement.innerText = words[currentIndex];
+                                
+                                // Reset for entry
+                                textElement.style.transition = 'none';
+                                textElement.style.transform = 'translateY(0.5em) scale(1.1)';
+                                textElement.style.filter = 'blur(10px)';
+                                
+                                // Hardware acceleration hint
+                                void textElement.offsetWidth; // Force Reflow
+                                
+                                // Enter
+                                textElement.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                                textElement.style.opacity = '1';
+                                textElement.style.transform = 'translateY(0) scale(1)';
+                                textElement.style.filter = 'blur(0)';
+                            }, 400); // Wait for exit
+                        }, 2500); // 2.5s display time
+                    }
+                });
+            </script>
         </section>
 
         <!-- Marquee / Supported Sites -->
@@ -567,6 +610,79 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- FEATURE BLOCK 3: AI Transcription -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="space-y-8 reveal-wrapper">
+                        <span class="inline-block mb-4 font-mono text-xs text-rose-400 uppercase tracking-widest border border-rose-500/20 bg-rose-500/5 px-2 py-1 rounded">AI Transcription</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Audio & Video <br> To Text.</h2>
+                        <p class="text-muted max-w-md text-sm leading-relaxed">
+                            Convert speech to text with unmatched accuracy using OpenAI's Whisper model completely offline.
+                        </p>
+                        <ul class="space-y-6 pt-4">
+                            <li class="flex items-start gap-4 group">
+                                <div class="p-2 rounded-lg bg-white/5 group-hover:bg-rose-500/10 transition-colors">
+                                    <Icon name="lucide:mic" class="text-rose-400" width={20} />
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-sm uppercase">Multiple Languages</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Automatically detect and transcribe audio in over 90 languages with translation to English.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 group">
+                                <div class="p-2 rounded-lg bg-white/5 group-hover:bg-rose-500/10 transition-colors">
+                                    <Icon name="lucide:file-text" class="text-rose-400" width={20} />
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-sm uppercase">Subtitle Export</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Export directly to SRT, VTT, or plain text formats, ready to be used in your video projects.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Visual Content: Waveform Animation -->
+                    <div class="relative group reveal-wrapper perspective-container">
+                        <!-- Glow Effect -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-orange-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Transcriber Interface Mockup -->
+                        <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#09090b] hover:transform hover:scale-[1.02] transition-transform duration-500">
+                             <!-- Header -->
+                             <div class="h-10 bg-[#111] border-b border-white/5 flex items-center px-4 gap-3">
+                                <Icon name="lucide:webhook" class="text-rose-400" width={16} />
+                                <span class="text-xs font-mono uppercase tracking-wider text-muted">Whisper AI</span>
+                             </div>
+                             
+                             <!-- Content -->
+                             <div class="p-6 space-y-6">
+                                 <!-- Audio Waveform Visualization -->
+                                 <div class="flex items-center justify-center h-20 gap-1 opacity-80">
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-4 animate-pulse" style="animation-delay: 0.1s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-10 animate-pulse" style="animation-delay: 0.2s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-16 animate-pulse" style="animation-delay: 0.3s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-6 animate-pulse" style="animation-delay: 0.4s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-12 animate-pulse" style="animation-delay: 0.5s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-8 animate-pulse" style="animation-delay: 0.6s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-14 animate-pulse" style="animation-delay: 0.7s"></div>
+                                     <div class="w-2 bg-rose-500/80 rounded-full h-6 animate-pulse" style="animation-delay: 0.8s"></div>
+                                 </div>
+
+                                 <!-- Extracted Text Example -->
+                                 <div class="bg-[#111] border border-white/5 rounded-lg p-4 font-mono text-xs text-muted/80 leading-relaxed font-medium">
+                                     <span class="text-emerald-400">[00:00.00]</span> We need to leverage local AI models for privacy.<br>
+                                     <span class="text-emerald-400">[00:03.24]</span> Yes, the new <span class="text-rose-400 font-bold bg-rose-500/20 px-1 rounded">OpenAI Whisper</span> integration is running completely offline.<br>
+                                     <span class="text-emerald-400">[00:08.12]</span> This changes everything for our transcribing workflow.
+                                 </div>
+                             </div>
+                             
+                             <!-- Overlay Gradient -->
+                             <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-20 pointer-events-none"></div>
+                        </div>
                     </div>
                 </div>
             </div>
