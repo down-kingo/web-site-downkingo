@@ -22,6 +22,7 @@ interface FaqItem {
 
 interface Props {
   title: string;
+  metaTitle?: string;
   description: string;
   pubDate: Date;
   updatedDate?: Date;
@@ -40,7 +41,9 @@ interface Props {
   faq?: FaqItem[];
 }
 
-const { title, description, pubDate, updatedDate, author, heroImage, heroImageAlt, tags, category, lang, readingTime, wordCount, slug, translatedSlug, relatedPosts = [], howTo, faq } = Astro.props;
+const { title, metaTitle, description, pubDate, updatedDate, author, heroImage, heroImageAlt, tags, category, lang, readingTime, wordCount, slug, translatedSlug, relatedPosts = [], howTo, faq } = Astro.props;
+
+const seoTitle = metaTitle || title;
 
 const basePath = lang === 'pt' ? '/pt' : '';
 const formattedDate = pubDate.toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
@@ -177,7 +180,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
 ---
 
 <BaseLayout
-  title={title}
+  title={seoTitle}
   description={description}
   lang={lang === 'pt' ? 'pt-BR' : 'en'}
   canonical={canonicalUrl}
@@ -186,7 +189,7 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
   currentPage="blog"
   opengraph={{
     basic: {
-      title: title,
+      title: seoTitle,
       type: "article",
       image: imageUrl,
       url: canonicalUrl,

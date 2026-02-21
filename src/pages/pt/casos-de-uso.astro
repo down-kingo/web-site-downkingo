@@ -2,14 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
 
-const title = "Todas as Ferramentas de Download - DownKingo";
-const description = "Explore todas as ferramentas de download do DownKingo. YouTube, Instagram, TikTok, Twitter, Facebook e mais 8 plataformas. Gratis e Open Source.";
-const keywords = "ferramentas download, baixar videos, youtube downloader, instagram downloader, tiktok downloader, todas ferramentas";
-const canonical = "https://downkingo.com/pt/ferramentas/";
+const title = "Todos os Casos de Uso de Download - DownKingo";
+const description = "Explore todos os casos de uso de download do DownKingo. YouTube, Instagram, TikTok, Twitter, Facebook e mais 8 plataformas. Gratis e Open Source.";
+const keywords = "casos de uso download, baixar videos, youtube downloader, instagram downloader, tiktok downloader, todos os casos";
+const canonical = "https://downkingo.com/pt/casos-de-uso/";
 
 const og = {
     basic: {
-        title: "Todas as Ferramentas de Download - DownKingo",
+        title: "Todos os Casos de Uso de Download - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -104,7 +104,7 @@ const tools = [
 ];
 ---
 
-<BaseLayout title={title} description={description} lang="pt-BR" canonical={canonical} opengraph={og} keywords={keywords} alternateUrls={{ en: "/tools/", pt: "/pt/ferramentas/" }}>
+<BaseLayout title={title} description={description} lang="pt-BR" canonical={canonical} opengraph={og} keywords={keywords} alternateUrls={{ en: "/use-cases/", pt: "/pt/casos-de-uso/" }} currentPage="tools">
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-16 px-6 overflow-hidden">
@@ -118,7 +118,7 @@ const tools = [
             </div>
 
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl">
-                Todas as {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-red-900">Ferramentas.</span>
+                Todos os {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-red-900">Casos de Uso.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
@@ -332,7 +332,7 @@ const tools = [
     <section class="py-24 px-6 border-t border-white/5">
         <div class="max-w-3xl mx-auto text-center space-y-8">
             <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">Pronto para Baixar?</h2>
-            <p class="text-muted text-lg">Baixe o DownKingo gratuitamente e tenha acesso a todas as ferramentas em um unico app.</p>
+            <p class="text-muted text-lg">Baixe o DownKingo gratuitamente e tenha acesso a todos os casos de uso em um unico app.</p>
             <a href="/pt/download/" class="inline-flex h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                 <Icon name="lucide:download" width={20} />
                 <span>Baixar Gratis</span>

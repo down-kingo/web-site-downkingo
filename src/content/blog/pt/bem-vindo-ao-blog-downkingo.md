@@ -1,5 +1,6 @@
 ---
 title: "Bem-vindo ao Blog do DownKingo"
+metaTitle: "Blog DownKingo: Guias e Tutoriais de Download de Vídeo Grátis"
 description: "Conheça o blog do DownKingo: tutoriais, notas de versão e dicas para baixar vídeos, converter formatos e transcrever áudio com IA. Gratuito e open source."
 pubDate: 2026-02-12
 refId: "welcome"

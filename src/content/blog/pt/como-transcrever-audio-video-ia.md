@@ -1,5 +1,6 @@
 ---
 title: "Transcrever Audio e Video com IA no DownKingo"
+metaTitle: "Transcrição IA Grátis e Offline: Converter Áudio e Vídeo em Texto"
 description: "Transcreva áudio/vídeo em texto offline com DownKingo e IA Whisper. Alta precisão, multilíngue e 100% privado. Gratuito e ilimitado."
 pubDate: 2026-02-13
 refId: "transcriber-guide"

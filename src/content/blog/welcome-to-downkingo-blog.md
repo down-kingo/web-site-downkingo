@@ -1,5 +1,6 @@
 ---
 title: "Welcome to the DownKingo Blog: Our Journey Begins"
+metaTitle: "DownKingo Blog: Open Source Video Downloader Guides and News"
 description: "Discover the DownKingo blog: tutorials, tips for downloading videos, converting formats, and transcribing audio with AI. Free and open source."
 pubDate: 2026-02-12
 refId: "welcome"

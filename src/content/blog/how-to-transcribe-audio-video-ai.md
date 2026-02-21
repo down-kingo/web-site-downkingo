@@ -1,5 +1,6 @@
 ---
 title: "Transcribe Audio & Video with AI Using DownKingo"
+metaTitle: "Free Offline AI Transcription: Convert Audio and Video to Text"
 description: "Transcribe audio/video to text offline with DownKingo using OpenAI Whisper. High accuracy, multi-language support, and 100% private. Free and unlimited."
 pubDate: 2026-02-13
 refId: "transcriber-guide"

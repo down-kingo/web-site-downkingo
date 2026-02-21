@@ -2,14 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
 
-const title = "All Download Tools - DownKingo";
-const description = "Explore all DownKingo download tools. YouTube, Instagram, TikTok, Twitter, Facebook and 8 more platforms. Free and Open Source.";
-const keywords = "download tools, video downloader, youtube downloader, instagram downloader, tiktok downloader, all tools";
-const canonical = "https://downkingo.com/tools/";
+const title = "All Use Cases - DownKingo";
+const description = "Explore all DownKingo use cases. YouTube, Instagram, TikTok, Twitter, Facebook and 8 more platforms. Free and Open Source.";
+const keywords = "use cases, video downloader, youtube downloader, instagram downloader, tiktok downloader, all use cases";
+const canonical = "https://downkingo.com/use-cases/";
 
 const og = {
     basic: {
-        title: "All Download Tools - DownKingo",
+        title: "All Use Cases - DownKingo",
         type: "website",
         image: "https://downkingo.com/og-image.png",
         url: canonical
@@ -17,7 +17,7 @@ const og = {
 };
 ---
 
-<BaseLayout title={title} description={description} lang="en" canonical={canonical} opengraph={og} keywords={keywords} alternateUrls={{ en: "/tools/", pt: "/pt/ferramentas/" }}>
+<BaseLayout title={title} description={description} lang="en" canonical={canonical} opengraph={og} keywords={keywords} alternateUrls={{ en: "/use-cases/", pt: "/pt/casos-de-uso/" }} currentPage="tools">
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-16 px-6 overflow-hidden">
@@ -31,7 +31,7 @@ const og = {
             </div>
 
             <h1 class="font-black text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9] select-none text-white drop-shadow-2xl">
-                All {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-red-900">Tools.</span>
+                All {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-red-900">Use Cases.</span>
             </h1>
 
             <p class="text-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
@@ -245,7 +245,7 @@ const og = {
     <section class="py-24 px-6 border-t border-white/5">
         <div class="max-w-3xl mx-auto text-center space-y-8">
             <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">Ready to Download?</h2>
-            <p class="text-muted text-lg">Download DownKingo for free and get access to all tools in a single app.</p>
+            <p class="text-muted text-lg">Download DownKingo for free and get access to all use cases in a single app.</p>
             <a href="/download/" class="inline-flex h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full items-center gap-3 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                 <Icon name="lucide:download" width={20} />
                 <span>Download Free</span>

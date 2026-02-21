@@ -1,5 +1,6 @@
 ---
 title: "How to Download TikTok Videos Without Watermark"
+metaTitle: "Download TikTok Without Watermark in HD for Free (2026)"
 description: "Download TikTok videos without watermark in HD with DownKingo. Free, private, no ads. Supports audio extraction and batch downloads."
 pubDate: 2026-02-06
 refId: "tiktok-guide"

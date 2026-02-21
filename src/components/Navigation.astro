@@ -5,7 +5,7 @@ import kingoIcon from '../../public/favicon-96x96.png';
 
 interface Props {
     lang?: 'pt' | 'en';
-    currentPage?: 'home' | 'download' | 'roadmap' | 'docs' | 'online' | 'blog';
+    currentPage?: 'home' | 'download' | 'tools' | 'roadmap' | 'docs' | 'online' | 'blog';
 }
 
 const { lang = 'pt', currentPage = 'home' } = Astro.props;
@@ -16,7 +16,7 @@ const translations = {
     pt: {
         home: 'INÍCIO',
         download: 'BAIXAR APP',
-        tools: 'FERRAMENTAS',
+        tools: 'CASOS DE USO',
         blog: 'BLOG',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
@@ -24,7 +24,7 @@ const translations = {
     en: {
         home: 'HOME',
         download: 'DOWNLOAD APP',
-        tools: 'TOOLS',
+        tools: 'USE CASES',
         blog: 'BLOG',
         roadmap: 'ROADMAP',
         github: 'GITHUB',
@@ -36,7 +36,7 @@ const t = translations[lang];
 const navLinks = [
     { key: 'home', href: `${basePath}/`, label: t.home },
     { key: 'download', href: `${basePath}/download/`, label: t.download },
-    { key: 'tools', href: lang === 'pt' ? '/pt/ferramentas/' : '/tools/', label: t.tools },
+    { key: 'tools', href: lang === 'pt' ? '/pt/casos-de-uso/' : '/use-cases/', label: t.tools },
     { key: 'blog', href: `${basePath}/blog/`, label: t.blog },
     { key: 'roadmap', href: `${basePath}/#build-in-public`, label: t.roadmap },
 ];

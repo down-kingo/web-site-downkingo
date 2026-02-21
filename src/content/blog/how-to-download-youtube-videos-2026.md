@@ -1,5 +1,6 @@
 ---
 title: "Download YouTube Videos in 2026 (4K, MP3 & More)"
+metaTitle: "Free YouTube Video Downloader 2026: Save in 4K, 8K and MP3"
 description: "Download YouTube videos in 4K, 8K or MP3 free with DownKingo. Guide covering format selection, quality options and audio extraction."
 pubDate: 2026-02-10
 refId: "youtube-guide"
