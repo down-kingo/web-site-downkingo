@@ -726,7 +726,7 @@ import kingoIcon from '../../assets/kingo.ico';
                     <!-- Main Image (Roadmap) -->
                     <div class="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-[#09090b] lg:rotate-2 hover:rotate-0 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
-                        <Image src={buildInPublic} alt="Roadmap Interface" class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity" format="webp" />
+                        <Image src={buildInPublic} alt="Roadmap Interface" class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity" format="webp" widths={[400, 800, 1920]} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1920px" />
                     </div>
                     
                     <!-- Floating Secondary Image (Issues) -->
