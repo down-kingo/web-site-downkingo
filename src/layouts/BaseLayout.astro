@@ -31,7 +31,10 @@ const isPt = language === "pt";
 const baseUrl = "https://downkingo.com";
 
 // Helper to remove trailing slash
-const removeTrailingSlash = (str: string) => str.replace(/\/+$/, '');
+const removeTrailingSlash = (str: string) => {
+    const stripped = str.replace(/\/+$/, '');
+    return stripped === 'https://downkingo.com' ? 'https://downkingo.com/' : stripped;
+};
 
 // Normalize path: ignore trailing slash for logic
 const cleanPath = removeTrailingSlash(currentPath) || "/";
@@ -69,12 +72,14 @@ if (alternateUrls) {
   ptUrl = baseUrl + "/pt" + (pathCore === "/" ? "" : pathCore);
 }
 
-// Ensure NO trailing slashes for Hreflang to match Canonical standard
+// Ensure NO trailing slashes for Hreflang to match Canonical standard (except for root domain)
 enUrl = removeTrailingSlash(enUrl);
 ptUrl = removeTrailingSlash(ptUrl);
 
 // If no canonical prop provided, derive it from the detected correct URL for this language
-const computedCanonical = canonical || (isPt ? ptUrl : enUrl);
+// If canonical IS provided, force it through removeTrailingSlash to guarantee it exactly matches hreflang format
+const computedCanonical = canonical ? removeTrailingSlash(canonical) : (isPt ? ptUrl : enUrl);
+
 
 // Merge twitter defaults
 const twitterConfig = {
