@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fallback or fallback logic
     if (words.length === 0) {
-      const isPt = document.documentElement.lang === "pt";
+      const isPt = document.documentElement.lang.startsWith("pt");
       words = isPt
         ? ["BAIXE", "CONVERTA", "TRANSCREVA"]
         : ["DOWNLOAD", "CONVERT", "TRANSCRIBE"];
