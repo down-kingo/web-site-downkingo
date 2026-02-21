@@ -1,0 +1,115 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  thanksMessage: string;
+}
+const { title, description, thanksMessage } = Astro.props;
+---
+<div id="rating-popup" class="fixed bottom-4 right-4 z-50 translate-y-[150%] opacity-0 transition-all duration-500 max-w-sm w-full">
+    <div class="bg-[#09090b] border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-2xl p-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none"></div>
+        <button id="close-rating" class="absolute top-4 right-4 text-muted hover:text-white transition-colors" aria-label="Close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        
+        <div id="rating-content">
+            <h3 class="text-lg font-bold text-white mb-2">{title}</h3>
+            <p class="text-xs text-muted mb-4">{description}</p>
+            
+            <div class="flex items-center gap-2 mb-2" id="stars-container">
+                {[1, 2, 3, 4, 5].map((star) => (
+                    <button class="star-btn text-white/20 hover:text-yellow-400 transition-colors" data-value={star} aria-label={`Rate ${star} stars`}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </button>
+                ))}
+            </div>
+            <p class="text-xs text-emerald-400 font-bold hidden mt-4" id="feedback-success">{thanksMessage}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('rating-popup');
+        const closeBtn = document.getElementById('close-rating');
+        const stars = document.querySelectorAll('.star-btn');
+        const successMsg = document.getElementById('feedback-success');
+        let rated = false;
+
+        // Verify if user already rated
+        if (localStorage.getItem('downkingo_rated')) {
+            return;
+        }
+
+        // Try to trigger popup when downloading
+        // Capture links that download the main files
+        const downloadLinks = document.querySelectorAll('a[href$=".exe"], a[href$=".AppImage"], a[href$=".dmg"], a[href*="releases/download"]');
+        
+        downloadLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!rated && popup) {
+                    // Give it a moment before showing the popup, so they don't miss it while the browser download starts
+                    setTimeout(() => {
+                        popup.classList.remove('translate-y-[150%]', 'opacity-0');
+                    }, 2500);
+                }
+            });
+        });
+
+        // Close the popup
+        closeBtn?.addEventListener('click', () => {
+            popup?.classList.add('translate-y-[150%]', 'opacity-0');
+        });
+
+        // Hover logic for the stars
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', function() {
+                if (rated) return;
+                const value = parseInt(this.getAttribute('data-value') || '0');
+                stars.forEach((s, idx) => {
+                    if (idx < value) s.classList.replace('text-white/20', 'text-yellow-400');
+                    else s.classList.replace('text-yellow-400', 'text-white/20');
+                });
+            });
+
+            star.addEventListener('mouseleave', function() {
+                if (rated) return;
+                stars.forEach(s => s.classList.replace('text-yellow-400', 'text-white/20'));
+            });
+
+            // On click -> Rate
+            star.addEventListener('click', function() {
+                if (rated) return;
+                rated = true;
+                const value = parseInt(this.getAttribute('data-value') || '0');
+                
+                // Color till the value
+                stars.forEach((s, idx) => {
+                    if (idx < value) {
+                        s.classList.replace('text-white/20', 'text-yellow-400');
+                    } else {
+                        s.classList.replace('text-yellow-400', 'text-white/20');
+                    }
+                });
+
+                localStorage.setItem('downkingo_rated', 'true');
+                
+                /*
+                  Aqui no futuro podemos colocar um endpoint:
+                  fetch('https://sua-api.com/rate', {
+                    method: 'POST',
+                    body: JSON.stringify({ score: value })
+                  })
+                */
+
+                successMsg?.classList.remove('hidden');
+                
+                // Remove popup gently after showing thanks message
+                setTimeout(() => {
+                    popup?.classList.add('translate-y-[150%]', 'opacity-0');
+                }, 3000);
+            });
+        });
+    });
+</script>

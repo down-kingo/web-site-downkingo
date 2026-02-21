@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import RatingPopup from '../components/RatingPopup.astro';
 
 // Metadata for SEO
 const title = "Download DownKingo - Universal Media Toolbox";
@@ -246,5 +247,12 @@ try {
 
     <!-- OS Detection Script -->
     <script is:inline src="/scripts/os-detect.js" defer></script>
+
+    <!-- Rating Popup -->
+    <RatingPopup 
+        title="Thanks for downloading!"
+        description="How would you rate DownKingo's idea and process so far?"
+        thanksMessage="Your rating has been submitted! It helps us improve ❤️"
+    />
 </body>
 </html>
