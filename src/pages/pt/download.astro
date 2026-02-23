@@ -13,7 +13,8 @@ const description = "Baixe o DownKingo para Windows, macOS e Linux. O baixador d
 // Fetch Latest Release Data (Build Time)
 let latestVersion = "v2.0.0";
 let winUrl = "https://github.com/down-kingo/downkingo/releases/download/v2.0.0/DownKingo.exe";
-let linuxUrl = "https://github.com/down-kingo/downkingo/releases/download/v2.0.0/DownKingo.AppImage";
+let linuxVersion = "v2.0.2";
+let linuxUrl = "https://github.com/down-kingo/downkingo/releases/download/v2.0.2/DownKingo.AppImage";
 const macUrl = "https://github.com/down-kingo/downkingo/releases/download/v1.1.0/Kinematic.dmg"; // Classic v1.1.0 pinned
 
 try {
@@ -29,11 +30,14 @@ try {
 
     // Linux: Look for .AppImage
     const linuxAsset = data.assets.find((a: any) => a.name.endsWith('.AppImage'));
-    if (linuxAsset) linuxUrl = linuxAsset.browser_download_url;
+    if (linuxAsset) {
+      linuxUrl = linuxAsset.browser_download_url;
+      linuxVersion = latestVersion;
+    }
   }
 } catch (e) {
   console.error("Failed to fetch latest release:", e);
-  // Fallback to hardcoded v2.0.0
+  // Fallback to hardcoded defaults
 }
 ---
 
@@ -148,7 +152,7 @@ try {
                     Baixar AppImage
                 </a>
                 <div class="mt-4 flex justify-center gap-4 text-[10px] text-muted font-mono">
-                    <span>{latestVersion}</span>
+                    <span>{linuxVersion}</span>
                 </div>
             </div>
 
