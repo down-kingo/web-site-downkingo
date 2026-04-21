@@ -1,11 +1,11 @@
-document.addEventListener("astro:page-load", () => {
+function initMobileMenu() {
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
   const links = menu ? menu.querySelectorAll("a") : [];
   let isOpen = false;
 
   const iconMenu = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
-  const iconX = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>`;
+  const iconX = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6 18 18"/></svg>`;
 
   // Function to toggle menu state
   function toggleMenu() {
@@ -46,4 +46,10 @@ document.addEventListener("astro:page-load", () => {
       if (isOpen) toggleMenu();
     });
   });
-});
+}
+
+// DOMContentLoaded: dispara no carregamento normal da página
+document.addEventListener("DOMContentLoaded", initMobileMenu);
+
+// astro:page-load: dispara se o projeto usar View Transitions (compatibilidade futura)
+document.addEventListener("astro:page-load", initMobileMenu);
