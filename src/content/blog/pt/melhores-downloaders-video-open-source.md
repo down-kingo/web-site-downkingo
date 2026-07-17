@@ -17,7 +17,7 @@ O cenário de downloaders de vídeo open source amadureceu consideravelmente em 
 
 Todas as ferramentas discutidas aqui (exceto uma exceção anotada) são gratuitas, open source e respeitam sua privacidade. Elas diferem em interface, profundidade de recursos e filosofia.
 
-## yt-dlp (Linha de Comando)
+## [yt-dlp](https://github.com/yt-dlp/yt-dlp) (Linha de Comando)
 
 O yt-dlp é a espinha dorsal de quase todo downloader de vídeo open source que existe. É o fork ativamente mantido do projeto original youtube-dl, disponível no [GitHub](https://github.com/yt-dlp/yt-dlp) e suporta mais de 1.000 sites. Se um site hospeda vídeo, há uma boa chance de que o yt-dlp consiga extrair.
 
@@ -28,7 +28,7 @@ A desvantagem é óbvia: yt-dlp é um aplicativo de terminal. Não há interface
 **Plataformas**: Windows, macOS, Linux (baseado em Python, roda onde Python rodar)
 **Melhor para**: Power users, desenvolvedores, scripts de automação, quem vive no terminal
 
-## DownKingo (Desktop GUI)
+## [DownKingo](/pt/download/) (Desktop GUI)
 
 O DownKingo adota uma abordagem diferente. É um aplicativo desktop nativo construído com Go e [Wails v3](https://wails.io/) no backend e [React 19](https://react.dev/) com TypeScript no frontend. Na primeira execução, o app baixa automaticamente o yt-dlp e o FFmpeg -- você não precisa instalar nada manualmente.
 
@@ -41,7 +41,7 @@ Para ser transparente sobre limitações: o DownKingo é um projeto mais novo co
 **Plataformas**: Windows, macOS, Linux
 **Melhor para**: Quem quer as capacidades do yt-dlp sem tocar na linha de comando, e quem precisa de download, conversão e transcrição em uma única ferramenta
 
-## Tartube (Desktop GUI)
+## [Tartube](https://tartube.sourceforge.io/) (Desktop GUI)
 
 O Tartube é um frontend Python/GTK para yt-dlp que foca no gerenciamento de biblioteca de vídeos em vez de downloads avulsos. O projeto está disponível no [GitHub](https://github.com/axcore/tartube). Seu ponto forte é a organização: você pode criar inscrições em canais, agendar verificações automáticas de novos uploads, organizar vídeos em pastas personalizadas e receber alertas de livestreams.
 
@@ -52,7 +52,7 @@ O Tartube herda o suporte completo de sites do yt-dlp já que chama o yt-dlp dir
 **Plataformas**: Windows, macOS, Linux
 **Melhor para**: Quem precisa monitorar canais para novos uploads e manter um arquivo de vídeos ao longo do tempo
 
-## Parabolic (Desktop GUI)
+## [Parabolic](https://nickvision.org/parabolic.html) (Desktop GUI)
 
 O Parabolic (anteriormente conhecido como Video Downloader) é um frontend limpo e minimalista para yt-dlp construído com GTK4 e libadwaita. Segue a linguagem de design do [GNOME](https://www.gnome.org/) de perto, o que o faz parecer completamente nativo no desktop GNOME.
 
@@ -63,7 +63,7 @@ O outro lado desse minimalismo é a funcionalidade limitada. Opções de convers
 **Plataformas**: Linux (Flatpak, também disponível como Snap e AUR)
 **Melhor para**: Usuários Linux no GNOME que querem uma ferramenta de download simples e com visual nativo
 
-## Stacher (Desktop GUI)
+## [Stacher](https://stacher.io/) (Desktop GUI)
 
 O Stacher é outro wrapper GUI do yt-dlp que toma a rota multiplataforma via Electron. Disponível em [stacher.io](https://stacher.io/). Apresenta uma interface direta: cole uma URL, escolha o formato, baixe. O Stacher gerencia a atualização do yt-dlp automaticamente, o que é genuinamente útil já que o yt-dlp lança atualizações frequentes para acompanhar mudanças dos sites.
 
@@ -72,7 +72,7 @@ A base Electron significa que o Stacher roda em Windows, macOS e Linux, mas carr
 **Plataformas**: Windows, macOS, Linux (baseado em Electron)
 **Melhor para**: Quem quer uma GUI simples de yt-dlp com atualizações automáticas e suporte multiplataforma
 
-## 4K Video Downloader (Proprietário -- Para Contexto)
+## [4K Video Downloader](https://www.4kdownload.com/products/videodownloader) (Proprietário -- Para Contexto)
 
 O 4K Video Downloader é amplamente recomendado em listas de "melhores downloaders", então vale abordar. Ele **não é open source** ([site oficial](https://www.4kdownload.com/)). O nível gratuito limita downloads e recursos, e a versão completa exige licença paga. É uma ferramenta capaz com interface limpa, mas opera em um modelo fundamentalmente diferente -- código fechado, restrições de uso e telemetria. É mencionado aqui apenas porque leitores pesquisando downloaders inevitavelmente o encontrarão e devem entender a distinção.
 
