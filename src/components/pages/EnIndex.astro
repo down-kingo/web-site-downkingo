@@ -10,8 +10,31 @@ import buildInPublic from '../../assets/build-in-public-kingo.avif';
 import issues from '../../assets/issues.avif';
 import wailsIcon from '../../assets/wails-icon.ico';
 import kingoIcon from '../../assets/kingo.ico';
+import { CURRENT_APP_VERSION } from '../../config/release';
 
 const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.com/", hreflangPt = "https://downkingo.com/pt/" } = Astro.props;
+
+const softwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "DownKingo",
+  operatingSystem: "Windows 10, Windows 11, macOS 10.15+, Linux",
+  applicationCategory: "MultimediaApplication",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    ratingCount: "142",
+  },
+  description: "An open-source privacy-focused media downloader and converter toolkit. Download videos from YouTube, Instagram, TikTok, and 1000+ sites in high quality (4K/8K).",
+  featureList: "4K Video Download, MP3 Converter, AI Background Remover, Playlist Download",
+  fileSize: "50MB",
+  softwareVersion: CURRENT_APP_VERSION,
+};
 ---
 
 <!DOCTYPE html>
@@ -71,29 +94,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- JSON-LD SEO: SoftwareApplication -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "DownKingo",
-      "operatingSystem": "Windows 10, Windows 11, macOS 10.15+, Linux",
-      "applicationCategory": "MultimediaApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "142"
-      },
-      "description": "An open-source privacy-focused media downloader and converter toolkit. Download videos from YouTube, Instagram, TikTok, and 1000+ sites in high quality (4K/8K).",
-      "featureList": "4K Video Download, MP3 Converter, AI Background Remover, Playlist Download",
-      "fileSize": "50MB",
-      "softwareVersion": "2.0.0"
-    }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
 
     <!-- JSON-LD SEO: FAQPage -->
     <script type="application/ld+json">
@@ -309,7 +310,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
                      <a id="hero-download-btn" href="/download" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
-                             <span id="hero-download-text">Download v2.0</span>
+                             <span id="hero-download-text">Download v{CURRENT_APP_VERSION}</span>
                              <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                      </a>
                      <a href="/docs" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
@@ -422,7 +423,7 @@ const { canonical = "https://downkingo.com/", hreflangEn = "https://downkingo.co
                                 <div class="w-3 h-3 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center text-[8px] opacity-50"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500/20 text-yellow-500 opacity-50"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500/20 text-green-500 opacity-50"></div>
-                                <div class="ml-auto text-[10px] font-mono text-muted/50">downkingo-v2</div>
+                                <div class="ml-auto text-[10px] font-mono text-muted/50">downkingo-v3</div>
                              </div>
                              
                              <Image src={appInterface} alt="DownKingo Dark Mode Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" format="webp" />

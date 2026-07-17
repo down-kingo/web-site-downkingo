@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import appInterface from '../assets/build-in-public-kingo.avif';
 import wailsIcon from '../assets/wails-icon.ico';
+import { CURRENT_APP_VERSION } from '../config/release';
 
 // SEO Configuration
 const title = "YouTube Downloader MP4 & MP3 (4K/8K) - DownKingo";
@@ -33,7 +34,7 @@ const og = {
              <!-- Eyebrow -->
              <div class="inline-flex items-center gap-3 border border-red-500/20 rounded-full pl-2 pr-4 py-1 bg-red-500/5 backdrop-blur-md hover:border-red-500/40 transition-colors mx-auto">
                 <Icon name="simple-icons:youtube" class="text-red-500" width={16} />
-                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">YouTube Downloader Official v2.0</span>
+                <span class="font-mono text-[10px] tracking-widest text-red-200 uppercase">YouTube Downloader Official v{CURRENT_APP_VERSION}</span>
             </div>
 
             <!-- Main Title (H1 SEO Optimized) -->
