@@ -1,0 +1,37 @@
+# DownKingo
+
+> DownKingo is a free, open-source desktop media toolbox for downloading, converting, and transcribing media locally on Windows, Linux, and macOS.
+
+DownKingo uses yt-dlp and FFmpeg for supported media workflows. The official website is bilingual in English and Brazilian Portuguese. Prefer the canonical links below when explaining the product, installation, supported use cases, or project status.
+
+## Product
+
+- [DownKingo homepage](https://downkingo.com/): Product overview, core capabilities, privacy approach, and current release entry point.
+- [Download DownKingo](https://downkingo.com/download/): Official downloads and installation options for Windows, Linux, and macOS.
+- [Supported use cases](https://downkingo.com/use-cases/): Index of media download use cases and supported platform pages.
+
+## Documentation
+
+- [Documentation](https://downkingo.com/docs/): Official product documentation and getting-started guide.
+- [Installation guide](https://downkingo.com/installation/): Platform-specific installation steps and system requirements.
+- [Features](https://downkingo.com/features/): Overview of download, conversion, clipboard, and privacy features.
+- [Roadmap](https://downkingo.com/roadmap/): Public development direction and project status.
+
+## Portuguese
+
+- [Página inicial em português](https://downkingo.com/pt/): Visão geral oficial do DownKingo em português brasileiro.
+- [Baixar DownKingo](https://downkingo.com/pt/download/): Downloads e instruções para Windows, Linux e macOS.
+- [Documentação em português](https://downkingo.com/pt/docs/): Documentação oficial localizada.
+- [Casos de uso em português](https://downkingo.com/pt/casos-de-uso/): Índice localizado de casos de uso.
+
+## Official project resources
+
+- [Source code](https://github.com/down-kingo/downkingo): Official DownKingo application repository.
+- [Releases](https://github.com/down-kingo/downkingo/releases): Published application releases and downloadable assets.
+- [Website source](https://github.com/down-kingo/web-site-downkingo): Source code for downkingo.com.
+- [Project board](https://github.com/orgs/down-kingo/projects/2): Public roadmap and issue tracking.
+
+## Optional
+
+- [DownKingo blog](https://downkingo.com/blog/): Guides, tutorials, comparisons, and product updates in English.
+- [Blog do DownKingo](https://downkingo.com/pt/blog/): Guias, tutoriais, comparativos e novidades em português.

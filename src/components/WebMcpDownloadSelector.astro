@@ -1,0 +1,70 @@
+---
+interface Props {
+  lang: 'pt' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    label: 'Choose your desktop operating system',
+    placeholder: 'Select a platform',
+    button: 'Show download',
+    description: 'Selects a desktop operating system and shows the matching DownKingo download option.',
+    parameterDescription: 'The desktop operating system that will run DownKingo.',
+  },
+  pt: {
+    label: 'Escolha o sistema operacional do computador',
+    placeholder: 'Selecione uma plataforma',
+    button: 'Mostrar download',
+    description: 'Seleciona um sistema operacional e mostra a opção correspondente de download do DownKingo.',
+    parameterDescription: 'O sistema operacional do computador que executará o DownKingo.',
+  },
+};
+
+const t = content[lang];
+const inputId = `downkingo-platform-${lang}`;
+---
+
+<form
+  class="max-w-2xl mx-auto mb-10 flex flex-col sm:flex-row items-end gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4"
+  action="#download-grid"
+  method="get"
+  toolname="selectDownKingoPlatform"
+  tooldescription={t.description}
+  toolautosubmit
+  data-download-selector
+>
+  <div class="flex-1 w-full text-left">
+    <label for={inputId} class="block mb-2 text-xs font-mono font-bold uppercase tracking-widest text-white/70">
+      {t.label}
+    </label>
+    <select
+      id={inputId}
+      name="operatingSystem"
+      required
+      toolparamdescription={t.parameterDescription}
+      class="w-full h-12 rounded-xl border border-white/10 bg-black px-4 text-sm text-white outline-none transition-colors focus:border-primary"
+    >
+      <option value="" selected disabled>{t.placeholder}</option>
+      <option value="windows">Windows 10/11</option>
+      <option value="linux">Linux</option>
+      <option value="macos">macOS</option>
+    </select>
+  </div>
+  <button type="submit" class="h-12 w-full sm:w-auto rounded-xl bg-white px-6 text-xs font-black uppercase tracking-widest text-black transition-colors hover:bg-gray-200">
+    {t.button}
+  </button>
+</form>
+
+<style>
+  form:tool-form-active {
+    outline: 2px dashed #1abcfe;
+    outline-offset: 4px;
+  }
+
+  button:tool-submit-active {
+    outline: 2px solid #f24e1e;
+    outline-offset: 3px;
+  }
+</style>
