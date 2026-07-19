@@ -1,21 +1,21 @@
 ---
 title: "Melhores Downloaders de Video Open Source 2026"
-metaTitle: "Top 5 Downloaders de Vídeo Open Source Grátis Comparados (2026)"
-description: "Compare os melhores downloaders de video open source em 2026: yt-dlp, DownKingo, Tartube, Parabolic e Stacher. Recursos e pros e contras."
+metaTitle: "Melhores Downloaders de Vídeo Open Source para Desktop (2026)"
+description: "Compare downloaders de vídeo open source para desktop em 2026, como yt-dlp, DownKingo, VidBee, Open Video Downloader, ClipGrab e outros."
 pubDate: 2026-02-08
 refId: "open-source-comparison"
 author: "Emanuel Nunes"
 heroImage: "../../../assets/blog/open-source-downloaders.webp"
-heroImageAlt: "Cinco setas de download coloridas representando ferramentas open source de vídeo lado a lado"
+heroImageAlt: "Setas de download coloridas representando ferramentas open source de vídeo para desktop"
 tags: ["open-source", "comparativo", "download-video"]
 category: "guide"
 lang: "pt"
 draft: false
 ---
 
-O cenário de downloaders de vídeo open source amadureceu consideravelmente em 2026. Seja para baixar vídeos do YouTube em 4K, salvar clipes do TikTok sem marca d'água ou arquivar conteúdo do Instagram e Twitter, hoje existem várias ferramentas sérias e bem mantidas para a tarefa. Este guia oferece um comparativo honesto dos cinco downloaders de vídeo open source mais notáveis -- de ferramentas de linha de comando a aplicativos desktop com interface polida -- para você escolher o ideal para seu fluxo de trabalho.
+O cenário de downloaders de vídeo open source amadureceu consideravelmente em 2026. Seja para baixar vídeos do YouTube em 4K, salvar clipes do TikTok sem marca d'água ou arquivar conteúdo do Instagram e Twitter, hoje existem várias ferramentas sérias para a tarefa. Este guia compara os projetos que mais aparecem nas buscas, de ferramentas de linha de comando a aplicativos desktop com interface gráfica, para você escolher o ideal para seu fluxo de trabalho.
 
-Todas as ferramentas discutidas aqui (exceto uma exceção anotada) são gratuitas, open source e respeitam sua privacidade. Elas diferem em interface, profundidade de recursos e filosofia.
+A maioria das opções principais tem código aberto, mas a SERP também destaca programas gratuitos de código fechado e soluções comerciais. Essas exceções estão identificadas claramente, porque "usa yt-dlp" não significa automaticamente que toda a interface seja open source.
 
 ## [yt-dlp](https://github.com/yt-dlp/yt-dlp) (Linha de Comando)
 
@@ -63,14 +63,79 @@ O outro lado desse minimalismo é a funcionalidade limitada. Opções de convers
 **Plataformas**: Linux (Flatpak, também disponível como Snap e AUR)
 **Melhor para**: Usuários Linux no GNOME que querem uma ferramenta de download simples e com visual nativo
 
-## [Stacher](https://stacher.io/) (Desktop GUI)
+## [Stacher](https://stacher.io/) (Desktop GUI, Código Fechado)
 
 O Stacher é outro wrapper GUI do yt-dlp que toma a rota multiplataforma via Electron. Disponível em [stacher.io](https://stacher.io/). Apresenta uma interface direta: cole uma URL, escolha o formato, baixe. O Stacher gerencia a atualização do yt-dlp automaticamente, o que é genuinamente útil já que o yt-dlp lança atualizações frequentes para acompanhar mudanças dos sites.
 
 A base Electron significa que o Stacher roda em Windows, macOS e Linux, mas carrega o overhead típico do Electron -- maior uso de memória e startup mais lento comparado a aplicativos nativos. Em termos de recursos, o Stacher não adiciona muito além da conveniência de GUI. Opções de pós-processamento e conversão são limitadas, e não há ferramentas extras como conversão de mídia ou transcrição.
 
+Embora use o yt-dlp, que é open source, o código-fonte da interface do Stacher não é publicado. Portanto, ele entra neste comparativo como freeware popular encontrado nas buscas, e não como um projeto integralmente open source.
+
 **Plataformas**: Windows, macOS, Linux (baseado em Electron)
 **Melhor para**: Quem quer uma GUI simples de yt-dlp com atualizações automáticas e suporte multiplataforma
+
+## [VidBee](https://vidbee.org/) (Desktop GUI)
+
+O VidBee é uma interface open source para yt-dlp construída com Electron e distribuída para Windows, macOS e Linux. O instalador já inclui FFmpeg, e a experiência cobre tanto downloads individuais quanto filas, playlists, canais e histórico sem exigir configuração pelo terminal. O código-fonte está no [GitHub](https://github.com/nexmoe/VidBee) sob licença MIT.
+
+O diferencial é a automação por RSS: você pode acompanhar feeds e colocar novos itens na fila automaticamente. Isso aproxima o VidBee do uso de arquivamento contínuo do Tartube, mas com uma interface mais moderna e consistente entre sistemas. Em contrapartida, continua sendo um aplicativo Electron, com maior consumo de memória que opções nativas, e ainda é um projeto relativamente recente.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem quer filas, playlists e acompanhamento de novos vídeos por RSS em uma GUI multiplataforma
+
+## [Open Video Downloader](https://github.com/jely2002/youtube-dl-gui) (Desktop GUI)
+
+O Open Video Downloader, também conhecido pelo nome antigo `youtube-dl-gui`, é uma interface open source para yt-dlp feita com Rust, Tauri e Vue. Oferece builds para Windows, macOS e Linux e permite baixar vídeo, áudio, legendas e metadados, além de escolher resolução, taxa de quadros, contêiner e template de nome do arquivo.
+
+Também suporta playlists, autenticação por cookies, filas com múltiplos downloads e atualização automática do aplicativo e do yt-dlp. É uma opção equilibrada para quem quer mais escolhas de formato do que uma GUI minimalista, sem chegar à complexidade de gerenciamento de biblioteca do Tartube.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem busca uma GUI open source equilibrada, com playlists, filas e controle detalhado do arquivo de saída
+
+## [ClipGrab](https://clipgrab.org/) (Downloader e Conversor Desktop)
+
+O ClipGrab é um projeto veterano sob licença GPLv3, disponível para Windows, macOS e Linux. Sua proposta é mais direta que a dos frontends modernos de yt-dlp: baixar de sites como YouTube, Vimeo e Dailymotion e converter o resultado para formatos como MPEG4, MP3, OGG e WMV no mesmo fluxo.
+
+A interface simples e o conversor integrado continuam sendo pontos fortes, mas o suporte a sites é mais limitado que o de ferramentas baseadas em yt-dlp. No Windows, revise cada etapa do instalador oficial e recuse ofertas opcionais caso sejam apresentadas. Para quem prioriza transparência máxima, a versão Linux e o código-fonte oficial também estão disponíveis no próprio site.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem quer um downloader tradicional com conversão de áudio e vídeo integrada
+
+## [JDownloader 2](https://jdownloader.org/) (Gerenciador de Downloads Desktop)
+
+O JDownloader 2 não é uma GUI focada apenas em vídeo. É um gerenciador de downloads open source baseado em Java, capaz de capturar links, organizar pacotes, pausar e retomar transferências, limitar banda e extrair arquivos automaticamente. Seu ecossistema de plugins faz com que apareça com frequência nas buscas por downloaders desktop.
+
+Essa abrangência é simultaneamente vantagem e desvantagem. Para quem baixa arquivos de muitos serviços, ele é mais versátil que um frontend de yt-dlp. Para apenas colar uma URL de vídeo e escolher qualidade, a interface é mais carregada e o fluxo menos direto. Use o instalador oficial e leia as opções exibidas durante a instalação.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Usuários avançados que querem um gerenciador geral para vídeos, arquivos e grandes filas de links
+
+## [Arroxy](https://github.com/antonio-orionus/Arroxy) (Desktop GUI)
+
+O Arroxy é uma GUI open source mais nova, baseada em yt-dlp e disponível para Windows, macOS e Linux. Traz perfis reutilizáveis, filas paralelas, playlists, canais, legendas, SponsorBlock, monitoramento da área de transferência e seleção de faixas de áudio. O projeto usa licença MIT e publica o código e os instaladores no GitHub.
+
+É uma alternativa promissora para quem gosta de configurar detalhes, mas seus binários ainda podem exibir alertas de editor desconhecido no Windows e macOS porque não são assinados. Baixe somente pela página oficial de releases e, por ser um projeto mais recente, confira o histórico de versões e issues antes de adotá-lo como ferramenta principal.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem quer perfis avançados, filas e muitas opções do yt-dlp expostas na interface
+
+## [ROSI](https://rosie.run/rosi/) (Desktop GUI)
+
+O ROSI é outro downloader open source recente baseado em yt-dlp. Tem builds para Windows, macOS e Linux, código sob licença MPL-2.0 e uma proposta de interface limpa, sem anúncios e sem telemetria. O site também oferece uma linha LTS paralela para quem prefere uma versão com manutenção de longo prazo.
+
+Ele cobre downloads de vídeo e áudio em mais de mil sites sem tentar virar uma suíte de mídia. Como ainda tem um histórico público menor que yt-dlp, Tartube ou ClipGrab, vale verificar as releases e assinaturas disponibilizadas pelo projeto antes de instalar.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem procura uma GUI recente, simples e com builds verificáveis para os três sistemas
+
+## [OmniGet](https://omniget.dev/) (Suite de Downloads Desktop)
+
+O OmniGet aparece nas buscas como uma alternativa open source mais ampla. Além de usar yt-dlp e FFmpeg para vídeos e áudio, promete lidar com cursos, livros, torrents e arquivos, com fila recuperável, atalho global, extensão de navegador, conversão e ferramentas de legenda. O projeto é GPLv3 e oferece versões para Windows, macOS e Linux.
+
+Essa lista extensa de recursos pode interessar a quem quer concentrar vários tipos de download em um único programa, mas também torna a proposta menos focada que DownKingo, Parabolic ou Open Video Downloader. É um projeto novo; avalie as releases e o código oficial antes de confiar nele para bibliotecas importantes.
+
+**Plataformas**: Windows, macOS, Linux
+**Melhor para**: Quem quer uma suíte ampla para vídeos e outros tipos de arquivo, não apenas um downloader de mídia
 
 ## [4K Video Downloader](https://www.4kdownload.com/products/videodownloader) (Proprietário -- Para Contexto)
 
@@ -78,21 +143,21 @@ O 4K Video Downloader é amplamente recomendado em listas de "melhores downloade
 
 ## Comparativo de Recursos
 
-| Recurso             | yt-dlp               | DownKingo                   | Tartube            | Parabolic          | Stacher            |
-| ------------------- | -------------------- | --------------------------- | ------------------ | ------------------ | ------------------ |
-| Interface           | CLI                  | GUI Nativa (Wails v3)       | GUI GTK            | GUI GTK4/Adwaita   | GUI Electron       |
-| Suporte a sites     | 1000+                | 1000+ (via yt-dlp)          | 1000+ (via yt-dlp) | 1000+ (via yt-dlp) | 1000+ (via yt-dlp) |
-| Windows             | Sim                  | Sim                         | Sim                | Não                | Sim                |
-| macOS               | Sim                  | Sim                         | Sim                | Não                | Sim                |
-| Linux               | Sim                  | Sim                         | Sim                | Sim                | Sim                |
-| Conversor integrado | Não (depende FFmpeg) | Sim (GUI para FFmpeg)       | Não                | Básico             | Não                |
-| Transcrição IA      | Não                  | Sim (Whisper, offline)      | Não                | Não                | Não                |
-| Monitorar canais    | Via scripting        | Não                         | Sim                | Não                | Não                |
-| Monitor clipboard   | Não                  | Sim (backoff adaptativo)    | Não                | Não                | Não                |
-| Internacionalização | Não                  | Sim (5 idiomas)             | Limitado           | Sim (via sistema)  | Não                |
-| Auto-atualização    | Via flag             | Sim (silenciosa via GitHub) | Manual             | Via Flatpak        | Sim                |
-| Telemetria          | Nenhuma              | Nenhuma                     | Nenhuma            | Nenhuma            | Nenhuma            |
-| Uso de memória      | Mínimo               | Baixo (nativo Go + Wails)   | Médio              | Baixo              | Alto (Electron)    |
+| Ferramenta | Interface | Plataformas | Principal diferencial | Modelo do código |
+| --- | --- | --- | --- | --- |
+| yt-dlp | Linha de comando | Windows, macOS, Linux | Controle total e automação | Open source |
+| DownKingo | GUI nativa | Windows, macOS, Linux | Download, conversão e transcrição | Open source |
+| Tartube | GUI GTK | Windows, macOS, Linux | Monitoramento de canais e biblioteca | Open source |
+| Parabolic | GUI GTK4 | Linux | Simplicidade e integração com GNOME | Open source |
+| Stacher | GUI Electron | Windows, macOS, Linux | Interface simples para yt-dlp | Freeware, interface fechada |
+| VidBee | GUI Electron | Windows, macOS, Linux | RSS, filas, playlists e histórico | Open source (MIT) |
+| Open Video Downloader | GUI Tauri | Windows, macOS, Linux | Formatos, playlists e filas | Open source (AGPL-3.0) |
+| ClipGrab | GUI desktop | Windows, macOS, Linux | Conversor integrado e uso simples | Open source (GPLv3) |
+| JDownloader 2 | GUI Java | Windows, macOS, Linux | Gerenciador geral e ecossistema de plugins | Open source |
+| Arroxy | GUI desktop | Windows, macOS, Linux | Perfis, filas e opções avançadas | Open source (MIT) |
+| ROSI | GUI desktop | Windows, macOS, Linux | Interface simples e linha LTS | Open source (MPL-2.0) |
+| OmniGet | Suite desktop | Windows, macOS, Linux | Vídeos, cursos, torrents e outros arquivos | Open source (GPLv3) |
+| 4K Video Downloader | GUI desktop | Windows, macOS, Linux | Produto comercial polido | Proprietário |
 
 ## Qual Você Deveria Usar
 
@@ -108,7 +173,11 @@ A resposta honesta: depende do seu fluxo de trabalho.
 
 **Stacher** é um meio-termo razoável se você quer uma GUI multiplataforma e não precisa de conversão ou recursos extras.
 
-Cada ferramenta nesta lista (exceto o 4K Video Downloader) é gratuita, open source e respeita sua privacidade. Você genuinamente não pode errar. Experimente a que combina com suas necessidades e veja como funciona.
+**VidBee** é especialmente interessante para filas, playlists e automação por RSS. **Open Video Downloader** oferece um equilíbrio melhor entre simplicidade e controle de formatos. **ClipGrab** continua útil quando a conversão integrada importa mais que a maior cobertura possível de sites.
+
+**JDownloader 2** faz mais sentido para quem também baixa arquivos fora do universo de vídeo. **Arroxy**, **ROSI** e **OmniGet** ampliam as alternativas desktop encontradas nas buscas, mas ainda têm menos histórico público; vale acompanhar releases, issues e assinaturas antes de adotá-los em fluxos importantes.
+
+Se código aberto for obrigatório, descarte Stacher e 4K Video Downloader. Em qualquer opção, baixe pelo site ou repositório oficial, mantenha o motor atualizado e use a ferramenta somente em conteúdos que você tem autorização para salvar.
 
 ---
 
