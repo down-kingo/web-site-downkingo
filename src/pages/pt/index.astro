@@ -23,11 +23,6 @@ const softwareApplicationSchema = {
     price: "0",
     priceCurrency: "USD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "142",
-  },
   description: "Um kit de ferramentas de download e conversão de mídia focado em privacidade e código aberto. Baixe vídeos do YouTube, Instagram, TikTok e mais de 1000 sites em alta qualidade (4K/8K).",
   featureList: "Download de Vídeo 4K, Conversor MP3, Removedor de Fundo IA, Download de Playlists",
   fileSize: "50MB",
@@ -52,7 +47,7 @@ const softwareApplicationSchema = {
           title: "DownKingo - Toolbox de Mídia Universal",
           type: "website",
           image: "https://downkingo.com/og-image.png",
-          url: "https://downkingo.com/"
+          url: "https://downkingo.com/pt/"
         },
         optional: {
           description: "A ferramenta definitiva de código aberto. Baixe, converta e processe mídia com privacidade. Desenvolvido em Go, Wails e FFmpeg."
@@ -291,11 +286,11 @@ const softwareApplicationSchema = {
                 
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                     <a id="hero-download-btn" href="/pt/download" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
+                     <a id="hero-download-btn" href="/pt/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
                              <span id="hero-download-text">Baixar v{CURRENT_APP_VERSION}</span>
                              <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                      </a>
-                     <a href="/docs" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
+                     <a href="/pt/docs/" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
                         <Icon name="lucide:book-open" width={20} />
                         <span>Documentação</span>
                      </a>
@@ -662,7 +657,7 @@ const softwareApplicationSchema = {
                         </div>
                     </div>
 
-                    <a href="/pt/download" class="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform mt-4">
+                    <a href="/pt/download/" class="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform mt-4">
                         Começar Agora <Icon name="lucide:arrow-right" class="w-4 h-4" />
                     </a>
                 </div>

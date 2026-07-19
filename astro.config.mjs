@@ -17,7 +17,7 @@ export default defineConfig({
     // This dramatically improves LCP on mobile devices
     inlineStylesheets: "always",
   },
-  trailingSlash: "ignore",
+  trailingSlash: "always",
   integrations: [
     icon(),
     starlight({
@@ -66,7 +66,17 @@ export default defineConfig({
         },
       ],
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+
+        return (
+          pathname !== "/404/" &&
+          pathname !== "/pt/404/" &&
+          !pathname.includes("/blog/tag/")
+        );
+      },
+    }),
 
     robotsTxt(),
     compress({

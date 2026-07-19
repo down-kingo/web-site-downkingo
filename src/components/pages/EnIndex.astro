@@ -25,11 +25,6 @@ const softwareApplicationSchema = {
     price: "0",
     priceCurrency: "USD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "142",
-  },
   description: "An open-source privacy-focused media downloader and converter toolkit. Download videos from YouTube, Instagram, TikTok, and 1000+ sites in high quality (4K/8K).",
   featureList: "4K Video Download, MP3 Converter, AI Background Remover, Playlist Download",
   fileSize: "50MB",
@@ -309,11 +304,11 @@ const softwareApplicationSchema = {
                 
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-                     <a id="hero-download-btn" href="/download" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
+                     <a id="hero-download-btn" href="/download/" class="h-14 px-10 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-gray-200 transition-all rounded-full flex items-center gap-3 hover:scale-105 active:scale-95">
                              <span id="hero-download-text">Download v{CURRENT_APP_VERSION}</span>
                              <Icon id="hero-download-icon" name="lucide:arrow-down" width={20} />
                      </a>
-                     <a href="/docs" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
+                     <a href="/docs/" class="h-14 px-10 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest rounded-full flex items-center gap-3 transition-all hover:bg-white/5 hover:scale-105 active:scale-95">
                         <Icon name="lucide:book-open" width={20} />
                         <span>Documentation</span>
                      </a>
@@ -682,7 +677,7 @@ const softwareApplicationSchema = {
                         </div>
                     </div>
 
-                    <a href="/download" class="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform mt-4">
+                    <a href="/download/" class="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform mt-4">
                         Get Started <Icon name="lucide:arrow-right" class="w-4 h-4" />
                     </a>
                 </div>
