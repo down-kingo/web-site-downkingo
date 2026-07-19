@@ -30,16 +30,26 @@ A desvantagem é óbvia: yt-dlp é um aplicativo de terminal. Não há interface
 
 ## [DownKingo](/pt/download/) (Desktop GUI)
 
-O DownKingo adota uma abordagem diferente. É um aplicativo desktop nativo construído com Go e [Wails v3](https://wails.io/) no backend e [React 19](https://react.dev/) com TypeScript no frontend. Na primeira execução, o app baixa automaticamente o yt-dlp e o FFmpeg -- você não precisa instalar nada manualmente.
+O DownKingo adota uma abordagem diferente. Na versão 3.1.2, ele funciona como uma suíte desktop open source construída com Go e [Wails v3](https://wails.io/) no backend e [React 19](https://react.dev/) com TypeScript no frontend. O instalador prepara os componentes essenciais, como yt-dlp e FFmpeg, sem exigir configuração manual pelo terminal.
 
-O resultado é que você obtém o amplo suporte de plataformas do yt-dlp -- YouTube, TikTok, Instagram, Twitter/X, Facebook, Reddit, Twitch, SoundCloud e centenas mais -- através de uma interface visual. Cole uma URL, veja os formatos e opções de qualidade disponíveis, escolha o que quer e baixe. O monitor de área de transferência com backoff adaptativo observa URLs copiadas e oferece enfileirá-las automaticamente. A fila de download suporta downloads simultâneos via worker pool com rastreamento individual de progresso.
+O campo de URL faz detecção automática do conteúdo e direciona cada link para o fluxo adequado. Além de vídeos e áudio, o app reconhece imagens, publicações com mídia mista e carrosséis do Instagram, inclusive com seleção dos itens encontrados. Há tratamento específico para Instagram e Twitter/X, escolha de vídeo ou apenas áudio, qualidade disponível e monitoramento da área de transferência com backoff adaptativo para sugerir o download assim que um link é copiado.
 
-Onde o DownKingo vai além de um simples wrapper de yt-dlp é nos recursos adicionais. Inclui um conversor de mídia completo (alimentado pelo FFmpeg) que lida com conversão entre MP4, MKV, WebM, MOV e formatos de áudio como MP3, AAC, FLAC, WAV, OGG e M4A. Há também um transcritor integrado com IA usando Whisper, que funciona localmente e offline após o download do modelo, capaz de converter áudio e vídeo em texto com timestamps em múltiplos idiomas. O app suporta cinco idiomas nativamente, armazena histórico de downloads em banco [SQLite](https://www.sqlite.org/) local, integra-se com GitHub para autenticação e roadmap interativo, e possui sistema de atualização automática silenciosa.
+O recurso mais incomum aparece antes mesmo do download: um editor de vídeo integrado. Depois de analisar a URL, você pode abrir o preview, navegar pela timeline, dividir o vídeo e remover vários trechos com precisão de quadro, além de desfazer, refazer e visualizar a duração final. No mesmo editor é possível importar legendas existentes do vídeo ou usar o Whisper local como fallback, revisar cada trecho e configurar fonte, tamanho, negrito, itálico, cores, contorno, fundo, opacidade e posição. Os cortes e as legendas estilizadas são processados pelo FFmpeg e gravados no arquivo final.
+
+O conversor de mídia também é uma ferramenta completa, não apenas uma opção posterior ao download. Ele processa arquivos individuais ou em lote, converte vídeo entre MP4, MKV e WebM, extrai áudio para MP3, AAC, FLAC, OGG ou WAV e converte imagens entre JPG, PNG, WebP e AVIF. Há controles de qualidade e velocidade de codificação, nome de saída, estimativa de tamanho e modos separados para comprimir vídeos e imagens. Nas preferências de vídeo, o app ainda oferece remux para MP4, MKV, WebM, MOV ou AVI e perfis de compatibilidade H.264/AAC ou VP9/Opus.
+
+O transcritor usa Whisper.cpp localmente e continua funcionando offline depois que o motor e o modelo são baixados. A versão atual permite gerenciar oito modelos, do Tiny ao Large V3 Turbo, incluindo variantes quantizadas que usam menos memória. Aceita arquivos de áudio e vídeo, detecta ou força o idioma, pode ignorar silêncios com VAD e exporta o resultado como TXT, SRT, VTT ou Word (.docx). Nada do áudio precisa ser enviado a um serviço externo.
+
+A fila persistente usa um worker pool para executar até três downloads ao mesmo tempo e mostra progresso, velocidade, tempo estimado e etapa de mesclagem em tempo real. Os resultados ficam no histórico local em [SQLite](https://www.sqlite.org/), de onde é possível abrir a pasta do arquivo ou o link original. O roadmap integrado mostra ideias, itens planejados, recursos em produção e entregas; com uma conta GitHub, o usuário também pode votar e enviar sugestões sem sair do aplicativo.
+
+O painel de configurações é bem mais amplo do que a descrição antiga deste comparativo indicava. Ele permite ativar apenas os módulos desejados, escolher pastas de vídeo e imagem, tema, layout, cor de destaque, idioma, atalhos, modo anônimo, monitor de clipboard, console de logs, inicialização com o Windows, formato de imagem, qualidade, miniatura incorporada e comportamento para arquivos existentes. Para acelerar downloads, o modo Turbo instala o aria2c e permite ajustar de 4 a 32 conexões, além de 2 a 16 fragmentos DASH/HLS simultâneos.
+
+Apesar da quantidade de ferramentas, o aplicativo é leve para uma suíte desktop: o instalador atual do Windows tem cerca de 80 MB e uma instalação nova com os componentes principais ocupa aproximadamente 200 a 300 MB antes de modelos Whisper opcionais. Em um teste real com o app parado, o processo principal ficou perto de 12 MB de RAM e abaixo de 20 MB; o consumo total varia conforme o WebView, downloads ativos, conversões, editor e modelo de transcrição em uso.
 
 Para ser transparente sobre limitações: o DownKingo é um projeto mais novo com uma comunidade menor que o próprio yt-dlp. Nem toda flag avançada do yt-dlp está exposta na GUI ainda, e o suporte a playlists está no roadmap para versões futuras. Mas para a grande maioria das tarefas de download e conversão, ele cobre o fluxo de trabalho com eficiência.
 
 **Plataformas**: Windows, macOS, Linux
-**Melhor para**: Quem quer as capacidades do yt-dlp sem tocar na linha de comando, e quem precisa de download, conversão e transcrição em uma única ferramenta
+**Melhor para**: Quem quer baixar e editar antes de salvar, converter mídia, gerar legendas e transcrever localmente em uma única ferramenta leve
 
 ## [Tartube](https://tartube.sourceforge.io/) (Desktop GUI)
 
@@ -146,7 +156,7 @@ O 4K Video Downloader é amplamente recomendado em listas de "melhores downloade
 | Ferramenta | Interface | Plataformas | Principal diferencial | Modelo do código |
 | --- | --- | --- | --- | --- |
 | yt-dlp | Linha de comando | Windows, macOS, Linux | Controle total e automação | Open source |
-| DownKingo | GUI nativa | Windows, macOS, Linux | Download, conversão e transcrição | Open source |
+| DownKingo | GUI nativa | Windows, macOS, Linux | Download, editor pré-download, legendas, conversão e transcrição offline | Open source |
 | Tartube | GUI GTK | Windows, macOS, Linux | Monitoramento de canais e biblioteca | Open source |
 | Parabolic | GUI GTK4 | Linux | Simplicidade e integração com GNOME | Open source |
 | Stacher | GUI Electron | Windows, macOS, Linux | Interface simples para yt-dlp | Freeware, interface fechada |
@@ -165,7 +175,7 @@ A resposta honesta: depende do seu fluxo de trabalho.
 
 **yt-dlp** é a ferramenta mais poderosa desta lista, ponto. Se você está confortável no terminal e quer controle total, nada chega perto. Também é o motor que alimenta a maioria das ferramentas GUI listadas aqui.
 
-**DownKingo** é a opção mais forte se você quer as capacidades de download do yt-dlp combinadas com uma interface moderna, conversão de mídia integrada, transcrição por IA e atualizações automáticas -- sem o custo de memória do Electron. É a opção GUI mais completa em recursos aqui, com suporte nativo a 5 idiomas e integração com GitHub.
+**DownKingo** é a opção mais completa se você quer analisar o link, editar cortes, adicionar legendas, baixar, converter e transcrever sem trocar de aplicativo. A fila persistente, o histórico, o roadmap integrado e o modo Turbo com aria2c reforçam a proposta de suíte, enquanto o backend em Go mantém o aplicativo leve em repouso. O ponto de atenção é ser um projeto mais novo e ainda não expor toda flag avançada nem o download geral de playlists do yt-dlp.
 
 **Tartube** preenche um nicho que os outros não preenchem: monitoramento contínuo de canais e gerenciamento de biblioteca de vídeos. Se seu fluxo envolve rastrear dezenas de canais e arquivar novos uploads automaticamente, o Tartube foi projetado exatamente para isso.
 
