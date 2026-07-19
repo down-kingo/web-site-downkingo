@@ -1,7 +1,7 @@
 ---
 title: "Best Open Source Video Downloaders in 2026"
 metaTitle: "Best Open Source Desktop Video Downloaders Compared (2026)"
-description: "Compare open-source desktop video downloaders in 2026, including yt-dlp, DownKingo, VidBee, Open Video Downloader, ClipGrab, and more."
+description: "Compare open-source desktop video downloaders in 2026, including yt-dlp, DownKingo, VidBee, Stacher, JDownloader 2, and more."
 pubDate: 2026-02-08
 refId: "open-source-comparison"
 author: "Emanuel Nunes"
@@ -32,48 +32,27 @@ The trade-off is obvious: yt-dlp is a terminal application. There is no graphica
 
 ![DownKingo app overview with Downloads, Media Converter, and Transcriber tools](../../assets/blog/downkingo-app-opensource.png)
 
-Of everything on this list, DownKingo is the most complete: it's the only tool here that lets you trim, caption, convert, and transcribe a video without ever leaving the app or opening a second program. Version 3.1.2 ships as a native desktop suite — not an Electron wrapper — that installs yt-dlp and FFmpeg on its own, no terminal setup required. (Full stack on [GitHub](https://github.com/down-kingo/downkingo), for anyone who wants to check under the hood.)
+Of everything on this list, DownKingo is the most complete: the only tool here that lets you trim, caption, convert, and transcribe a video without leaving the app. Version 3.1.2 is a native desktop suite — not an Electron wrapper — that installs yt-dlp and FFmpeg on its own. (Full stack on [GitHub](https://github.com/down-kingo/downkingo), for anyone curious.) Paste a link and it detects what it is — video, audio, image, or an Instagram carousel — down to picking individual items, with a clipboard monitor that offers to queue a download the moment you copy a URL.
 
-Paste a link and DownKingo figures out what it is — video, audio, image, or a mixed-media Instagram carousel — and routes it to the right workflow, down to picking individual items out of a carousel. It has dedicated handling for Instagram and Twitter/X, a video-or-audio-only toggle, and a clipboard monitor with adaptive backoff that offers to queue a download the moment you copy a link.
+Its strangest feature is also its best one: **you edit the video before you download it, not after.** Trim with frame-level precision, undo and redo freely, and only then commit to the download — no re-encoding pass in a separate editor afterward, no bloated original kept around just to cut ten seconds out of it. The same screen handles captions: import existing ones or fall back to local Whisper, then style and burn them in with FFmpeg.
 
-Its strangest feature is also its best one: **you edit the video before you download it, not after.** Once a link is analyzed, DownKingo opens a preview with a full timeline — trim it, cut out the parts you don't want with frame-level precision, undo and redo freely, and only then commit to the download. It sounds backwards until you see what it saves you: no re-encoding pass in a separate editor afterward, no keeping a bloated original around just to cut ten seconds out of it. The same screen handles captions too — import existing subtitles or fall back to local Whisper, edit each line, and style font, color, outline, background, and position before FFmpeg burns it all into the final file.
+Downloads are genuinely fast too: DownKingo bundles aria2c and lets you tune it directly, up to 32 connections and 16 concurrent DASH/HLS fragments — a level of control almost no other GUI here exposes. Everything else rounds out into a real suite: batch conversion across common video, audio, and image formats; fully offline transcription via Whisper.cpp across eight models; a persistent queue with local history; and a built-in roadmap. Despite all that, it stays light — under 20 MB of RAM idle, around 80 MB to install.
 
-The download itself is also genuinely fast: DownKingo bundles aria2c and lets you tune it directly, from 4 to 32 connections plus up to 16 concurrent DASH/HLS fragments. Almost none of the other GUIs on this list expose that level of control — most just call yt-dlp with default settings and stop there.
-
-Everything else rounds it out into a real suite rather than a pile of extras. The converter handles batches, not just single files — video across MP4/MKV/WebM, audio to MP3/AAC/FLAC/OGG/WAV, images across JPG/PNG/WebP/AVIF, each with its own quality controls. The transcriber runs Whisper.cpp fully offline across eight models (Tiny through Large V3 Turbo, including lighter quantized versions), detects or forces a language, skips silence with VAD, and exports to TXT, SRT, VTT, or Word. Downloads run three at a time through a persistent queue with a local SQLite history, and a built-in roadmap lets you vote on and submit feature requests once you connect a GitHub account.
-
-For all that, it stays light: the Windows installer is about 80 MB, a fresh install with core components lands around 200-300 MB before any Whisper models, and the idle process sits under 20 MB of RAM.
-
-To be transparent about limitations: DownKingo is a newer project with a smaller community than yt-dlp itself. Not every advanced yt-dlp flag is exposed in the GUI yet, and full playlist downloading is still on the roadmap. For everything short of that, it covers the workflow end to end.
+To be transparent: DownKingo is a newer project with a smaller community than yt-dlp itself, so not every advanced flag is exposed yet and full playlist downloading is still on the roadmap. For everything short of that, it covers the workflow end to end.
 
 **Platforms**: Windows, macOS, Linux
 **Best for**: Anyone who wants to trim, caption, convert, and transcribe a video in one app instead of stitching four tools together
 
-## [Tartube](https://tartube.sourceforge.io/) (Desktop GUI)
+## [VidBee](https://vidbee.org/) (Desktop GUI)
 
-![Tartube channel and video library interface](../../assets/blog/tartube-screenshot.png)
+![VidBee desktop app main interface](../../assets/blog/vidbee-screenshot.png)
 
-[Tartube](https://github.com/axcore/tartube) is a Python/GTK front-end for yt-dlp that focuses on video library management rather than one-off downloads. Its primary strength is organization: you can create channel subscriptions, schedule automatic checks for new uploads, organize videos into custom folders, and get alerts for livestreams.
+VidBee is an open-source yt-dlp interface built with Electron and distributed for Windows, macOS, and Linux. FFmpeg is bundled with the installer, and the workflow covers individual downloads, queues, playlists, channels, and history without requiring command-line setup. Its source is available on [GitHub](https://github.com/nexmoe/VidBee) under the MIT license.
 
-The interface shows its ambition and its age simultaneously. There are many panels, tabs, and configuration options. Setting up channel monitoring, download scheduling, and folder hierarchies gives you fine-grained control, but the learning curve is real. The GTK-based UI feels functional rather than polished, and performance can slow down when managing very large queues.
-
-Tartube inherits yt-dlp's full site support since it calls yt-dlp directly. It is cross-platform, running on Windows, macOS, and Linux, though it feels most at home on Linux where GTK integration is native.
+Its standout feature is RSS automation: you can follow feeds and automatically queue new items. That moves VidBee closer to a continuous archiving use case while keeping a more modern, consistent interface across operating systems. The trade-offs are Electron's higher memory footprint and the shorter track record of a relatively new project.
 
 **Platforms**: Windows, macOS, Linux
-**Best for**: Users who need to monitor channels for new uploads and manage an ongoing video archive over time
-
-## [Parabolic](https://nickvision.org/parabolic.html) (Desktop GUI)
-
-![Parabolic app interface on Linux](../../assets/blog/parabolic-screenshot.png)
-
-[Parabolic](https://flathub.org/apps/org.nickvision.tubeconverter) (formerly known as Video Downloader) is a clean, minimal front-end for yt-dlp built with GTK4 and libadwaita. It follows [GNOME](https://www.gnome.org/)'s design language closely, which makes it feel completely native on the GNOME desktop.
-
-The workflow is deliberately simple: paste a URL, pick your format and quality, download. That is it. Parabolic does not try to be a video library manager or a conversion suite. It does one thing and does it with a polished, distraction-free interface. It is distributed primarily as a Flatpak, making installation on most Linux distributions straightforward.
-
-The flip side of that minimalism is limited functionality. Conversion options are basic, there is no batch processing beyond simple queues, and advanced yt-dlp features are not exposed. Parabolic is also Linux-focused -- there are no official Windows or macOS builds.
-
-**Platforms**: Linux (Flatpak, also available as Snap and AUR)
-**Best for**: Linux users on GNOME who want a native-feeling, simple download tool
+**Best for**: Users who want queues, playlists, and RSS-based monitoring in a cross-platform GUI
 
 ## [Stacher](https://stacher.io/) (Desktop GUI, Closed Source)
 
@@ -88,27 +67,16 @@ Although it uses the open-source yt-dlp engine, Stacher does not publish the sou
 **Platforms**: Windows, macOS, Linux (Electron-based)
 **Best for**: Users who want a no-frills yt-dlp GUI with automatic updates and cross-platform support
 
-## [VidBee](https://vidbee.org/) (Desktop GUI)
+## [JDownloader 2](https://jdownloader.org/) (Desktop Download Manager)
 
-![VidBee desktop app main interface](../../assets/blog/vidbee-screenshot.png)
+![JDownloader 2 logo](../../assets/blog/jdownloader-screenshot.png)
 
-VidBee is an open-source yt-dlp interface built with Electron and distributed for Windows, macOS, and Linux. FFmpeg is bundled with the installer, and the workflow covers individual downloads, queues, playlists, channels, and history without requiring command-line setup. Its source is available on [GitHub](https://github.com/nexmoe/VidBee) under the MIT license.
+JDownloader 2 is not a video-only GUI. It is a Java-based open-source download manager that can capture links, organize packages, pause and resume transfers, limit bandwidth, and extract archives automatically. Its broad plugin ecosystem and long history are why it frequently appears in searches for desktop downloaders.
 
-Its standout feature is RSS automation: you can follow feeds and automatically queue new items. That moves VidBee closer to Tartube's continuous archiving use case while keeping a more modern, consistent interface across operating systems. The trade-offs are Electron's higher memory footprint and the shorter track record of a relatively new project.
-
-**Platforms**: Windows, macOS, Linux
-**Best for**: Users who want queues, playlists, and RSS-based monitoring in a cross-platform GUI
-
-## [Open Video Downloader](https://github.com/jely2002/youtube-dl-gui) (Desktop GUI)
-
-![Open Video Downloader (youtube-dl-gui) interface](../../assets/blog/open-video-downloader-screenshot.png)
-
-Open Video Downloader, also known by its former `youtube-dl-gui` name, is an open-source yt-dlp interface built with Rust, Tauri, and Vue. It provides Windows, macOS, and Linux builds and can download video, audio, subtitles, and metadata while letting you choose resolution, frame rate, container, and filename templates.
-
-It also supports playlists, cookie-based authentication, multi-download queues, and automatic updates for both the app and yt-dlp. It is a balanced choice for users who want more format control than a minimalist GUI without the library-management complexity of Tartube.
+That breadth is both its advantage and its drawback. It is more versatile than a yt-dlp front end for people downloading files from many services, but its interface is busier and its workflow less direct if all you want is to paste a video URL and choose a quality. Use the official installer and read the options shown during setup.
 
 **Platforms**: Windows, macOS, Linux
-**Best for**: Users looking for a balanced open-source GUI with playlists, queues, and detailed output control
+**Best for**: Power users who want a general manager for videos, files, and large link queues
 
 ## [ClipGrab](https://clipgrab.org/) (Desktop Downloader and Converter)
 
@@ -121,16 +89,42 @@ The simple interface and integrated converter remain useful, but its site covera
 **Platforms**: Windows, macOS, Linux
 **Best for**: Users who want a traditional downloader with built-in audio and video conversion
 
-## [JDownloader 2](https://jdownloader.org/) (Desktop Download Manager)
+## [Tartube](https://tartube.sourceforge.io/) (Desktop GUI)
 
-![JDownloader 2 logo](../../assets/blog/jdownloader-screenshot.png)
+![Tartube channel and video library interface](../../assets/blog/tartube-screenshot.png)
 
-JDownloader 2 is not a video-only GUI. It is a Java-based open-source download manager that can capture links, organize packages, pause and resume transfers, limit bandwidth, and extract archives automatically. Its broad plugin ecosystem is why it frequently appears in searches for desktop downloaders.
+[Tartube](https://github.com/axcore/tartube) is a Python/GTK front-end for yt-dlp that focuses on video library management rather than one-off downloads. Its primary strength is organization: you can create channel subscriptions, schedule automatic checks for new uploads, organize videos into custom folders, and get alerts for livestreams.
 
-That breadth is both its advantage and its drawback. It is more versatile than a yt-dlp front end for people downloading files from many services, but its interface is busier and its workflow less direct if all you want is to paste a video URL and choose a quality. Use the official installer and read the options shown during setup.
+The interface shows its ambition and its age simultaneously. There are many panels, tabs, and configuration options. Setting up channel monitoring, download scheduling, and folder hierarchies gives you fine-grained control, but the learning curve is real. The GTK-based UI feels functional rather than polished, and performance can slow down when managing very large queues.
+
+Tartube inherits yt-dlp's full site support since it calls yt-dlp directly. It is cross-platform, running on Windows, macOS, and Linux, though it feels most at home on Linux where GTK integration is native.
 
 **Platforms**: Windows, macOS, Linux
-**Best for**: Power users who want a general manager for videos, files, and large link queues
+**Best for**: Users who need to monitor channels for new uploads and manage an ongoing video archive over time
+
+## [Open Video Downloader](https://github.com/jely2002/youtube-dl-gui) (Desktop GUI)
+
+![Open Video Downloader (youtube-dl-gui) interface](../../assets/blog/open-video-downloader-screenshot.png)
+
+Open Video Downloader, also known by its former `youtube-dl-gui` name, is an open-source yt-dlp interface built with Rust, Tauri, and Vue. It provides Windows, macOS, and Linux builds and can download video, audio, subtitles, and metadata while letting you choose resolution, frame rate, container, and filename templates.
+
+It also supports playlists, cookie-based authentication, multi-download queues, and automatic updates for both the app and yt-dlp. It is a balanced choice for users who want more format control than a minimalist GUI without the library-management complexity of Tartube.
+
+**Platforms**: Windows, macOS, Linux
+**Best for**: Users looking for a balanced open-source GUI with playlists, queues, and detailed output control
+
+## [Parabolic](https://nickvision.org/parabolic.html) (Desktop GUI)
+
+![Parabolic app interface on Linux](../../assets/blog/parabolic-screenshot.png)
+
+[Parabolic](https://flathub.org/apps/org.nickvision.tubeconverter) (formerly known as Video Downloader) is a clean, minimal front-end for yt-dlp built with GTK4 and libadwaita. It follows [GNOME](https://www.gnome.org/)'s design language closely, which makes it feel completely native on the GNOME desktop.
+
+The workflow is deliberately simple: paste a URL, pick your format and quality, download. That is it. Parabolic does not try to be a video library manager or a conversion suite. It does one thing and does it with a polished, distraction-free interface. It is distributed primarily as a Flatpak, making installation on most Linux distributions straightforward.
+
+The flip side of that minimalism is limited functionality. Conversion options are basic, there is no batch processing beyond simple queues, and advanced yt-dlp features are not exposed. Parabolic is also Linux-focused -- there are no official Windows or macOS builds.
+
+**Platforms**: Linux (Flatpak, also available as Snap and AUR)
+**Best for**: Linux users on GNOME who want a native-feeling, simple download tool
 
 ## [Arroxy](https://github.com/antonio-orionus/Arroxy) (Desktop GUI)
 
@@ -177,13 +171,13 @@ That long feature list may appeal to users who want several download types in on
 | --- | --- | --- | --- | --- |
 | yt-dlp | Command line | Windows, macOS, Linux | Total control and automation | Open source |
 | DownKingo | Native GUI | Windows, macOS, Linux | Pre-download editing, captions, offline transcription, and aria2c turbo downloads | Open source |
-| Tartube | GTK GUI | Windows, macOS, Linux | Channel monitoring and library management | Open source |
-| Parabolic | GTK4 GUI | Linux | Simplicity and GNOME integration | Open source |
-| Stacher | Electron GUI | Windows, macOS, Linux | Simple yt-dlp interface | Freeware, closed interface |
 | VidBee | Electron GUI | Windows, macOS, Linux | RSS, queues, playlists, and history | Open source (MIT) |
-| Open Video Downloader | Tauri GUI | Windows, macOS, Linux | Formats, playlists, and queues | Open source (AGPL-3.0) |
-| ClipGrab | Desktop GUI | Windows, macOS, Linux | Integrated converter and simple workflow | Open source (GPLv3) |
+| Stacher | Electron GUI | Windows, macOS, Linux | Simple yt-dlp interface | Freeware, closed interface |
 | JDownloader 2 | Java GUI | Windows, macOS, Linux | General download manager and plugins | Open source |
+| ClipGrab | Desktop GUI | Windows, macOS, Linux | Integrated converter and simple workflow | Open source (GPLv3) |
+| Tartube | GTK GUI | Windows, macOS, Linux | Channel monitoring and library management | Open source |
+| Open Video Downloader | Tauri GUI | Windows, macOS, Linux | Formats, playlists, and queues | Open source (AGPL-3.0) |
+| Parabolic | GTK4 GUI | Linux | Simplicity and GNOME integration | Open source |
 | Arroxy | Desktop GUI | Windows, macOS, Linux | Profiles, queues, and advanced options | Open source (MIT) |
 | ROSI | Desktop GUI | Windows, macOS, Linux | Simple interface and LTS line | Open source (MPL-2.0) |
 | OmniGet | Desktop suite | Windows, macOS, Linux | Videos, courses, torrents, and other files | Open source (GPLv3) |
@@ -197,15 +191,21 @@ The honest answer: it depends on your workflow.
 
 **DownKingo** is the most complete option on this list: analyze, edit, caption, download, convert, and transcribe without ever switching apps. The persistent queue, local history, and aria2c turbo mode back that up, and it stays light doing it. The caveat is that it's a newer project, so not every advanced yt-dlp flag is exposed yet, and full playlist downloading is still on the roadmap.
 
-**Tartube** fills a niche that the others do not: ongoing channel monitoring and video library management. If your workflow involves tracking dozens of channels and automatically archiving new uploads, Tartube was designed for exactly that.
-
-**Parabolic** is the right choice for Linux users who want something lightweight, native-feeling, and simple. It does less, but it does it elegantly.
+**VidBee** is especially interesting for queues, playlists, and RSS automation, with a more modern and consistent interface than most Electron alternatives.
 
 **Stacher** is a reasonable middle ground if you want a cross-platform GUI and do not need conversion or extra features.
 
-**VidBee** is especially interesting for queues, playlists, and RSS automation. **Open Video Downloader** offers a strong balance between simplicity and output control. **ClipGrab** remains useful when integrated conversion matters more than the broadest possible site coverage.
+**JDownloader 2** makes more sense if you also download files outside the video ecosystem — its plugin ecosystem and long track record are hard to match.
 
-**JDownloader 2** makes more sense if you also download files outside the video ecosystem. **Arroxy**, **ROSI**, and **OmniGet** expand the desktop alternatives surfaced in search, but have shorter public track records; review their releases, issues, and signatures before adopting them for important workflows.
+**ClipGrab** remains useful when integrated conversion matters more than the broadest possible site coverage.
+
+**Tartube** fills a niche that the others do not: ongoing channel monitoring and video library management. If your workflow involves tracking dozens of channels and automatically archiving new uploads, Tartube was designed for exactly that.
+
+**Open Video Downloader** offers a strong balance between simplicity and output control.
+
+**Parabolic** is the right choice for Linux users who want something lightweight, native-feeling, and simple. It does less, but it does it elegantly.
+
+**Arroxy**, **ROSI**, and **OmniGet** expand the desktop alternatives surfaced in search, but have shorter public track records; review their releases, issues, and signatures before adopting them for important workflows.
 
 If open source is mandatory, exclude Stacher and 4K Video Downloader. Whichever option you choose, download it from the official site or repository, keep its extraction engine updated, and use it only for content you are authorized to save.
 
