@@ -64,25 +64,25 @@ const { title, description, thanksMessage } = Astro.props;
 
         // Hover logic for the stars
         stars.forEach(star => {
-            star.addEventListener('mouseenter', function() {
+            star.addEventListener('mouseenter', () => {
                 if (rated) return;
-                const value = parseInt(this.getAttribute('data-value') || '0');
+                const value = parseInt(star.getAttribute('data-value') || '0');
                 stars.forEach((s, idx) => {
                     if (idx < value) s.classList.replace('text-white/20', 'text-yellow-400');
                     else s.classList.replace('text-yellow-400', 'text-white/20');
                 });
             });
 
-            star.addEventListener('mouseleave', function() {
+            star.addEventListener('mouseleave', () => {
                 if (rated) return;
                 stars.forEach(s => s.classList.replace('text-yellow-400', 'text-white/20'));
             });
 
             // On click -> Rate
-            star.addEventListener('click', function() {
+            star.addEventListener('click', () => {
                 if (rated) return;
                 rated = true;
-                const value = parseInt(this.getAttribute('data-value') || '0');
+                const value = parseInt(star.getAttribute('data-value') || '0');
                 
                 // Color till the value
                 stars.forEach((s, idx) => {

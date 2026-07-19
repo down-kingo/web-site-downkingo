@@ -53,7 +53,6 @@ const formattedDate = pubDate.toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-U
 });
 
 const readLabel = lang === 'pt' ? 'min de leitura' : 'min read';
-const shareLabel = lang === 'pt' ? 'Compartilhar' : 'Share';
 const nextLabel = lang === 'pt' ? 'Próximo' : 'Next';
 const prevLabel = lang === 'pt' ? 'Anterior' : 'Previous';
 const copiedLabel = lang === 'pt' ? 'Link copiado!' : 'Link copied!';
@@ -204,10 +203,10 @@ const faqLd = faq && faq.length > 0 ? JSON.stringify({
   }}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={jsonLd} />
-    <script type="application/ld+json" set:html={breadcrumbLd} />
-    {howToLd && <script type="application/ld+json" set:html={howToLd} />}
-    {faqLd && <script type="application/ld+json" set:html={faqLd} />}
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
+    <script is:inline type="application/ld+json" set:html={breadcrumbLd} />
+    {howToLd && <script is:inline type="application/ld+json" set:html={howToLd} />}
+    {faqLd && <script is:inline type="application/ld+json" set:html={faqLd} />}
     <link rel="preload" href="/fonts/nunito-normal-400.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/nunito-normal-800.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/fonts/nunito-normal-900.ttf" as="font" type="font/ttf" crossorigin>

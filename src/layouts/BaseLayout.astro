@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { SEO } from 'astro-seo';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 import kingoIcon from '../assets/kingo.ico';
 
@@ -16,6 +16,7 @@ interface Props {
     twitter?: any;
     keywords?: string;
     alternateUrls?: { en?: string; pt?: string };
+    emitLanguageAlternates?: boolean;
     noindex?: boolean;
     nofollow?: boolean;
     currentPage?: 'home' | 'download' | 'tools' | 'roadmap' | 'docs' | 'online' | 'blog';
@@ -30,6 +31,7 @@ const {
   twitter,
   keywords,
   alternateUrls,
+  emitLanguageAlternates = true,
   noindex = false,
   nofollow = false,
   currentPage = "home",
@@ -159,11 +161,15 @@ const twitterConfig = {
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Hreflang Tags -->
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="pt-BR" href={ptUrl} />
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    {emitLanguageAlternates && (
+      <>
+        <link rel="alternate" hreflang="en" href={enUrl} />
+        <link rel="alternate" hreflang="pt-BR" href={ptUrl} />
+        <link rel="alternate" hreflang="x-default" href={enUrl} />
+      </>
+    )}
 
-    <ViewTransitions />
+    <ClientRouter />
     <slot name="head" />
 
 

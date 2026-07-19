@@ -1,4 +1,7 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 
 const howToStepSchema = z.object({
@@ -13,7 +16,10 @@ const faqItemSchema = z.object({
 });
 
 const blogCollection = defineCollection({
-  type: "content",
+  loader: glob({
+    base: "./src/content/blog",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -44,6 +50,6 @@ const blogCollection = defineCollection({
 });
 
 export const collections = {
-  docs: defineCollection({ schema: docsSchema() }),
+  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
   blog: blogCollection,
 };

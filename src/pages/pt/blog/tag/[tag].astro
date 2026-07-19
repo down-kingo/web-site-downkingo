@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogPostCard from '../../../../components/BlogPostCard.astro';
+import { localizeBlogTag } from '../../../../utils/blogTags';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => data.lang === 'pt' && !data.draft);
@@ -25,6 +25,7 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 const tagTitle = tag.charAt(0).toUpperCase() + tag.slice(1);
 const baseUrl = 'https://downkingo.com';
+const enTag = localizeBlogTag(tag, 'en');
 
 const tagJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -50,7 +51,7 @@ const tagJsonLd = JSON.stringify({
   lang="pt-BR"
   canonical={`https://downkingo.com/pt/blog/tag/${tag}/`}
   keywords={`${tag}, downkingo, blog, download vídeos, open source`}
-  alternateUrls={{ en: `/blog/tag/${tag}/`, pt: `/pt/blog/tag/${tag}/` }}
+  alternateUrls={{ en: `/blog/tag/${enTag}/`, pt: `/pt/blog/tag/${tag}/` }}
   noindex={true}
   opengraph={{
     basic: {
@@ -66,11 +67,7 @@ const tagJsonLd = JSON.stringify({
   currentPage="blog"
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={tagJsonLd} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&display=swap"></noscript>
+    <script is:inline type="application/ld+json" set:html={tagJsonLd} />
   </Fragment>
 
   <div class="tag-page">

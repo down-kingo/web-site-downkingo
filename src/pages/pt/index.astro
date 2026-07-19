@@ -89,10 +89,10 @@ const softwareApplicationSchema = {
 
     <!-- JSON-LD SEO for Software App + FAQ -->
     <!-- JSON-LD SEO: SoftwareApplication -->
-    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
 
     <!-- JSON-LD SEO: FAQPage -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -222,7 +222,7 @@ const softwareApplicationSchema = {
     </script>
 
     <!-- JSON-LD SEO: Organization -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -236,7 +236,7 @@ const softwareApplicationSchema = {
     </script>
 
     <!-- JSON-LD SEO: WebSite + SearchAction -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",

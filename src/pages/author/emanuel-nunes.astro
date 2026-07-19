@@ -47,7 +47,7 @@ const jsonLd = JSON.stringify({
   currentPage="blog"
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={jsonLd} />
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
   </Fragment>
 
   <div class="author-page">

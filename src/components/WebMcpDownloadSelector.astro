@@ -57,13 +57,13 @@ const inputId = `downkingo-platform-${lang}`;
   </button>
 </form>
 
-<style>
-  form:tool-form-active {
+<style is:inline>
+  form[data-download-selector]:tool-form-active {
     outline: 2px dashed #1abcfe;
     outline-offset: 4px;
   }
 
-  button:tool-submit-active {
+  form[data-download-selector] button:tool-submit-active {
     outline: 2px solid #f24e1e;
     outline-offset: 3px;
   }
