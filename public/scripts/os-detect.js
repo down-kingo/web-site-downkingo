@@ -55,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (osName && btnText) {
-    btnText.textContent = `Download for ${osName}`;
+    const isPortuguese = document.documentElement.lang
+      .toLowerCase()
+      .startsWith("pt");
+    btnText.textContent = isPortuguese
+      ? `Baixar para ${osName}`
+      : `Download for ${osName}`;
   }
 });

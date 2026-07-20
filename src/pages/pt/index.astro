@@ -5,28 +5,109 @@ import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import appInterface from '../../assets/tema-claro-com-sidebar.avif';
-import buildInPublic from '../../assets/build-in-public-kingo.avif';
-import issues from '../../assets/issues.avif';
-import wailsIcon from '../../assets/wails-icon.ico';
+import homeInterface from '../../assets/home-v3.1.2.avif';
+import downloadInterface from '../../assets/download-v3.1.2.avif';
+import editorInterface from '../../assets/editor-de-video-v3.1.2.avif';
+import themeSettings from '../../assets/config-tema-v3.1.2.avif';
+import languageSettings from '../../assets/config-idioma-3.1.2.avif';
 import kingoIcon from '../../assets/kingo.ico';
 import { CURRENT_APP_VERSION } from '../../config/release';
+
+const assetUrl = (src: string) => new URL(src, "https://downkingo.com").href;
+
+const faqItems = [
+  {
+    question: "O que é o DownKingo?",
+    answer: "O DownKingo é um aplicativo desktop gratuito e open source para mídia. A versão 3.1.2 baixa vídeo, áudio, imagens e carrosséis de redes sociais; converte arquivos; edita clipes e legendas; e transcreve áudio ou vídeo localmente.",
+  },
+  {
+    question: "Quais sistemas suportam a versão atual?",
+    answer: "O DownKingo 3.1.2 está disponível atualmente para Windows 10 e Windows 11 de 64 bits. Versões legadas para Linux e macOS continuam na página de download enquanto os pacotes multiplataforma atuais são preparados.",
+  },
+  {
+    question: "Qual motor o DownKingo usa?",
+    answer: "O DownKingo usa yt-dlp para extrair mídia e FFmpeg para remuxar, converter, cortar e aplicar legendas estilizadas. O modo turbo opcional com aria2c divide downloads compatíveis em segmentos.",
+  },
+  {
+    question: "O DownKingo é privado?",
+    answer: "O DownKingo não possui telemetria de uso. Downloads, conversão, edição e transcrição rodam no seu computador. Ainda é necessário acesso à internet para buscar mídias, versões e componentes opcionais, como modelos do Whisper.",
+  },
+  {
+    question: "A transcrição funciona offline?",
+    answer: "Sim. Depois de instalar um modelo do Whisper.cpp, a transcrição de áudio e vídeo acontece localmente, sem enviar a mídia para um serviço de transcrição.",
+  },
+  {
+    question: "É permitido baixar vídeos?",
+    answer: "O DownKingo é uma ferramenta de mídia. Baixe apenas conteúdo que seja seu ou que você tenha autorização para salvar e respeite as leis e os termos da plataforma aplicáveis.",
+  },
+];
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://downkingo.com/#organization",
+  name: "DownKingo",
+  url: "https://downkingo.com/",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://downkingo.com/kingo.webp",
+  },
+  sameAs: ["https://github.com/down-kingo/downkingo"],
+};
 
 const softwareApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": "https://downkingo.com/#software",
   name: "DownKingo",
-  operatingSystem: "Windows 10, Windows 11, macOS 10.15+, Linux",
+  url: "https://downkingo.com/pt/",
+  downloadUrl: "https://github.com/down-kingo/downkingo/releases/latest/download/DownKingo.exe",
+  codeRepository: "https://github.com/down-kingo/downkingo",
+  license: "https://github.com/down-kingo/downkingo/blob/v3/LICENSE",
+  operatingSystem: ["Windows 10", "Windows 11"],
   applicationCategory: "MultimediaApplication",
+  applicationSubCategory: "Downloader de vídeos open source e kit de mídia",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
   },
-  description: "Um kit de ferramentas de download e conversão de mídia focado em privacidade e código aberto. Baixe vídeos do YouTube, Instagram, TikTok e mais de 1000 sites em alta qualidade (4K/8K).",
-  featureList: "Download de Vídeo 4K, Conversor MP3, Removedor de Fundo IA, Download de Playlists",
-  fileSize: "50MB",
+  description: "Aplicativo desktop gratuito e open source para baixar mídia, converter arquivos, editar clipes e legendas e transcrever áudio ou vídeo localmente.",
+  featureList: "Download de vídeo e áudio, fila persistente, conversão de mídia, edição de vídeo antes do download, legendas estilizadas, transcrição local com Whisper, histórico de downloads, aceleração opcional com aria2c",
+  fileSize: "83 MB",
   softwareVersion: CURRENT_APP_VERSION,
+  datePublished: "2026-07-16",
+  releaseNotes: "https://github.com/down-kingo/downkingo/releases/tag/v3.1.2",
+  isAccessibleForFree: true,
+  image: "https://downkingo.com/og-image.png",
+  screenshot: [
+    assetUrl(homeInterface.src),
+    assetUrl(downloadInterface.src),
+    assetUrl(editorInterface.src),
+  ],
+  author: { "@id": "https://downkingo.com/#organization" },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://downkingo.com/#website",
+  name: "DownKingo",
+  url: "https://downkingo.com/",
+  publisher: { "@id": "https://downkingo.com/#organization" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 ---
 
@@ -39,38 +120,37 @@ const softwareApplicationSchema = {
     <script is:inline src="/scripts/console-filter.js" defer></script>
     <!-- SEO Implementation -->
     <SEO
-      title="DownKingo - Toolbox de Mídia Universal (Baixar e Converter)"
-      description="A ferramenta open source definitiva. Baixe de 1000+ sites, remova fundos com IA e converta mídia (MP4/MP3/JPG). 100% privado e gratuito."
+      title="DownKingo — Baixe, Converta e Transcreva Mídia no PC"
+      description="Baixe vídeos e outras mídias, edite clipes, converta arquivos e transcreva áudio localmente com o DownKingo, um aplicativo desktop gratuito e open source."
       canonical="https://downkingo.com/pt/"
       openGraph={{
         basic: {
-          title: "DownKingo - Toolbox de Mídia Universal",
+          title: "DownKingo — Baixe, Converta e Transcreva Mídia no PC",
           type: "website",
           image: "https://downkingo.com/og-image.png",
           url: "https://downkingo.com/pt/"
         },
         optional: {
-          description: "A ferramenta definitiva de código aberto. Baixe, converta e processe mídia com privacidade. Desenvolvido em Go, Wails e FFmpeg."
+          description: "Aplicativo desktop gratuito e open source para baixar mídia, editar clipes e legendas, converter arquivos e transcrever localmente."
         }
       }}
       twitter={{
         card: "summary_large_image",
         site: "@downkingo",
         creator: "@downkingo",
-        title: "DownKingo - Toolbox de Mídia Universal",
-        description: "A ferramenta definitiva de código aberto. Baixe, converta e processe mídia com privacidade.",
+        title: "DownKingo — Baixe, Converta e Transcreva Mídia no PC",
+        description: "Baixe mídia, edite clipes e legendas, converta arquivos e transcreva localmente com o aplicativo desktop gratuito e open source DownKingo.",
         image: "https://downkingo.com/og-image.png"
       }}
       extend={{
         meta: [
-          { name: "keywords", content: "baixar videos, youtube para mp3, baixar fotos instagram, conversor de imagem, remover fundo ia, ffmpeg gui, open source, video downloader" },
           { name: "theme-color", content: "#050505" },
           { property: "og:locale", content: "pt_BR" },
           { property: "og:site_name", content: "DownKingo" },
           { property: "og:image:width", content: "1861" },
           { property: "og:image:height", content: "933" },
           { property: "og:image:type", content: "image/png" },
-          { property: "og:image:alt", content: "DownKingo - Media Toolbox Interface" }
+          { property: "og:image:alt", content: "Aplicativo desktop open source DownKingo para mídia" }
         ],
         link: [
           { rel: "icon", type: "image/x-icon", href: kingoIcon }
@@ -87,169 +167,12 @@ const softwareApplicationSchema = {
     <link rel="preload" href="/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- JSON-LD SEO for Software App + FAQ -->
-    <!-- JSON-LD SEO: SoftwareApplication -->
+    <!-- JSON-LD SEO -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
-    <!-- JSON-LD SEO: FAQPage -->
-    <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Qual motor o DownKingo usa para baixar mídia?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O DownKingo utiliza o motor padrão da indústria yt-dlp combinado com FFmpeg para processamento. Isso garante suporte para downloads de alta qualidade (até 4K) do YouTube, TikTok, Instagram e mais de 1000 outros sites."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O DownKingo é seguro e realmente privado?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo é 100% Código Aberto e projetado com privacidade desde o início. Todo o processamento de vídeo acontece localmente no seu dispositivo. Não coletamos telemetria, não rastreamos uso e não temos servidores para armazenar seus dados."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O DownKingo remove anúncios dos vídeos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. Ao converter o conteúdo de streaming diretamente para arquivos estáticos (MP4/MKV/MP3), todos os anúncios da plataforma são naturalmente removidos, proporcionando uma experiência de reprodução offline limpa e sem anúncios."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso baixar vídeos em 4K do YouTube de graça?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo suporta baixar vídeos em sua qualidade máxima disponível, incluindo 4K (2160p), 8K (4320p) e 60fps, sem paywalls ou assinaturas premium."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Isso é melhor que conversores online de YouTube para MP3?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Muito melhor. Conversores online costumam ser cheios de pop-ups, lentos e comprimem seu áudio. O DownKingo roda nativamente no seu PC, oferecendo velocidades mais rápidas, downloads em massa e extração de áudio com qualidade original."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O DownKingo é seguro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo é 100% código aberto. O código é publicamente auditável no GitHub. Não instalamos barras de ferramentas, software empacotado ou qualquer forma de malware."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Precisa de internet para usar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Você precisa de internet para baixar conteúdo. Porém, todos os recursos de conversão (conversão de formato, remoção de fundo) funcionam completamente offline após a instalação."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Funciona no celular?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O DownKingo é um aplicativo para desktop (Windows, macOS e Linux). Não há app móvel, mas você pode baixar no PC e transferir os arquivos para o celular."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "É legal baixar vídeos do YouTube?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Baixar conteúdo protegido por direitos autorais sem permissão pode violar os termos de serviço. O DownKingo é uma ferramenta — os usuários são responsáveis por cumprir as leis locais e políticas das plataformas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual a diferença entre DownKingo e sites online?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Conversores online são lentos, cheios de anúncios e comprimem a qualidade. O DownKingo roda nativamente no seu PC, oferecendo velocidades maiores, downloads em massa e preservação da qualidade original."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso baixar vídeos em 4K ou 8K?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo suporta a qualidade máxima disponível incluindo 4K (2160p), 8K (4320p) e 60fps sem nenhuma assinatura premium."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O DownKingo tem vírus ou malware?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "De forma alguma. O DownKingo é código aberto e pode ser auditado por qualquer pessoa. Somos hospedados no GitHub e todos os releases são construídos de forma transparente via CI/CD."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto espaço em disco preciso?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O aplicativo em si tem menos de 50MB. O espaço para conteúdo baixado depende da qualidade do vídeo — um vídeo de 10 minutos em 4K ocupa aproximadamente 1-2GB."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso baixar vários vídeos ao mesmo tempo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo suporta download em massa. Você pode colar múltiplas URLs ou playlists inteiras e baixar todas simultaneamente."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O DownKingo funciona com VPN?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. O DownKingo funciona perfeitamente com VPNs. Na verdade, usar uma VPN pode ajudar a acessar conteúdo com restrição geográfica de diferentes regiões."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <!-- JSON-LD SEO: Organization -->
-    <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "DownKingo",
-      "url": "https://downkingo.com",
-      "logo": "https://downkingo.com/kingo.webp",
-      "sameAs": [
-        "https://github.com/down-kingo/downkingo"
-      ]
-    }
-    </script>
-
-    <!-- JSON-LD SEO: WebSite + SearchAction -->
-    <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "DownKingo",
-      "url": "https://downkingo.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://downkingo.com/docs?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
     <!-- Preload Critical Assets -->
 
 </head>
@@ -265,15 +188,12 @@ const softwareApplicationSchema = {
     <main class="relative z-10 w-full overflow-hidden">
         
         <!-- Hero Section -->
-        <section class="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
+        <section class="relative min-h-[100svh] flex flex-col items-center justify-center pt-24 px-6 overflow-hidden">
             <!-- Background Elements -->
             <div class="absolute inset-0 bg-grid-premium opacity-20 pointer-events-none"></div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen animate-pulse duration-[5000ms]"></div>
             
-            <div class="relative z-10 text-center max-w-5xl mx-auto space-y-10">
-                <!-- Status Badge -->
-
-
+            <div class="relative z-10 translate-y-8 text-center max-w-5xl mx-auto space-y-10 md:translate-y-10">
                 <!-- Main Title -->
                 <!-- Semantic H1 for SEO (Hidden) -->
                 <h1 class="sr-only">Baixe, Converta e Transcreva com o Kingo</h1>
@@ -283,6 +203,10 @@ const softwareApplicationSchema = {
                     <span id="rotating-text" class="block transition-all duration-500 ease-out h-[1.1em] text-5xl sm:text-7xl md:text-8xl lg:text-9xl">BAIXE</span>
                     <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 block text-3xl sm:text-5xl md:text-6xl lg:text-7xl">COM O KINGO</span>
                 </div>
+
+                <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/65 md:text-lg">
+                    O DownKingo é um aplicativo desktop para baixar vídeo, áudio, imagens e carrosséis de redes sociais — com conversor, editor de vídeo, legendas estilizadas e transcrição local no mesmo fluxo.
+                </p>
                 
                 <!-- Actions -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
@@ -363,26 +287,29 @@ const softwareApplicationSchema = {
                     
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper">
-                        <span class="inline-block mb-4 font-mono text-xs text-primary uppercase tracking-widest border border-primary/20 bg-primary/5 px-2 py-1 rounded">Acelerador de Downloads</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Aplicativo leve {' '}<br />{' '} e Rápido.</h2>
+                        <span class="inline-block mb-4 font-mono text-xs text-primary uppercase tracking-widest border border-primary/20 bg-primary/5 px-2 py-1 rounded">DownKingo 3.1.2</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Um Aplicativo. {' '}<br />{' '} Três Fluxos.</h2>
+                        <p class="max-w-lg text-sm leading-relaxed text-muted">
+                            Baixe mídias, converta arquivos e transcreva áudio sem espalhar o trabalho por uma sequência de ferramentas no navegador. O DownKingo reúne o fluxo principal em um aplicativo desktop open source.
+                        </p>
                         
                         <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
                                 <div class="p-2 rounded-lg bg-white/5 group-hover:bg-primary/10 transition-colors">
-                                    <Image src={wailsIcon} alt="Wails" width={48} height={48} class="w-5 h-5 object-contain" format="webp" />
+                                    <Icon name="simple-icons:opensourceinitiative" class="text-primary" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">Wails Framework</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Backend em Go para downloads instantâneos e leves, sem travar seu PC.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">Open Source por Princípio</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Código, versões e roadmap público estão disponíveis no GitHub sob licença MIT.</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-4 group">
                                 <div class="p-2 rounded-lg bg-white/5 group-hover:bg-primary/10 transition-colors">
-                                    <Icon name="simple-icons:react" class="text-primary" width={20} />
+                                    <Icon name="lucide:hard-drive" class="text-primary" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">React 19</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Impulsionado pelos recursos mais recentes do React para interações instantâneas em um aplicativo moderno de baixar vídeos.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">Ferramentas Locais</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Conversão, edição, aplicação de legendas e transcrição com Whisper rodam no seu computador.</p>
                                 </div>
                             </li>
                         </ul>
@@ -403,7 +330,15 @@ const softwareApplicationSchema = {
                                 <div class="ml-auto text-[10px] font-mono text-muted/50">downkingo-v3</div>
                              </div>
                              
-                             <Image src={appInterface} alt="DownKingo Dark Mode Interface" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" format="webp" />
+                             <Image
+                                src={homeInterface}
+                                alt="Painel do DownKingo v3.1.2 com Downloads, Conversor de Mídia e Transcritor"
+                                class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                                widths={[480, 768, 1024]}
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                loading="lazy"
+                                decoding="async"
+                             />
                              
                              <!-- Overlay Gradient -->
                              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-20 pointer-events-none"></div>
@@ -525,17 +460,19 @@ const softwareApplicationSchema = {
 
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper order-1 lg:order-2">
-                        <span class="inline-block mb-4 font-mono text-xs text-indigo-400 uppercase tracking-widest border border-indigo-500/20 bg-indigo-500/5 px-2 py-1 rounded">Aplicativo Universal de Vídeo</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Baixe qualquer {' '}<br />{' '} Video.</h2>
-                            Usa o poderoso motor <code>yt-dlp</code> oficial, garantindo que você consiga <strong>baixar vídeos do YouTube</strong>, Instagram, TikTok e qualquer rede social.
+                        <span class="inline-block mb-4 font-mono text-xs text-indigo-400 uppercase tracking-widest border border-indigo-500/20 bg-indigo-500/5 px-2 py-1 rounded">Downloader de Vídeos Open Source</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Baixe Com {' '}<br />{' '} Controle.</h2>
+                        <p class="text-muted max-w-md text-sm leading-relaxed">
+                            Cole o link, confira o título e a miniatura e escolha o que deseja salvar. O DownKingo mostra as opções encontradas na origem antes de iniciar o download.
+                        </p>
                          <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
                                 <div class="p-2 rounded-lg bg-white/5 group-hover:bg-indigo-500/10 transition-colors">
                                     <Icon name="lucide:layers" class="text-indigo-400" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">Multi-Format</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Vídeo (MP4, MKV) e Áudio (MP3) convertidos automaticamente com a melhor qualidade.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">Vídeo, Áudio e Imagens</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Escolha a qualidade disponível, extraia áudio ou salve imagens e carrosséis compatíveis.</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-4 group">
@@ -543,82 +480,59 @@ const softwareApplicationSchema = {
                                     <Icon name="lucide:terminal" class="text-indigo-400" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">yt-dlp Engine</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Suporte nativo para baixar vídeos do YouTube, TikTok, Instagram e mais de 1000 sites.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">yt-dlp + aria2c Opcional</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">O yt-dlp faz a extração; o modo turbo com aria2c pode segmentar downloads quando a origem permite.</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- FEATURE BLOCK 3: AI Transcription -->
+                <!-- FEATURE BLOCK 3: Editor de Vídeo + Legendas -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     
                     <!-- Text Content -->
                     <div class="space-y-8 reveal-wrapper">
-                        <span class="inline-block mb-4 font-mono text-xs text-rose-400 uppercase tracking-widest border border-rose-500/20 bg-rose-500/5 px-2 py-1 rounded">Transcrição com IA</span>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Áudio e Vídeo {' '}<br />{' '} Para Texto.</h2>
+                        <span class="inline-block mb-4 font-mono text-xs text-rose-400 uppercase tracking-widest border border-rose-500/20 bg-rose-500/5 px-2 py-1 rounded">Editor de Vídeo Integrado</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Edite Antes {' '}<br />{' '} de Baixar.</h2>
                         <p class="text-muted max-w-md text-sm leading-relaxed">
-                            Converta fala em texto com precisão incomparável usando o modelo Whisper da OpenAI de forma totalmente offline.
+                            Corte trechos indesejados e prepare as legendas antes de renderizar o arquivo final. Assim, o download já chega mais perto do resultado que você realmente precisa.
                         </p>
                         <ul class="space-y-6 pt-4">
                             <li class="flex items-start gap-4 group">
                                 <div class="p-2 rounded-lg bg-white/5 group-hover:bg-rose-500/10 transition-colors">
-                                    <Icon name="lucide:mic" class="text-rose-400" width={20} />
+                                    <Icon name="lucide:scissors" class="text-rose-400" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">Múltiplos Idiomas</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Detecte e transcreva áudio automaticamente em mais de 90 idiomas, com opção de tradução para inglês.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">Edição na Linha do Tempo</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Pré-visualize o vídeo, divida a linha do tempo, remova trechos e confira a duração final.</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-4 group">
                                 <div class="p-2 rounded-lg bg-white/5 group-hover:bg-rose-500/10 transition-colors">
-                                    <Icon name="lucide:file-text" class="text-rose-400" width={20} />
+                                    <Icon name="lucide:captions" class="text-rose-400" width={20} />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-sm uppercase">Exportação de Legendas</h3>
-                                    <p class="text-xs text-muted mt-1 leading-relaxed">Exporte direto para formatos SRT, VTT ou texto simples, prontos para uso nos seus projetos de vídeo.</p>
+                                    <h3 class="text-white font-bold text-sm uppercase">Legendas Estilizadas</h3>
+                                    <p class="text-xs text-muted mt-1 leading-relaxed">Importe legendas disponíveis ou use o Whisper local, revise o texto e grave legendas estilizadas no vídeo.</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Visual Content: Waveform Animation -->
+                    <!-- Visual Content: Current Editor Screenshot -->
                     <div class="relative group reveal-wrapper perspective-container">
-                        <!-- Glow Effect -->
                         <div class="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-orange-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        
-                        <!-- Transcriber Interface Mockup -->
                         <div class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#09090b] hover:transform hover:scale-[1.02] transition-transform duration-500">
-                             <!-- Header -->
-                             <div class="h-10 bg-[#111] border-b border-white/5 flex items-center px-4 gap-3">
-                                <Icon name="lucide:webhook" class="text-rose-400" width={16} />
-                                <span class="text-xs font-mono uppercase tracking-wider text-muted">Whisper AI</span>
-                             </div>
-                             
-                             <!-- Content -->
-                             <div class="p-6 space-y-6">
-                                 <!-- Audio Waveform Visualization -->
-                                 <div class="flex items-center justify-center h-20 gap-1 opacity-80">
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-4 animate-pulse" style="animation-delay: 0.1s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-10 animate-pulse" style="animation-delay: 0.2s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-16 animate-pulse" style="animation-delay: 0.3s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-6 animate-pulse" style="animation-delay: 0.4s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-12 animate-pulse" style="animation-delay: 0.5s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-8 animate-pulse" style="animation-delay: 0.6s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-14 animate-pulse" style="animation-delay: 0.7s"></div>
-                                     <div class="w-2 bg-rose-500/80 rounded-full h-6 animate-pulse" style="animation-delay: 0.8s"></div>
-                                 </div>
-
-                                 <!-- Extracted Text Example -->
-                                 <div class="bg-[#111] border border-white/5 rounded-lg p-4 font-mono text-xs text-muted/80 leading-relaxed font-medium">
-                                     <span class="text-emerald-400">[00:00.00]</span> Precisamos usar modelos de IA locais por privacidade.<br>
-                                     <span class="text-emerald-400">[00:03.24]</span> Sim, a nova integração <span class="text-rose-400 font-bold bg-rose-500/20 px-1 rounded">OpenAI Whisper</span> roda totalmente offline.<br>
-                                     <span class="text-emerald-400">[00:08.12]</span> Isso muda tudo no nosso fluxo de transcrição de áudios.
-                                 </div>
-                             </div>
-                             
-                             <!-- Overlay Gradient -->
+                             <Image
+                                src={editorInterface}
+                                alt="Editor de vídeo do DownKingo v3.1.2 com linha do tempo e controles de legenda"
+                                class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                                widths={[480, 768, 1024]}
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                loading="lazy"
+                                decoding="async"
+                             />
                              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-20 pointer-events-none"></div>
                         </div>
                     </div>
@@ -650,9 +564,9 @@ const softwareApplicationSchema = {
                         </div>
                         <div class="relative group">
                             <span class="absolute -left-[41px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-secondary/50 text-white font-bold text-xs ring-4 ring-[#050505] group-hover:bg-secondary group-hover:text-black transition-colors">3</span>
-                            <h3 class="text-xl font-bold text-white mb-2">Download Instantâneo</h3>
+                            <h3 class="text-xl font-bold text-white mb-2">Acompanhe o Download</h3>
                             <p class="text-muted text-sm leading-relaxed">
-                                Clique em "Baixar". O motor multithread do DownKingo extrairá o conteúdo na velocidade máxima da sua conexão, salvando diretamente na pasta escolhida.
+                                Adicione o item à fila e acompanhe o progresso. O DownKingo baixa os fluxos escolhidos, processa tudo localmente e salva o arquivo final na pasta indicada.
                             </p>
                         </div>
                     </div>
@@ -664,22 +578,33 @@ const softwareApplicationSchema = {
                 
                 <div class="reveal-wrapper order-first md:order-last">
                     <div class="p-8 border border-white/10 bg-white/[0.02] rounded-2xl">
-                        <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Por que escolher o DownKingo?</h3>
+                        <div class="mb-8 overflow-hidden rounded-xl border border-white/10 bg-black">
+                            <Image
+                                src={downloadInterface}
+                                alt="Tela de download do DownKingo v3.1.2 com opções de vídeo, áudio, qualidade, legenda e editor"
+                                class="h-auto w-full"
+                                widths={[480, 768, 1024]}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Um fluxo desktop, não outra aba de conversor.</h3>
                         <p class="text-muted text-sm leading-relaxed mb-6">
-                            Milhões de usuários dependem de conversores online lentos, inseguros e repletos de anúncios invasivos. Nós criamos o DownKingo para devolver o poder a você.
+                            O DownKingo mantém downloads, fila persistente, histórico local, conversão, edição, legendas e transcrição no mesmo lugar. O código é aberto para você conferir o que roda na sua máquina.
                         </p>
                         <p class="text-muted text-sm leading-relaxed mb-6">
-                            Diferente de downloaders baseados na web, o DownKingo é um software nativo (construído em Go e Rust/Wails) que aproveita todo o poder do seu hardware para processar vídeos até 10x mais rápido que ferramentas online.
+                            A versão {CURRENT_APP_VERSION} é a versão atual para Windows. Os pacotes disponíveis hoje para Linux e macOS são legados enquanto as versões multiplataforma atuais são preparadas.
                         </p>
                         <p class="text-muted text-sm leading-relaxed">
-                            Além disso, suportamos recursos avançados que sites não conseguem oferecer: download de playlists completas do YouTube, conversão em lote de links e extração de legendas automáticas em múltiplos idiomas.
+                            O desenvolvimento continua público: recursos pedidos e o andamento ficam visíveis no <a href="https://github.com/orgs/down-kingo/projects/2" target="_blank" rel="noopener noreferrer" class="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">roadmap público</a>.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- BUILD IN PUBLIC SECTION -->
+        <!-- OPEN BY DESIGN SECTION -->
         <section id="build-in-public" class="py-32 px-6 border-b border-white/5 overflow-hidden relative">
             <!-- Background Noise/Glow -->
             <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl rounded-full opacity-20 pointer-events-none"></div>
@@ -689,14 +614,13 @@ const softwareApplicationSchema = {
                 <div class="space-y-8 reveal-wrapper z-10">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/5 text-green-400 font-mono text-xs uppercase tracking-widest">
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Desenvolvimento ao Vivo
+                        Seu app, do seu jeito
                     </div>
                     <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight text-white leading-[1.1]">
-                        Construído em {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Público.</span>
+                        Aberto Por {' '}<br />{' '} <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Princípio.</span>
                     </h2>
                     <p class="text-muted text-lg leading-relaxed max-w-md">
-                        Sem segredos. Sem rastreamento oculto. Toda a base de código é pública.
-                        Veja nosso roadmap ao vivo, vote em recursos, dê sugestões de melhorias e acompanhe nosso progresso em tempo real direto do app.
+                        O código é público, não há telemetria de uso e o roadmap fica visível. No aplicativo, você também escolhe tema, cor de destaque, layout da navegação e um dos cinco idiomas da interface para deixar o espaço com a sua cara.
                     </p>
                     
                     <!-- Stats / GitHub Integration -->
@@ -724,15 +648,31 @@ const softwareApplicationSchema = {
 
                 <!-- Visual Side (Creative Composition) -->
                 <div class="relative reveal-wrapper lg:translate-x-12 perspective-container">
-                    <!-- Main Image (Roadmap) -->
+                    <!-- Main Image (Appearance Settings) -->
                     <div class="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-[#09090b] lg:rotate-2 hover:rotate-0 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
-                        <Image src={buildInPublic} alt="Roadmap Interface" class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity" format="webp" widths={[400, 800, 1920]} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1920px" />
+                        <Image
+                            src={themeSettings}
+                            alt="Configurações de aparência do DownKingo v3.1.2 com tema, cor de destaque e layout da navegação"
+                            class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity"
+                            widths={[480, 768, 1024]}
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            loading="lazy"
+                            decoding="async"
+                        />
                     </div>
                     
-                    <!-- Floating Secondary Image (Issues) -->
+                    <!-- Floating Secondary Image (Language Settings) -->
                     <div class="absolute -bottom-12 -left-12 z-20 w-2/3 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 bg-[#09090b] -rotate-3 hover:rotate-0 transition-transform duration-700 delay-100 hidden md:block">
-                        <Image src={issues} alt="GitHub Issues Integration" class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity" format="webp" />
+                        <Image
+                            src={languageSettings}
+                            alt="Configurações de idioma do DownKingo v3.1.2 com português, inglês, espanhol, francês e alemão"
+                            class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity"
+                            widths={[360, 640, 768]}
+                            sizes="33vw"
+                            loading="lazy"
+                            decoding="async"
+                        />
                     </div>
                 </div>
             </div>
@@ -742,7 +682,7 @@ const softwareApplicationSchema = {
         <section id="toolkit" class="py-32 px-6 max-w-7xl mx-auto">
             <div class="text-center mb-20 reveal-wrapper">
                  <h2 class="text-4xl font-black uppercase tracking-tight text-white mb-4">O Kit de Ferramentas.</h2>
-                 <p class="text-muted text-sm font-mono uppercase">O melhor software para baixar e converter mídia.</p>
+                 <p class="text-muted text-sm font-mono uppercase">Ferramentas práticas para o trabalho que acontece ao redor de um download.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -757,14 +697,14 @@ const softwareApplicationSchema = {
                     </p>
                 </div>
 
-                 <!-- Card: AI Tools -->
+                 <!-- Card: Local Transcription -->
                  <div class="group border border-white/10 bg-white/[0.02] p-8 rounded-2xl hover:bg-white/[0.04] transition-colors">
                     <div class="mb-6 opacity-50 group-hover:opacity-100 group-hover:text-primary transition-all">
-                        <Icon name="lucide:wand-2" width={32} />
+                        <Icon name="lucide:captions" width={32} />
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2 uppercase">Ferramentas de IA</h3>
+                    <h3 class="text-lg font-bold text-white mb-2 uppercase">Transcrição Local</h3>
                     <p class="text-xs text-muted leading-relaxed font-mono">
-                        Tire o fundo de imagens com IA num clique e baixe todas as fotos de um post do Instagram.
+                        Transforme áudio ou vídeo em texto com Whisper.cpp depois de instalar um modelo. A mídia permanece no seu computador.
                     </p>
                 </div>
 
@@ -797,12 +737,14 @@ const softwareApplicationSchema = {
              <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Text -->
                 <div class="space-y-6 reveal-wrapper">
-                    <h2 class="text-3xl font-black uppercase tracking-tight text-white">Baixe em qualquer Formato de video em qualquer resolução.</h2>
-                        Não se contente com 720p. O DownKingo é o melhor aplicativo para baixar vídeos em 4K real, extraindo o stream bruto para qualidade máxima.
+                    <h2 class="text-3xl font-black uppercase tracking-tight text-white">Mantenha a qualidade e o formato certos para cada trabalho.</h2>
+                    <p class="text-muted leading-relaxed">
+                        O DownKingo mostra os fluxos disponíveis na origem, permite escolher a qualidade de vídeo ou áudio e usa o FFmpeg quando as faixas precisam ser unidas, remuxadas ou convertidas.
+                    </p>
                     <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-widest text-primary/60">
-                        <span>#NoWatermark</span>
-                        <span>#4KDownload</span>
-                        <span>#YouTubeToMP3</span>
+                        <span>#OpenSource</span>
+                        <span>#FluxoLocal</span>
+                        <span>#SemTelemetria</span>
                     </div>
                 </div>
 
@@ -811,28 +753,28 @@ const softwareApplicationSchema = {
                      <div class="p-6 border border-white/5 bg-black/40 rounded-xl hover:border-primary/30 transition-colors">
                         <span class="block text-primary font-bold text-sm mb-2">Vídeo</span>
                         <ul class="text-xs text-muted font-mono space-y-1">
-                            <li>MP4 (H.264 / AV1)</li>
-                            <li>MKV (Matroska)</li>
-                            <li>WebM (VP9)</li>
-                            <li>MOV (ProRes)</li>
+                            <li>MP4 / MKV</li>
+                            <li>WebM / AVI</li>
+                            <li>MOV</li>
+                            <li>H.264 / VP9 / MPEG-4</li>
                         </ul>
                      </div>
                      <div class="p-6 border border-white/5 bg-black/40 rounded-xl hover:border-primary/30 transition-colors">
                         <span class="block text-primary font-bold text-sm mb-2">Áudio</span>
                         <ul class="text-xs text-muted font-mono space-y-1">
-                            <li>MP3 (320kbps)</li>
-                            <li>FLAC (Lossless)</li>
-                            <li>M4A (AAC)</li>
-                            <li>WAV (Uncompressed)</li>
+                            <li>MP3 / AAC</li>
+                            <li>M4A / Opus</li>
+                            <li>FLAC / WAV</li>
+                            <li>OGG</li>
                         </ul>
                      </div>
                      <div class="p-6 border border-white/5 bg-black/40 rounded-xl hover:border-primary/30 transition-colors">
-                        <span class="block text-primary font-bold text-sm mb-2">Imagem & IA</span>
+                        <span class="block text-primary font-bold text-sm mb-2">Imagem & Texto</span>
                         <ul class="text-xs text-muted font-mono space-y-1">
                             <li>JPG / PNG / WebP</li>
-                            <li>Baixar Fotos do Insta</li>
-                            <li>Removedor de Fundo IA</li>
-                            <li>Conversão de Imagem em Massa</li>
+                            <li>Carrosséis do Instagram</li>
+                            <li>Transcrição Local</li>
+                            <li>TXT / SRT / VTT / DOCX</li>
                         </ul>
                      </div>
                 </div>
@@ -843,153 +785,17 @@ const softwareApplicationSchema = {
         <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
             <h2 class="text-2xl font-black uppercase text-white mb-12 text-center tracking-widest">Perguntas Frequentes</h2>
             <div class="space-y-4">
-                <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                        Qual motor o DownKingo usa?
-                        <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
-                    </summary>
-                    <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                        O DownKingo envolve o binário padrão da indústria <code>yt-dlp</code> para extração, processado via <code>FFmpeg</code>. Isso garante compatibilidade desde o primeiro dia com milhares de sites, incluindo YouTube, TikTok e Instagram.
-                    </div>
-                </details>
-                <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                     <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                        O DownKingo é realmente privado?
-                        <Icon name="lucide:chevron-down" class="group-open:rotate-180 transition-transform text-white/50" width={16} />
-                    </summary>
-                    <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                        Sim. O código é <strong>Open Source</strong>. Todo o processamento acontece localmente na sua máquina. Nenhuma URL é enviada para nossos servidores (nós nem temos servidores de rastreamento). As únicas requisições de rede são para APIs de atualização padrão (GitHub Releases).
-                    </div>
-                </details>
-                 <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Ele remove anúncios dos downloads?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Com certeza. Ao converter o stream diretamente para um arquivo (MP4/MP3), todos os anúncios da plataforma são naturalmente removidos. Você obtém um arquivo limpo pronto para diversão offline.
-                   </div>
-               </details>
-               
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Posso baixar vídeos em 4K/8K?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Sim. Ao contrário de muitas ferramentas online que limitam você a 1080p, o DownKingo acessa os streams premium diretamente, permitindo baixar em <strong>4K (2160p)</strong> e até <strong>8K (4320p)</strong> se o vídeo de origem suportar.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Por que usar isto em vez de Conversores Online?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Conversores online são frequentemente perigosos, cheios de pop-ups, lentos e comprimem a qualidade do áudio. O DownKingo roda <strong>nativamente no seu dispositivo</strong>, oferecendo velocidades máximas de download, downloads em massa e segurança livre de malware.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       O DownKingo é seguro?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Sim. O DownKingo é 100% código aberto. O código é publicamente auditável no GitHub. Não instalamos barras de ferramentas, software empacotado ou qualquer forma de malware.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Precisa de internet para usar?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Você precisa de internet para baixar conteúdo. Porém, todos os recursos de conversão (conversão de formato, remoção de fundo) funcionam completamente offline após a instalação.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Funciona no celular?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       O DownKingo é um aplicativo para desktop (Windows, macOS e Linux). Não há app móvel, mas você pode baixar no PC e transferir os arquivos para o celular.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       É legal baixar vídeos do YouTube?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Baixar conteúdo protegido por direitos autorais sem permissão pode violar os termos de serviço. O DownKingo é uma ferramenta — os usuários são responsáveis por cumprir as leis locais e políticas das plataformas.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Qual a diferença entre DownKingo e sites online?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Conversores online são lentos, cheios de anúncios e comprimem a qualidade. O DownKingo roda nativamente no seu PC, oferecendo velocidades maiores, downloads em massa e preservação da qualidade original.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Posso baixar vídeos em 4K ou 8K?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Sim. O DownKingo suporta a qualidade máxima disponível incluindo 4K (2160p), 8K (4320p) e 60fps sem nenhuma assinatura premium.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       O DownKingo tem vírus ou malware?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       De forma alguma. O DownKingo é código aberto e pode ser auditado por qualquer pessoa. Somos hospedados no GitHub e todos os releases são construídos de forma transparente via CI/CD.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Quanto espaço em disco preciso?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       O aplicativo em si tem menos de 50MB. O espaço para conteúdo baixado depende da qualidade do vídeo — um vídeo de 10 minutos em 4K ocupa aproximadamente 1-2GB.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       Posso baixar vários vídeos ao mesmo tempo?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Sim. O DownKingo suporta download em massa. Você pode colar múltiplas URLs ou playlists inteiras e baixar todas simultaneamente.
-                   </div>
-               </details>
-
-               <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
-                       O DownKingo funciona com VPN?
-                       <span class="iconify group-open:rotate-180 transition-transform text-white/50" data-icon="lucide:chevron-down" data-width="16"></span>
-                   </summary>
-                   <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
-                       Sim. O DownKingo funciona perfeitamente com VPNs. Na verdade, usar uma VPN pode ajudar a acessar conteúdo com restrição geográfica de diferentes regiões.
-                   </div>
-               </details>
+                {faqItems.map((item) => (
+                    <details class="group bg-white/[0.02] border border-white/5 rounded-none open:bg-white/[0.04] transition-colors">
+                        <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-bold text-white text-sm uppercase tracking-wide">
+                            {item.question}
+                            <Icon name="lucide:chevron-down" class="shrink-0 group-open:rotate-180 transition-transform text-white/50" width={16} />
+                        </summary>
+                        <div class="px-6 pb-6 text-muted font-mono text-xs leading-relaxed border-t border-white/5 pt-4">
+                            {item.answer}
+                        </div>
+                    </details>
+                ))}
             </div>
         </section>
 
